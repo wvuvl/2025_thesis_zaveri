@@ -1,0 +1,277 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Masters/Doctoral Thesis 
+% LaTeX Template
+% Version 2.5 (27/8/17)
+%
+% This template was downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Version 2.x major modifications by:
+% Vel (vel@latextemplates.com)
+%
+% This template is based on a template by:
+% Steve Gunn (http://users.ecs.soton.ac.uk/srg/softwaretools/document/templates/)
+% Sunil Patel (http://www.sunilpatel.co.uk/thesis-template/)
+%
+% Template license:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[
+12pt, % The default document font size, options: 10pt, 11pt, 12pt
+oneside, % Two side (alternating margins) for binding by default, uncomment to switch to one side
+english, % ngerman for German
+singlespacing, % Single line spacing, alternatives: onehalfspacing or doublespacing
+%draft, % Uncomment to enable draft mode (no pictures, no links, overfull hboxes indicated)
+%nolistspacing, % If the document is onehalfspacing or doublespacing, uncomment this to set spacing in lists to single
+liststotoc, % Uncomment to add the list of figures/tables/etc to the table of contents
+%toctotoc, % Uncomment to add the main table of contents to the table of contents
+%parskip, % Uncomment to add space between paragraphs
+%nohyperref, % Uncomment to not load the hyperref package
+headsepline, % Uncomment to get a line under the header
+chapterinoneline, % Uncomment to place the chapter title next to the number on one line
+%consistentlayout, % Uncomment to change the layout of the declaration, abstract and acknowledgements pages to match the default layout
+]{MastersDoctoralThesis} % The class file specifying the document structure
+
+\usepackage[utf8]{inputenc} % Required for inputting international characters
+\usepackage[T1]{fontenc} % Output font encoding for international characters
+
+\usepackage{mathpazo} % Use the Palatino font by default
+
+%\usepackage{subfigure}
+\usepackage{subcaption}
+\usepackage{amsmath}
+
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{adjustbox}
+
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{mathtools}
+\usepackage{algpseudocode,algorithm}
+% \usepackage[dvipsnames]{xcolor}
+\usepackage{multirow}
+\usepackage{colortbl}
+
+\usepackage[style=ieee,natbib=true]{biblatex}
+% \usepackage[backend=bibtex,style=authoryear,natbib=true]{biblatex} % Use the bibtex backend with the authoryear citation style (which resembles APA)
+
+\addbibresource{citations.bib} % The filename of the bibliography
+\usepackage{url}
+\usepackage[autostyle=true]{csquotes} % Required to generate language-dependent quotes in the bibliography
+
+%----------------------------------------------------------------------------------------
+%	MARGIN SETTINGS
+%----------------------------------------------------------------------------------------
+
+\geometry{
+	paper=letterpaper, % Change to letterpaper for US letter
+	inner=2.5cm, % Inner margin
+	outer=3.8cm, % Outer margin
+	bindingoffset=.5cm, % Binding offset
+	top=1.5cm, % Top margin
+	bottom=1.5cm, % Bottom margin
+	%showframe, % Uncomment to show how the type block is set on the page
+}
+
+%----------------------------------------------------------------------------------------
+%	THESIS INFORMATION
+%----------------------------------------------------------------------------------------
+
+\thesistitle{Improving Accuracy and Generalization for Efficient Visual Tracking} % Your thesis title, this is used in the title and abstract, print it elsewhere with \ttitle
+\supervisor{Dr. Gianfranco Doretto} % Your supervisor's name, this is used in the title page, print it elsewhere with \supname
+%\examiner{} % Your examiner's name, this is not currently used anywhere in the template, print it elsewhere with \examname
+%\degree{Doctor of Philosophy} % Your degree name, this is used in the title page and abstract, print it elsewhere with \degreename
+\author{Ram Jitendrabhai Zaveri} % Your name, this is used in the title page and abstract, print it elsewhere with \authorname
+\addresses{Morgantown, WV} % Your address, this is not currently used anywhere in the template, print it elsewhere with \addressname
+
+%\subject{Biological Sciences} % Your subject area, this is not currently used anywhere in the template, print it %elsewhere with \subjectname
+\keywords{Single Object Tracking, Source-Free Test-Time Adaptation, Backward-Free Test-Time Adaptation, Efficient Attention Mechanism, Efficient Tracking, Generalization} % Keywords for your thesis, this is not currently used anywhere in the template, print it elsewhere with \keywordnames
+%\university{\href{http://www.university.com}{University Name}} % Your university's name and URL, this is used in the title page and abstract, print it elsewhere with \univname
+\department{LANE DEPARTMENT OF COMPUTER SCIENCE AND ELECTRICAL ENGINEERING} % Your department's name and URL, this is used in the title page and abstract, print it elsewhere with \deptname
+%\group{\href{http://researchgroup.university.com}{Research Group Name}} % Your research group's name and URL, this is used in the title page, print it elsewhere with \groupname
+%\faculty{\href{http://faculty.university.com}{Faculty Name}} % Your faculty's name and URL, this is used in the title page and abstract, print it elsewhere with \facname
+
+\AtBeginDocument{
+\hypersetup{pdftitle=\ttitle} % Set the PDF's title to your title
+\hypersetup{pdfauthor=\authorname} % Set the PDF's author to your name
+\hypersetup{pdfkeywords=\keywordnames} % Set the PDF's keywords to your keywords
+}
+
+\begin{document}
+
+\frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the pre-content pages
+
+\pagestyle{plain} % Default to the plain heading style until the thesis style is called for the body content
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\begin{titlepage}
+\begin{center}
+
+\vspace*{.04\textheight}
+%{\scshape\LARGE \univname\par}\vspace{1.5cm} % West Virginia University
+%\textsc{\Large Problem Report}\\[0.5cm] % Problem Report
+
+%\HRule \\[0.4cm] % Horizontal line
+{\huge \bfseries \ttitle\par}\vspace{0.4cm} % Thesis title
+%\HRule \\[1.5cm] % Horizontal line
+\leavevmode\\[0.5cm]
+\textbf{\Large{\authorname}} % Author name -
+\leavevmode\\[1cm]
+{\large Thesis Defense submitted to the \\
+Statler College of Engineering and Mineral Resources
+\\at West Virginia University\\[0.3cm]
+In partial fulfillment of the requirements for the degree of \\
+Master of Science in Computer Science}  % University requirement text
+\leavevmode\\[0.3cm]
+\begin{center} \large
+\emph{} \\
+\textbf{{\supname}, Chair % Supervisor name - remove the \href bracket to remove the link  
+\\Dr. Donald Adjeroh
+\\Dr. Prashnna Gyawali}
+\end{center}
+\leavevmode\\[1cm]
+\textsc{\Large \deptname}\leavevmode\\[0.7cm]
+ % Research group name and department name
+{\LARGE \leavevmode\\West Virginia University}\leavevmode\\ [0.2cm]
+
+{\large \addressname}\\
+
+{\large \today}\\[0.5cm] % Date
+%\includegraphics{Logo} % University/department logo - uncomment to place it
+\leavevmode\\
+Keywords: Single Object Tracking, Backward-Free Test-Time Adaptation, Efficient Attention Mechanism, Efficient Tracking, Generalization\\[0.5cm]
+\textbf{Copyright 2025 Ram Jitendrabhai Zaveri}
+\vfill
+\end{center}
+\end{titlepage}
+
+%----------------------------------------------------------------------------------------
+%	ABSTRACT PAGE
+%----------------------------------------------------------------------------------------
+%
+\begin{abstract}
+\addchaptertocentry{\abstractname} % Add the abstract to the table of contents
+Efficient visual trackers overfit to their training distributions and lack generalization abilities, resulting in them performing well on their respective in-distribution (ID) test sets and not as well on out-of-distribution (OOD) sequences, imposing limitations to their deployment in-the-wild under constrained resources. We introduce SiamABC, a highly efficient Siamese tracker that significantly improves tracking performance, even on OOD sequences. SiamABC takes advantage of new architectural designs in the way it bridges the dynamic variability of the target, and of new losses for training. Also, it directly addresses OOD tracking generalization by including a fast backward-free dynamic test-time adaptation method that continuously adapts the model according to the dynamic visual changes of the target. Our extensive experiments suggest that SiamABC shows remarkable performance gains in OOD sets while maintaining accurate performance on the ID benchmarks. SiamABC outperforms MixFormerV2-S by 7.6\% on the OOD AVisT benchmark while being 3x faster (100 FPS) on a CPU. We also contribute by making the codebase publicly available at \url{https://wvuvl.github.io/SiamABC/}. 
+\end{abstract}
+
+%----------------------------------------------------------------------------------------
+%	ACKNOWLEDGEMENTS
+%----------------------------------------------------------------------------------------
+
+\begin{acknowledgements}
+\addchaptertocentry{\acknowledgementname}  % Add the acknowledgements to the table of contents
+
+% I would first and foremost like to thank my thesis advisor, Dr. Gianfranco Doretto, for his support throughout my time as a master's student in his lab. In only two years' time, I gained an immense amount of knowledge on machine learning, computer vision, and most vitally, how to pursue meaningful questions and conduct deep, thoughtful, and valuable research under his guidance. In this manner, I have learned far more under his leadership than I could hope to within the same amount of time through any curriculum.
+
+% Secondly, I am thankful for the direction, motivation, encouragement, and, equal in importance to these, the laughs provided by the other members of my lab: Shivang Patel, Zaigham Randhawa, Ranya Almohsen, Marcela Mera, Quinn Jones, and Sinan Sabri. Most importantly, I am deeply appreciative of my ceaselessly determined, bright-eyed second-in-command, Ram Zaveri. By observing, over the course of two years, the immeasurable progression of a student with only a few years' less experience, yet with seemingly twice the dedication toward shamelessly pursuing his goals, I have now become quite eager to see where these enviable characteristics will take him into the future.
+
+% I would like to specially thank three important sources of inspiration. First, David Sokolov, for his existence as a paradox in nearly every positive manner -- to name just one, his ability to jump toward the most commendable ambitions, all the while remaining unwaveringly grounded. Second, Olexiy Fedorets, for being a reminder of the importance of exploration in finding an optimal policy, and in this way to always keep $\epsilon > 0$, to ``do what you can't,'' and to occasionally explicitly seek out the chaos. Third, Rachel Shim, for revealing that moments of great hardship can lead to a lifetime of inspiration, and the importance of leaning into your strengths even if from an outsider's view it just looks like you've always got your back on the ground.
+
+% Finally, I am immensely grateful for the people I am fortunate enough to call family -- Mom, Steve, and Allie. It is pure, dumb luck to have three amazing people who have been willing to give me the space to grow when needed, who each pick me up in uniquely wonderful ways, and who have thankfully not disowned me after I've managed to do nearly everything they've kindly asked me not to do.
+
+% Research reported in this publication was supported by the National Institute Of Mental Health of the National Institutes of Health under Award Number R44MH125238. The content is solely the responsibility of the authors and does not necessarily represent the official views of the National Institutes of Health. This material is also based upon work supported in part by the National Science Foundation under Grant No. 1920920. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.
+
+\end{acknowledgements}
+
+
+%----------------------------------------------------------------------------------------
+%	LIST OF CONTENTS/FIGURES/TABLES PAGES
+%----------------------------------------------------------------------------------------
+%
+%\tableofcontents % Prints the main table of contents
+%
+%\listoffigures % Prints the list of figures
+%
+%\listoftables % Prints the list of tables
+
+{
+  \hypersetup{linkcolor=black}
+  \tableofcontents % Prints the main table of contents
+}
+
+{
+  \hypersetup{linkcolor=black}
+  \listoffigures
+}
+
+ % Prints the list of figures
+{
+  \hypersetup{linkcolor=black}
+  \listoftables % Prints the list of tables
+}
+
+%----------------------------------------------------------------------------------------
+%	ABBREVIATIONS
+%----------------------------------------------------------------------------------------
+
+\begin{abbreviations}{ll} % Include a list of abbreviations (a table of two columns)
+
+	\textbf{TTA} & \textbf{T}est-\textbf{T}time \textbf{A}daptation\\
+
+
+
+\textbf{DA} & \textbf{D}omain \textbf{A}daptation\\
+\textbf{AP} & \textbf{A}verage \textbf{P}recision\\
+\textbf{IoU} & \textbf{I}ntersection-\textbf{o}ver-\textbf{U}nion\\
+\textbf{H\&E} & \textbf{H}ematoxylin \textbf{\&} \textbf{E}osin staining technique\\
+\textbf{CODEX} & \textbf{Co}-\textbf{D}etection by Ind\textbf{ex}ing\\
+\textbf{TNBC} & \textbf{T}riple \textbf{N}egative \textbf{B}reast \textbf{C}ancer\\
+
+\end{abbreviations}
+
+
+
+%----------------------------------------------------------------------------------------
+%	THESIS CONTENT - CHAPTERS
+%----------------------------------------------------------------------------------------
+
+\mainmatter % Begin numeric (1,2,3...) page numbering
+
+\pagestyle{thesis} % Return the page headers back to the "thesis" style
+
+% Include the chapters of the thesis as separate files from the Chapters folder
+% Uncomment the lines as you write the chapters
+
+\include{Chapters/1_Introduction}
+\include{Chapters/2_LiteratureReview}
+\include{Chapters/3_ProblemDefinition}
+\include{Chapters/4_ProposedMethods}
+% \include{Chapters/5_Results}
+% \include{Chapters/6_ConclusionFutureWork}
+
+%----------------------------------------------------------------------------------------
+%	THESIS CONTENT - APPENDICES
+%----------------------------------------------------------------------------------------
+
+% \appendix % Cue to tell LaTeX that the following "chapters" are Appendices
+
+% Include the appendices of the thesis as separate files from the Appendices folder
+% Uncomment the lines as you write the Appendices
+
+% \include{Appendices/AppendixA}
+%\include{Appendices/AppendixB}
+%\include{Appendices/AppendixC}
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+\renewcommand{\bibname}{References}
+\printbibliography[heading=bibintoc]
+%----------------------------------------------------------------------------------------
+
+\end{document}  
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

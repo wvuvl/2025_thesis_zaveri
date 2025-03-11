@@ -1,0 +1,22 @@
+% Chapter Template
+
+\chapter{Conclusions and Future Work} % Main chapter title
+
+\label{Chapter6} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
+
+
+\section{Conclusions}
+
+In this work, we have exemplified the need for adaptation of cell instance segmentation methods when working in new domains. Our approach is effective at achieving this with very few samples, thanks to the proposed new losses and training procedures we have implemented. CellTranspose shows a level of performance that effectively tackles the effects of the covariate shift and is comparable to models fully retrained on the target distribution.
+
+We have also shown that very few samples are sufficient for our method to reach performance similar to more rigid unsupervised approaches, which depend on much larger datasets and computational resources while only being capable of reliably segmenting nuclei. Instead, our method can flexibly annotate any foreseable imaging modality or complex cell morphology. We found that 3 to 5 annotated samples allowed CellTranspose to match or surpass the state of the art on all experiments tested. Additionally, the adaptation procedure takes only 5 minutes using a single GPU, striking a balance between time, manual effort from annotation, and segmentation performance that is more realistic for the intended biology research applications.
+
+\section{Future Work}
+
+Subsequent efforts could include improving the method for segmentation in \linebreak 3-D. The current approach handles segmentation fairly well; however, it is likely that treating the scenario in 3-D during training rather than only utilizing individual 2-D slices would frame the task more appropriately and improve the method's overall performance. This would be non-trivial, as multiple updates would need to be made to the approach in order to accommodate this.
+
+One such accommodation would include an improvement of the memory usage by the contrastive flow loss. Currently, the loss requires the comparison of each pixel in a given source instance to every pixel in the corresponding target instance. This not only prohibits the use of a volumetric approach using standard GPUs; this also limits the maximum batch size during adaptation. Improving the efficiency of the loss implementation through a neighborhood or stride-based search might enable more smooth adaptation by allowing an increase in batch size.
+
+Moreover, further experimentation with loss functions may yield better performance. For instance, the contrastive flow adaptation loss implies that two output flows which possess the same angular distance from a third flow but in opposite directions ought to be equidistant from the third flow within the latent space. However, the procedure which initializes the representations of these flows prior to adaptation by means of the standard MSE training loss does not guarantee this relationship. Somehow enforcing such an isometric transformation from latent space to output through the use of a training loss more similar to that of the adaptation loss may yield improved flow accuracy.
+
+Additionally, taking advantage of the U-Net model's bottleneck and performing adaptation at this position would very likely improve performance as well. However, as mentioned previously, this may be impossible due to the nature of the task of segmentation -- as the goal is differentiate between cells and background at every pixel location in the input sample, the spatial meaning required to perform an informative feature alignment isn't present at the bottleneck.

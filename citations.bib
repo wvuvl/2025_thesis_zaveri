@@ -1,0 +1,3091 @@
+@ARTICLE{Stringer2021-yw,
+  title    = "Cellpose: a generalist algorithm for cellular segmentation",
+  author   = "Stringer, Carsen and Wang, Tim and Michaelos, Michalis and
+              Pachitariu, Marius",
+  abstract = "Many biological applications require the segmentation of cell
+              bodies, membranes and nuclei from microscopy images. Deep
+              learning has enabled great progress on this problem, but 
+              current methods are specialized for images that have large
+              training datasets. Here we introduce a generalist, deep
+              learning-based segmentation method called Cellpose, which can
+              precisely segment cells from a wide range of image types and
+              does not require model retraining or parameter adjustments.
+              Cellpose was trained on a new dataset of highly varied images
+              of cells, containing over 70,000 segmented objects. We also
+              demonstrate a three-dimensional (3D) extension of Cellpose
+              that reuses the two-dimensional (2D) model and does not
+              require 3D-labeled data. To support community contributions to
+              the training data, we developed software for manual labeling
+              and for curation of the automated results. Periodically
+              retraining the model on the community-contributed data will
+              ensure that Cellpose improves constantly.",
+  journal  = "Nat. Methods",
+  volume   =  18,
+  number   =  1,
+  pages    = "100--106",
+  month    =  jan,
+  year     =  2021,
+  language = "en"
+}
+
+@article{8765346,
+  author = {Z. {Cao} and G. {Hidalgo Martinez} and T. {Simon} and S. {Wei} and Y. A. {Sheikh}},
+  journal = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  title = {OpenPose: Realtime Multi-Person 2D Pose Estimation using Part Affinity Fields},
+  year = {2019}
+}
+
+@INPROCEEDINGS{Motiian2017-ow,
+  title           = "Unified deep supervised domain adaptation and
+                     generalization",
+  booktitle       = "2017 {IEEE} International Conference on Computer Vision
+                     ({ICCV})",
+  author          = "Motiian, Saeid and Piccirilli, Marco and Adjeroh, Donald A and Doretto, Gianfranco",
+  publisher       = "IEEE",
+  month           =  oct,
+  year            =  2017,
+  conference      = "2017 IEEE International Conference on Computer Vision
+                     (ICCV)",
+  location        = "Venice"
+}
+
+@InProceedings{Motiian2017-sr,
+  author    = {Motiian, Saeid and Jones, Quinn and Iranmanesh, Seyed Mehdi and Doretto, Gianfranco},
+  booktitle = {Adv. Neural Inf. Process. Syst. (NIPS)},
+  title     = {Few-shot adversarial domain adaptation},
+  year      = {2017},
+  publisher = {papers.nips.cc},
+}
+
+
+@ARTICLE{Greenwald2021-uj,
+  title    = "Whole-cell segmentation of tissue images with human-level
+              performance using large-scale data annotation and deep learning",
+  author   = "Greenwald, Noah F and Miller, Geneva and Moen, Erick and Kong,
+              Alex and Kagel, Adam and Dougherty, Thomas and Fullaway,
+              Christine Camacho and McIntosh, Brianna J and Leow, Ke Xuan and
+              Schwartz, Morgan Sarah and Pavelchek, Cole and Cui, Sunny and
+              Camplisson, Isabella and Bar-Tal, Omer and Singh, Jaiveer and
+              Fong, Mara and Chaudhry, Gautam and Abraham, Zion and Moseley,
+              Jackson and Warshawsky, Shiri and Soon, Erin and Greenbaum,
+              Shirley and Risom, Tyler and Hollmann, Travis and Bendall, Sean C
+              and Keren, Leeat and Graf, William and Angelo, Michael and Van
+              Valen, David",
+  abstract = "A principal challenge in the analysis of tissue imaging data is
+              cell segmentation-the task of identifying the precise boundary of
+              every cell in an image. To address this problem we constructed
+              TissueNet, a dataset for training segmentation models that
+              contains more than 1 million manually labeled cells, an order of
+              magnitude more than all previously published segmentation
+              training datasets. We used TissueNet to train Mesmer, a
+              deep-learning-enabled segmentation algorithm. We demonstrated
+              that Mesmer is more accurate than previous methods, generalizes
+              to the full diversity of tissue types and imaging platforms in
+              TissueNet, and achieves human-level performance. Mesmer enabled
+              the automated extraction of key cellular features, such as
+              subcellular localization of protein signal, which was challenging
+              with previous approaches. We then adapted Mesmer to harness cell
+              lineage information in highly multiplexed datasets and used this
+              enhanced version to quantify cell morphology changes during human
+              gestation. All code, data and models are released as a community
+              resource.",
+  journal  = "Nat. Biotechnol.",
+  month    =  nov,
+  year     =  2021,
+  language = "en"
+}
+
+
+@ARTICLE{Wang2020-ld,
+  title         = "Understanding the behaviour of contrastive loss",
+  author        = "Wang, Feng and Liu, Huaping",
+  abstract      = "Unsupervised contrastive learning has achieved outstanding
+                   success, while the mechanism of contrastive loss has been
+                   less studied. In this paper, we concentrate on the
+                   understanding of the behaviours of unsupervised contrastive
+                   loss. We will show that the contrastive loss is a
+                   hardness-aware loss function, and the temperature
+                   tau controls the strength of penalties on
+                   hard negative samples. The previous study has shown that
+                   uniformity is a key property of contrastive learning. We
+                   build relations between the uniformity and the temperature
+                   tau. We will show that uniformity helps
+                   the contrastive learning to learn separable features,
+                   however excessive pursuit to the uniformity makes the
+                   contrastive loss not tolerant to semantically similar
+                   samples, which may break the underlying semantic structure
+                   and be harmful to the formation of features useful for
+                   downstream tasks. This is caused by the inherent defect of
+                   the instance discrimination objective. Specifically,
+                   instance discrimination objective tries to push all
+                   different instances apart, ignoring the underlying relations
+                   between samples. Pushing semantically consistent samples
+                   apart has no positive effect for acquiring a prior
+                   informative to general downstream tasks. A well-designed
+                   contrastive loss should have some extents of tolerance to
+                   the closeness of semantically similar samples. Therefore, we
+                   find that the contrastive loss meets a uniformity-tolerance
+                   dilemma, and a good choice of temperature can compromise
+                   these two properties properly to both learn separable
+                   features and tolerant to semantically similar samples,
+                   improving the feature qualities and the downstream
+                   performances.",
+  month         =  dec,
+  year          =  2020,
+  copyright     = "http://arxiv.org/licenses/nonexclusive-distrib/1.0/",
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.LG",
+  eprint        = "2012.09740"
+}
+
+@ARTICLE{Emami_Neda_and_Sedaei_Zahra_and_Ferdousi_Reza2021-sm,
+  title     = "Computerized cell tracking: Current methods, tools and
+               challenges",
+  author    = "{Emami, Neda and Sedaei, Zahra and Ferdousi, Reza}",
+  journal   = "Visual Informatics",
+  publisher = "Elsevier",
+  volume    =  5,
+  number    =  1,
+  pages     = "1--13",
+  month     =  mar,
+  year      =  2021
+}
+
+@INPROCEEDINGS{Hadsell2006-it,
+  title     = "Dimensionality Reduction by Learning an Invariant Mapping",
+  booktitle = "2006 {IEEE} Computer Society Conference on Computer Vision and
+               Pattern Recognition ({CVPR'06})",
+  author    = "Hadsell, R and Chopra, S and LeCun, Y",
+  abstract  = "Dimensionality reduction involves mapping a set of high
+               dimensional input points onto a low dimensional manifold so that
+               'similar`` points in input space are mapped to nearby points on
+               the manifold. We present a method - called Dimensionality
+               Reduction by Learning an Invariant Mapping (DrLIM) - for
+               learning a globally coherent nonlinear function that maps the
+               data evenly to the output manifold. The learning relies solely
+               on neighborhood relationships and does not require any
+               distancemeasure in the input space. The method can learn
+               mappings that are invariant to certain transformations of the
+               inputs, as is demonstrated with a number of experiments.
+               Comparisons are made to other techniques, in particular LLE.",
+  volume    =  2,
+  pages     = "1735--1742",
+  month     =  jun,
+  year      =  2006,
+  keywords  = "Extraterrestrial measurements;Image
+               generation;Biology;Geoscience;Astronomy;Service
+               robots;Manufacturing industries;Image analysis;Feature
+               extraction;Data visualization"
+}
+
+@INPROCEEDINGS{Zhuang2019-lx,
+  title           = "Local aggregation for unsupervised learning of visual
+                     embeddings",
+  booktitle       = "2019 {IEEE/CVF} International Conference on Computer
+                     Vision ({ICCV})",
+  author          = "Zhuang, Chengxu and Zhai, Alex and Yamins, Daniel",
+  publisher       = "IEEE",
+  month           =  oct,
+  year            =  2019,
+  conference      = "2019 IEEE/CVF International Conference on Computer Vision
+                     (ICCV)",
+  location        = "Seoul, Korea (South)"
+}
+
+@INPROCEEDINGS{Chen2020-zr,
+  title     = "A Simple Framework for Contrastive Learning of Visual
+               Representations",
+  booktitle = "Proceedings of the 37th International Conference on Machine
+               Learning",
+  author    = "Chen, Ting and Kornblith, Simon and Norouzi, Mohammad and
+               Hinton, Geoffrey",
+  editor    = "Iii, Hal Daum{\'e} and Singh, Aarti",
+  abstract  = "This paper presents SimCLR: a simple framework for contrastive
+               learning of visual representations. We simplify recently
+               proposed contrastive self-supervised learning algorithms without
+               requiring specialized architectures or a memory bank. In order
+               to understand what enables the contrastive prediction tasks to
+               learn useful representations, we systematically study the major
+               components of our framework. We show that (1) composition of
+               data augmentations plays a critical role in defining effective
+               predictive tasks, (2) introducing a learnable nonlinear
+               transformation between the representation and the contrastive
+               loss substantially improves the quality of the learned
+               representations, and (3) contrastive learning benefits from
+               larger batch sizes and more training steps compared to
+               supervised learning. By combining these findings, we are able to
+               considerably outperform previous methods for self-supervised and
+               semi-supervised learning on ImageNet. A linear classifier
+               trained on self-supervised representations learned by SimCLR
+               achieves 76.5\% top-1 accuracy, which is a 7\% relative
+               improvement over previous state-of-the-art, matching the
+               performance of a supervised ResNet-50. When fine-tuned on only
+               1\% of the labels, we achieve 85.8\% top-5 accuracy,
+               outperforming AlexNet with 100X fewer labels.",
+  publisher = "PMLR",
+  volume    =  119,
+  pages     = "1597--1607",
+  series    = "Proceedings of Machine Learning Research",
+  year      =  2020
+}
+
+@ARTICLE{Yeh2021-cf,
+  title         = "Decoupled Contrastive Learning",
+  author        = "Yeh, Chun-Hsiao and Hong, Cheng-Yao and Hsu, Yen-Chi and
+                   Liu, Tyng-Luh and Chen, Yubei and LeCun, Yann",
+  abstract      = "Contrastive learning (CL) is one of the most successful
+                   paradigms for self-supervised learning (SSL). In a
+                   principled way, it considers two augmented ``views'' of the
+                   same image as positive to be pulled closer, and all other
+                   images negative to be pushed further apart. However, behind
+                   the impressive success of CL-based techniques, their
+                   formulation often relies on heavy-computation settings,
+                   including large sample batches, extensive training epochs,
+                   etc. We are thus motivated to tackle these issues and aim at
+                   establishing a simple, efficient, and yet competitive
+                   baseline of contrastive learning. Specifically, we identify,
+                   from theoretical and empirical studies, a noticeable
+                   negative-positive-coupling (NPC) effect in the widely used
+                   cross-entropy (InfoNCE) loss, leading to unsuitable learning
+                   efficiency with respect to the batch size. Indeed the
+                   phenomenon tends to be neglected in that optimizing infoNCE
+                   loss with a small-size batch is effective in solving easier
+                   SSL tasks. By properly addressing the NPC effect, we reach a
+                   decoupled contrastive learning (DCL) objective function,
+                   significantly improving SSL efficiency. DCL can achieve
+                   competitive performance, requiring neither large batches in
+                   SimCLR, momentum encoding in MoCo, or large epochs. We
+                   demonstrate the usefulness of DCL in various benchmarks,
+                   while manifesting its robustness being much less sensitive
+                   to suboptimal hyperparameters. Notably, our approach
+                   achieves $66.9\%$ ImageNet top-1 accuracy using batch size
+                   256 within 200 epochs pre-training, outperforming its
+                   baseline SimCLR by $5.1\%$. With further optimized
+                   hyperparameters, DCL can improve the accuracy to $68.2\%$.
+                   We believe DCL provides a valuable baseline for future
+                   contrastive learning-based SSL studies.",
+  month         =  oct,
+  year          =  2021,
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.LG",
+  eprint        = "2110.06848"
+}
+
+@INPROCEEDINGS{Melas-Kyriazi2021-pt,
+  title           = "{PixMatch}: Unsupervised domain adaptation via pixelwise
+                     consistency training",
+  booktitle       = "2021 {IEEE/CVF} Conference on Computer Vision and Pattern
+                     Recognition ({CVPR})",
+  author          = "Melas-Kyriazi, Luke and Manrai, Arjun K",
+  publisher       = "IEEE",
+  month           =  jun,
+  year            =  2021,
+  conference      = "2021 IEEE/CVF Conference on Computer Vision and Pattern
+                     Recognition (CVPR)",
+  location        = "Nashville, TN, USA"
+}
+
+@ARTICLE{Li2021-pu,
+  title         = "Semantic Distribution-aware Contrastive Adaptation for
+                   Semantic Segmentation",
+  author        = "Li, Shuang and Xie, Binhui and Zang, Bin and Liu, Chi Harold
+                   and Cheng, Xinjing and Yang, Ruigang and Wang, Guoren",
+  abstract      = "Domain adaptive semantic segmentation refers to making
+                   predictions on a certain target domain with only annotations
+                   of a specific source domain. Current state-of-the-art works
+                   suggest that performing category alignment can alleviate
+                   domain shift reasonably. However, they are mainly based on
+                   image-to-image adversarial training and little consideration
+                   is given to semantic variations of an object among images,
+                   failing to capture a comprehensive picture of different
+                   categories. This motivates us to explore a holistic
+                   representative, the semantic distribution from each category
+                   in source domain, to mitigate the problem above. In this
+                   paper, we present semantic distribution-aware contrastive
+                   adaptation algorithm that enables pixel-wise representation
+                   alignment under the guidance of semantic distributions.
+                   Specifically, we first design a pixel-wise contrastive loss
+                   by considering the correspondences between semantic
+                   distributions and pixel-wise representations from both
+                   domains. Essentially, clusters of pixel representations from
+                   the same category should cluster together and those from
+                   different categories should spread out. Next, an upper bound
+                   on this formulation is derived by involving the learning of
+                   an infinite number of (dis)similar pairs, making it
+                   efficient. Finally, we verify that SDCA can further improve
+                   segmentation accuracy when integrated with the
+                   self-supervised learning. We evaluate SDCA on multiple
+                   benchmarks, achieving considerable improvements over
+                   existing algorithms.The code is publicly available at
+                   https://github.com/BIT-DA/SDCA",
+  month         =  may,
+  year          =  2021,
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.CV",
+  eprint        = "2105.05013"
+}
+
+@inproceedings{wang2020DenseCL,
+  title={Dense Contrastive Learning for Self-Supervised Visual Pre-Training},
+  author={Wang, Xinlong and Zhang, Rufeng and Shen, Chunhua and Kong, Tao and Li, Lei},
+  booktitle =  {Proc. IEEE Conf. Computer Vision and Pattern Recognition (CVPR)},
+  year={2021}
+}
+
+@UNPUBLISHED{Sahoo2018-ji,
+  title    = "{Meta-Learning} with Domain Adaptation for {Few-Shot} Learning
+              under Domain Shift",
+  author   = "Sahoo, Doyen and Le, Hung and Liu, Chenghao and Hoi, Steven C H",
+  abstract = "Few-Shot Learning (learning with limited labeled data) aims to
+              overcome the limitations of traditional machine learning
+              approaches which require thousands of labeled examples to train
+              an effective model. Considered as a hallmark of human
+              intelligence, the community has recently witnessed several
+              contributions on this topic, in particular through meta-learning,
+              where a model learns how to learn an effective model for few-shot
+              learning. The main idea is to acquire prior knowledge from a set
+              of training tasks, which is then used to perform (few-shot) test
+              tasks. Most existing work assumes that both training and test
+              tasks are drawn from the same distribution, and a large amount of
+              labeled data is available in the training tasks. This is a very
+              strong assumption which restricts the usage of meta-learning
+              strategies in the real world where ample training tasks following
+              the same distribution as test tasks may not be available. In this
+              paper, we propose a novel meta-learning paradigm wherein a
+              few-shot learning model is learnt, which simultaneously overcomes
+              domain shift between the train and test tasks via adversarial
+              domain adaptation. We demonstrate the efficacy the proposed
+              method through extensive experiments.",
+  month    =  sep,
+  year     =  2018
+}
+
+@ARTICLE{Liu2021-li,
+  title         = "Domain Adaptation for Semantic Segmentation via {Patch-Wise} Contrastive Learning",
+  author        = "Liu, Weizhe and Ferstl, David and Schulter, Samuel and
+                   Zebedin, Lukas and Fua, Pascal and Leistner, Christian",
+  abstract      = "We introduce a novel approach to unsupervised and
+                   semi-supervised domain adaptation for semantic segmentation.
+                   Unlike many earlier methods that rely on adversarial
+                   learning for feature alignment, we leverage contrastive
+                   learning to bridge the domain gap by aligning the features
+                   of structurally similar label patches across domains. As a
+                   result, the networks are easier to train and deliver better
+                   performance. Our approach consistently outperforms
+                   state-of-the-art unsupervised and semi-supervised methods on
+                   two challenging domain adaptive segmentation tasks,
+                   particularly with a small number of target domain
+                   annotations. It can also be naturally extended to
+                   weakly-supervised domain adaptation, where only a minor drop
+                   in accuracy can save up to 75\% of annotation cost.",
+  month         =  apr,
+  year          =  2021,
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.CV",
+  eprint        = "2104.11056"
+}
+
+@INPROCEEDINGS{Misra2020-fh,
+  title           = "Self-supervised learning of pretext-invariant
+                     representations",
+  booktitle       = "2020 {IEEE/CVF} Conference on Computer Vision and Pattern
+                     Recognition ({CVPR})",
+  author          = "Misra, Ishan and van der Maaten, Laurens",
+  abstract        = "The goal of self-supervised learning from images is to
+                     construct image representations that are semantically
+                     meaningful via pretext tasks that do not require semantic
+                     annotations. Many pretext tasks lead to representations
+                     that are covariant with image transformations. We argue
+                     that, instead, semantic representations ought to be
+                     invariant under such transformations. Specifically, we
+                     develop Pretext-Invariant Representation Learning (PIRL,
+                     pronounced as ``pearl'') that learns invariant
+                     representations based on pretext tasks. We use PIRL with a
+                     commonly used pretext task that involves solving jigsaw
+                     puzzles. We find that PIRL substantially improves the
+                     semantic quality of the learned image representations. Our
+                     approach sets a new stateof-the-art in self-supervised
+                     learning from images on several popular benchmarks for
+                     self-supervised learning. Despite being unsupervised, PIRL
+                     outperforms supervised pre-training in learning image
+                     representations for object detection. Altogether, our
+                     results demonstrate the potential of self-supervised
+                     representations with good invariance properties.",
+  publisher       = "IEEE",
+  month           =  jun,
+  year            =  2020,
+  conference      = "2020 IEEE/CVF Conference on Computer Vision and Pattern
+                     Recognition (CVPR)",
+  location        = "Seattle, WA, USA"
+}
+
+@ARTICLE{Van_den_Oord2018-vn,
+  title     = "Representation Learning with Contrastive Predictive Coding",
+  author    = "van den Oord, Aaron and Li, Yazhe and Vinyals, Oriol",
+  abstract  = "While supervised learning has enabled great progress in many
+               applications, unsupervised learning has not seen such widespread
+               adoption, and remains an important and challenging endeavor for
+               artificial intelligence. In this work, we propose a universal
+               unsupervised learning approach to extract useful representations
+               from high-dimensional data, which we call Contrastive Predictive
+               Coding. The key insight of our model is to learn such
+               representations by predicting the future in latent space by
+               using powerful autoregressive models. We use a probabilistic
+               contrastive loss which induces the latent space to capture
+               information that is maximally useful to predict future samples.
+               It also makes the model tractable by using negative sampling.
+               While most prior work has focused on evaluating representations
+               for a particular modality, we demonstrate that our approach is
+               able to learn useful representations achieving strong
+               performance on four distinct domains: speech, images, text and
+               reinforcement learning in 3D environments.",
+  journal   = "arXiv e-prints",
+  publisher = "ui.adsabs.harvard.edu",
+  pages     = "arXiv:1807.03748",
+  month     =  jul,
+  year      =  2018,
+  keywords  = "Computer Science - Machine Learning; Statistics - Machine
+               Learning"
+}
+
+@INPROCEEDINGS{He2020-kk,
+  title           = "Momentum contrast for unsupervised visual representation
+                     learning",
+  booktitle       = "2020 {IEEE/CVF} Conference on Computer Vision and Pattern
+                     Recognition ({CVPR})",
+  author          = "He, Kaiming and Fan, Haoqi and Wu, Yuxin and Xie, Saining
+                     and Girshick, Ross",
+  publisher       = "IEEE",
+  month           =  jun,
+  year            =  2020,
+  conference      = "2020 IEEE/CVF Conference on Computer Vision and Pattern
+                     Recognition (CVPR)",
+  location        = "Seattle, WA, USA"
+}
+
+@ARTICLE{Caron2020-xw,
+  title   = "Unsupervised learning of visual features by contrasting cluster
+             assignments",
+  author  = "Caron, Mathilde and Misra, Ishan and Mairal, Julien and Goyal,
+             Priya and Bojanowski, Piotr and Joulin, Armand",
+  journal = "Adv. Neural Inf. Process. Syst.",
+  volume  =  33,
+  pages   = "9912--9924",
+  year    =  2020
+}
+
+@ARTICLE{Svoboda2009-se,
+  title    = "Generation of digital phantoms of cell nuclei and simulation of
+              image formation in {3D} image cytometry",
+  author   = "Svoboda, David and Kozubek, Michal and Stejskal, Stanislav",
+  abstract = "Image cytometry still faces the problem of the quality of cell
+              image analysis results. Degradations caused by cell preparation,
+              optics, and electronics considerably affect most 2D and 3D cell
+              image data acquired using optical microscopy. That is why image
+              processing algorithms applied to these data typically offer
+              imprecise and unreliable results. As the ground truth for given
+              image data is not available in most experiments, the outputs of
+              different image analysis methods can be neither verified nor
+              compared to each other. Some papers solve this problem partially
+              with estimates of ground truth by experts in the field
+              (biologists or physicians). However, in many cases, such a ground
+              truth estimate is very subjective and strongly varies between
+              different experts. To overcome these difficulties, we have
+              created a toolbox that can generate 3D digital phantoms of
+              specific cellular components along with their corresponding
+              images degraded by specific optics and electronics. The user can
+              then apply image analysis methods to such simulated image data.
+              The analysis results (such as segmentation or measurement
+              results) can be compared with ground truth derived from input
+              object digital phantoms (or measurements on them). In this way,
+              image analysis methods can be compared with each other and their
+              quality (based on the difference from ground truth) can be
+              computed. We have also evaluated the plausibility of the
+              synthetic images, measured by their similarity to real image
+              data. We have tested several similarity criteria such as visual
+              comparison, intensity histograms, central moments, frequency
+              analysis, entropy, and 3D Haralick features. The results indicate
+              a high degree of similarity between real and simulated image
+              data.",
+  journal  = "Cytometry A",
+  volume   =  75,
+  number   =  6,
+  pages    = "494--509",
+  month    =  jun,
+  year     =  2009,
+  language = "en"
+}
+
+@INCOLLECTION{Svoboda2011-wb,
+  title     = "Generation of {3D} digital phantoms of colon tissue",
+  booktitle = "Lecture Notes in Computer Science",
+  author    = "Svoboda, David and Homola, Ond{\v r}ej and Stejskal, Stanislav",
+  abstract  = "A toolkit is developed that generates fully 3D digital phantoms,
+               that represent the structure of the studied biological objects,
+               namely human colon tissue, that is used for segmentation of
+               biomedical image data. Although segmentation of biomedical image
+               data has been paid a lot of attention for many years, this
+               crucial task still meets the problem of the correctness of the
+               obtained results. Especially in the case of optical microscopy,
+               the ground truth (GT), which is a very important tool for the
+               validation of image processing algorithms, is not available. We
+               have developed a toolkit that generates fully 3D digital
+               phantoms, that represent the structure of the studied biological
+               objects. While former papers concentrated on the modelling of
+               isolated cells (such as blood cells), this work focuses on a
+               representative of tissue image type, namely human colon tissue.
+               This phantom image can be submitted to the engine that simulates
+               the image acquisition process. Such synthetic image can be
+               further processed, e.g. deconvolved or segmented. The results
+               can be compared with the GT derived from the digital phantom and
+               the quality of the applied algorithm can be measured.",
+  publisher = "Springer Berlin Heidelberg",
+  pages     = "31--39",
+  series    = "Lecture notes in computer science",
+  year      =  2011,
+  address   = "Berlin, Heidelberg",
+  language  = "en"
+}
+
+@INPROCEEDINGS{Hirsch2020-hi,
+  title     = "An Auxiliary Task for Learning Nuclei Segmentation in {3D}               Microscopy Images",
+  booktitle = "Proceedings of the Third Conference on Medical Imaging with Deep
+               Learning",
+  author    = "Hirsch, Peter and Kainmueller, Dagmar",
+  editor    = "Arbel, Tal and Ben Ayed, Ismail and de Bruijne, Marleen and
+               Descoteaux, Maxime and Lombaert, Herve and Pal, Christopher",
+  abstract  = "Segmentation of cell nuclei in microscopy images is a prevalent
+               necessity in cell biology. Especially for three-dimensional
+               datasets, manual segmentation is prohibitively time-consuming,
+               motivating the need for automated methods. Learning-based
+               methods trained on pixel-wise ground-truth segmentations have
+               been shown to yield state-of-the-art results on 2d benchmark
+               image data of nuclei, yet a respective benchmark is missing for
+               3d image data. In this work, we perform a comparative evaluation
+               of nuclei segmentation algorithms on a database of manually
+               segmented 3d light microscopy volumes. We propose a novel
+               learning strategy that boosts segmentation accuracy by means of
+               a simple auxiliary task, thereby robustly outperforming each of
+               our baselines. Furthermore, we show that one of our baselines,
+               the popular three-label model, when trained with our proposed
+               auxiliary task, outperforms the recent \textbackslashem
+               StarDist-3D. As an additional, practical contribution, we
+               benchmark nuclei segmentation against nuclei \textbackslashem
+               detection, i.e. the task of merely pinpointing individual nuclei
+               without generating respective pixel-accurate segmentations. For
+               learning nuclei detection, large 3d training datasets of
+               manually annotated nuclei center points are available. However,
+               the impact on detection accuracy caused by training on such
+               sparse ground truth as opposed to dense pixel-wise ground truth
+               has not yet been quantified. To this end, we compare nuclei
+               detection accuracy yielded by training on dense vs. sparse
+               ground truth. Our results suggest that training on sparse ground
+               truth yields competitive nuclei detection rates.",
+  publisher = "PMLR",
+  volume    =  121,
+  pages     = "304--321",
+  series    = "Proceedings of Machine Learning Research",
+  year      =  2020
+}
+
+@ARTICLE{Alwes2016-au,
+  title    = "Live imaging reveals the progenitors and cell dynamics of limb
+              regeneration",
+  author   = "Alwes, Frederike and Enjolras, Camille and Averof, Michalis",
+  abstract = "Regeneration is a complex and dynamic process, mobilizing diverse
+              cell types and remodelling tissues over long time periods.
+              Tracking cell fate and behaviour during regeneration in active
+              adult animals is especially challenging. Here, we establish
+              continuous live imaging of leg regeneration at single-cell
+              resolution in the crustacean Parhyale hawaiensis. By live
+              recordings encompassing the first 4-5 days after amputation, we
+              capture the cellular events that contribute to wound closure and
+              morphogenesis of regenerating legs with unprecedented resolution
+              and temporal detail. Using these recordings we are able to track
+              cell lineages, to generate fate maps of the blastema and to
+              identify the progenitors of regenerated epidermis. We find that
+              there are no specialized stem cells for the epidermis. Most
+              epidermal cells in the distal part of the leg stump proliferate,
+              acquire new positional values and contribute to new segments in
+              the regenerating leg.",
+  journal  = "Elife",
+  volume   =  5,
+  month    =  oct,
+  year     =  2016,
+  keywords = "Parhyale hawaiensis; developmental biology; live imaging;
+              regeneration; stem cells",
+  language = "en"
+}
+
+@inproceedings{schmidt2018,
+  author    = {Uwe Schmidt and Martin Weigert and Coleman Broaddus and Gene Myers},
+  title     = {Cell Detection with Star-Convex Polygons},
+  booktitle = {Medical Image Computing and Computer Assisted Intervention - {MICCAI} 
+  2018 - 21st International Conference, Granada, Spain, September 16-20, 2018, Proceedings, Part {II}},
+  pages     = {265--273},
+  year      = {2018}
+}
+
+@InProceedings{Weigert_2020_WACV,
+author = {Weigert, Martin and Schmidt, Uwe and Haase, Robert and Sugawara, Ko and Myers, Gene},
+title = {Star-convex Polyhedra for 3D Object Detection and Segmentation in Microscopy},
+booktitle = {Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},
+month = mar,
+year = {2020}
+}
+
+@INPROCEEDINGS{Ronneberger2015-io,
+  title     = "{U-Net}: Convolutional Networks for Biomedical Image
+               Segmentation",
+  booktitle = "Medical Image Computing and {Computer-Assisted} Intervention --
+               {MICCAI} 2015",
+  author    = "Ronneberger, Olaf and Fischer, Philipp and Brox, Thomas",
+  abstract  = "There is large consent that successful training of deep networks
+               requires many thousand annotated training samples. In this
+               paper, we present a network and training strategy that relies on
+               the strong use of data augmentation to use the available
+               annotated samples more efficiently. The architecture consists of
+               a contracting path to capture context and a symmetric expanding
+               path that enables precise localization. We show that such a
+               network can be trained end-to-end from very few images and
+               outperforms the prior best method (a sliding-window
+               convolutional network) on the ISBI challenge for segmentation of
+               neuronal structures in electron microscopic stacks. Using the
+               same network trained on transmitted light microscopy images
+               (phase contrast and DIC) we won the ISBI cell tracking challenge
+               2015 in these categories by a large margin. Moreover, the
+               network is fast. Segmentation of a 512x512 image takes less than
+               a second on a recent GPU. The full implementation (based on
+               Caffe) and the trained networks are available at
+               http://lmb.informatik.uni-freiburg.de/people/ronneber/u-net.",
+  publisher = "Springer International Publishing",
+  pages     = "234--241",
+  year      =  2015
+}
+
+@ARTICLE{Schneider2012-ze,
+  title    = "{NIH} Image to {ImageJ}: 25 years of image analysis",
+  author   = "Schneider, Caroline A and Rasband, Wayne S and Eliceiri, Kevin W",
+  abstract = "For the past 25 years NIH Image and ImageJ software have been
+              pioneers as open tools for the analysis of scientific images. We
+              discuss the origins, challenges and solutions of these two
+              programs, and how their history can serve to advise and inform
+              other software projects.",
+  journal  = "Nat. Methods",
+  volume   =  9,
+  number   =  7,
+  pages    = "671--675",
+  month    =  jul,
+  year     =  2012,
+  language = "en"
+}
+
+@ARTICLE{Beucher1979-up,
+  title     = "Use of watersheds in contour detection",
+  author    = "Beucher, S.",
+  abstract  = "Use of watersheds in contour detection BEUCHER S. Proceedings of
+               the International Workshop on Image Processing, 1979",
+  journal   = "Proceedings of the International Workshop on Image Processing",
+  publisher = "CCETT",
+  year      =  1979
+}
+
+@INPROCEEDINGS{Buchholz2020-su,
+  title     = "{DenoiSeg}: Joint Denoising and Segmentation",
+  booktitle = "Computer Vision -- {ECCV} 2020 Workshops",
+  author    = "Buchholz, Tim-Oliver and Prakash, Mangal and Schmidt, Deborah
+               and Krull, Alexander and Jug, Florian",
+  abstract  = "Microscopy image analysis often requires the segmentation of
+               objects, but training data for this task is typically scarce and
+               hard to obtain. Here we propose DenoiSeg, a new method that can
+               be trained end-to-end on only a few annotated ground truth
+               segmentations. We achieve this by extending Noise2Void, a
+               self-supervised denoising scheme that can be trained on noisy
+               images alone, to also predict dense 3-class segmentations. The
+               reason for the success of our method is that segmentation can
+               profit from denoising, especially when performed jointly within
+               the same network. The network becomes a denoising expert by
+               seeing all available raw data, while co-learning to segment,
+               even if only a few segmentation labels are available. This
+               hypothesis is additionally fueled by our observation that the
+               best segmentation results on high quality (very low noise) raw
+               data are obtained when moderate amounts of synthetic noise are
+               added. This renders the denoising-task non-trivial and unleashes
+               the desired co-learning effect. We believe that DenoiSeg offers
+               a viable way to circumvent the tremendous hunger for high
+               quality training data and effectively enables learning of dense
+               segmentations when only very limited amounts of segmentation
+               labels are available.",
+  publisher = "Springer International Publishing",
+  pages     = "324--337",
+  year      =  2020
+}
+
+@ARTICLE{Yang2020-yn,
+  title    = "{NuSeT}: A deep learning tool for reliably separating and
+              analyzing crowded cells",
+  author   = "Yang, Linfeng and Ghosh, Rajarshi P and Franklin, J Matthew and
+              Chen, Simon and You, Chenyu and Narayan, Raja R and Melcher, Marc
+              L and Liphardt, Jan T",
+  abstract = "Segmenting cell nuclei within microscopy images is a ubiquitous
+              task in biological research and clinical applications.
+              Unfortunately, segmenting low-contrast overlapping objects that
+              may be tightly packed is a major bottleneck in standard deep
+              learning-based models. We report a Nuclear Segmentation Tool
+              (NuSeT) based on deep learning that accurately segments nuclei
+              across multiple types of fluorescence imaging data. Using a
+              hybrid network consisting of U-Net and Region Proposal Networks
+              (RPN), followed by a watershed step, we have achieved superior
+              performance in detecting and delineating nuclear boundaries in 2D
+              and 3D images of varying complexities. By using foreground
+              normalization and additional training on synthetic images
+              containing non-cellular artifacts, NuSeT improves nuclear
+              detection and reduces false positives. NuSeT addresses common
+              challenges in nuclear segmentation such as variability in nuclear
+              signal and shape, limited training sample size, and sample
+              preparation artifacts. Compared to other segmentation models,
+              NuSeT consistently fares better in generating accurate
+              segmentation masks and assigning boundaries for touching nuclei.",
+  journal  = "PLoS Comput. Biol.",
+  volume   =  16,
+  number   =  9,
+  pages    = "e1008193",
+  month    =  sep,
+  year     =  2020,
+  language = "en"
+}
+
+@INPROCEEDINGS{Zhao2021-tt,
+  title           = "Domain-adaptive few-shot learning",
+  booktitle       = "2021 {IEEE} Winter Conference on Applications of Computer
+                     Vision ({WACV})",
+  author          = "Zhao, An and Ding, Mingyu and Lu, Zhiwu and Xiang, Tao and
+                     Niu, Yulei and Guan, Jiechao and Wen, Ji-Rong",
+  publisher       = "IEEE",
+  month           =  jan,
+  year            =  2021,
+  conference      = "2021 IEEE Winter Conference on Applications of Computer
+                     Vision (WACV)",
+  location        = "Waikoloa, HI, USA"
+}
+
+
+@MISC{Sofroniew2022-kk,
+  title  = "napari/napari: 0.4.15",
+  author = "Sofroniew, Nicholas and Lambert, Talley and Nunez-Iglesias, Juan
+            and Evans, Kira and Bokota, Grzegorz and Bussonnier, Matthias and
+            Pe{\~n}a-Castellanos, Gonzalo and Winston, Philip and Yamauchi,
+            Kevin and Pop, Draga Doncila and {alisterburt} and {Pam} and Liu,
+            Ziyang and Solak, Ahmet Can and Gaifas, Lorenzo and Buckley,
+            Genevieve and Sweet, Andy and Lee, Gregory and
+            Rodr{\'i}guez-Guerra, Jaime and Bragantini, Jord{\~a}o and Clack,
+            Nathan and Mendon{\c c}a, Melissa Weber and Migas, Lukasz and
+            Hilsenstein, Volker and Haase, Robert and {Hector} and Freeman,
+            Jeremy and Boone, Peter and Lowe, Alan R and Gohlke, Christoph",
+  month  =  mar,
+  year   =  2022
+}
+
+
+%% New citations
+
+@ARTICLE{Guan2022-qj,
+  title    = "Domain Adaptation for Medical Image Analysis: A Survey",
+  author   = "Guan, Hao and Liu, Mingxia",
+  abstract = "Machine learning techniques used in computer-aided medical image
+              analysis usually suffer from the domain shift problem caused by
+              different distributions between source/reference data and target
+              data. As a promising solution, domain adaptation has attracted
+              considerable attention in recent years. The aim of this paper is
+              to survey the recent advances of domain adaptation methods in
+              medical image analysis. We first present the motivation of
+              introducing domain adaptation techniques to tackle domain
+              heterogeneity issues for medical image analysis. Then we provide
+              a review of recent domain adaptation models in various medical
+              image analysis tasks. We categorize the existing methods into
+              shallow and deep models, and each of them is further divided into
+              supervised, semi-supervised and unsupervised methods. We also
+              provide a brief summary of the benchmark medical image datasets
+              that support current domain adaptation research. This survey will
+              enable researchers to gain a better understanding of the current
+              status, challenges and future directions of this energetic
+              research field.",
+  journal  = "IEEE Trans. Biomed. Eng.",
+  volume   =  69,
+  number   =  3,
+  pages    = "1173--1185",
+  month    =  mar,
+  year     =  2022,
+  language = "en"
+}
+
+@INPROCEEDINGS{Liu2020-qh,
+  title           = "Unsupervised instance segmentation in microscopy images
+                     via panoptic domain adaptation and task re-weighting",
+  booktitle       = "2020 {IEEE/CVF} Conference on Computer Vision and Pattern
+                     Recognition ({CVPR})",
+  author          = "Liu, Dongnan and Zhang, Donghao and Song, Yang and Zhang,
+                     Fan and ODonnell, Lauren and Huang, Heng and Chen, Mei and
+                     Cai, Weidong",
+  publisher       = "IEEE",
+  month           =  jun,
+  year            =  2020,
+  copyright       = "https://ieeexplore.ieee.org/Xplorehelp/downloads/license-information/IEEE.html",
+  conference      = "2020 IEEE/CVF Conference on Computer Vision and Pattern
+                     Recognition (CVPR)",
+  location        = "Seattle, WA, USA"
+}
+
+@ARTICLE{Liu2021-nw,
+  title    = "{PDAM}: A {Panoptic-Level} Feature Alignment Framework for
+              Unsupervised Domain Adaptive Instance Segmentation in Microscopy
+              Images",
+  author   = "Liu, Dongnan and Zhang, Donghao and Song, Yang and Zhang, Fan and
+              O'Donnell, Lauren and Huang, Heng and Chen, Mei and Cai, Weidong",
+  abstract = "In this work, we present an unsupervised domain adaptation (UDA)
+              method, named Panoptic Domain Adaptive Mask R-CNN (PDAM), for
+              unsupervised instance segmentation in microscopy images. Since
+              there currently lack methods particularly for UDA instance
+              segmentation, we first design a Domain Adaptive Mask R-CNN (DAM)
+              as the baseline, with cross-domain feature alignment at the image
+              and instance levels. In addition to the image- and instance-level
+              domain discrepancy, there also exists domain bias at the semantic
+              level in the contextual information. Next, we, therefore, design
+              a semantic segmentation branch with a domain discriminator to
+              bridge the domain gap at the contextual level. By integrating the
+              semantic- and instance-level feature adaptation, our method
+              aligns the cross-domain features at the panoptic level. Third, we
+              propose a task re-weighting mechanism to assign trade-off weights
+              for the detection and segmentation loss functions. The task
+              re-weighting mechanism solves the domain bias issue by
+              alleviating the task learning for some iterations when the
+              features contain source-specific factors. Furthermore, we design
+              a feature similarity maximization mechanism to facilitate
+              instance-level feature adaptation from the perspective of
+              representational learning. Different from the typical feature
+              alignment methods, our feature similarity maximization mechanism
+              separates the domain-invariant and domain-specific features by
+              enlarging their feature distribution dependency. Experimental
+              results on three UDA instance segmentation scenarios with five
+              datasets demonstrate the effectiveness of our proposed PDAM
+              method, which outperforms state-of-the-art UDA methods by a large
+              margin.",
+  journal  = "IEEE Trans. Med. Imaging",
+  volume   =  40,
+  number   =  1,
+  pages    = "154--165",
+  month    =  jan,
+  year     =  2021,
+  language = "en"
+}
+
+@INPROCEEDINGS{Ghafoorian2017-kz,
+  title		= "Transfer learning for Domain Adaptation in {MRI}: Application in Brain Lesion Segmentation",
+  booktitle	= "Medical Image Computing and Computer Assisted Intervention -- {MICCAI} 2017",
+  publisher = "Springer International Publishing",
+  author	= "Ghafoorian, Mohsen and Mehrtash, Alireza and Kapur, Tina and Karssemeijer, Nico and Marchiori, Elena and Pesteie, Mehran and Guttman, Charles R G and de Leeuw, Frank-Erik and Tempany, Clare M and van Ginneken, Bram and Fedorob, Andriy and Abolmaesumi, Puran and Platel, Bram and Wells, William M",
+  pages		= "516--524",
+  year		= 2017
+}
+
+@ARTICLE{Van_Opbroek2015-wq,
+  title    = "Weighting training images by maximizing distribution similarity
+              for supervised segmentation across scanners",
+  author   = "van Opbroek, Annegreet and Vernooij, Meike W and Ikram, M Arfan
+              and Bruijne, Marleen de",
+  abstract = "Many automatic segmentation methods are based on supervised
+              machine learning. Such methods have proven to perform well, on
+              the condition that they are trained on a sufficiently large
+              manually labeled training set that is representative of the
+              images to segment. However, due to differences between scanners,
+              scanning parameters, and patients such a training set may be
+              difficult to obtain. We present a transfer-learning approach to
+              segmentation by multi-feature voxelwise classification. The
+              presented method can be trained using a heterogeneous set of
+              training images that may be obtained with different scanners than
+              the target image. In our approach each training image is given a
+              weight based on the distribution of its voxels in the feature
+              space. These image weights are chosen as to minimize the
+              difference between the weighted probability density function
+              (PDF) of the voxels of the training images and the PDF of the
+              voxels of the target image. The voxels and weights of the
+              training images are then used to train a weighted classifier. We
+              tested our method on three segmentation tasks: brain-tissue
+              segmentation, skull stripping, and white-matter-lesion
+              segmentation. For all three applications, the proposed weighted
+              classifier significantly outperformed an unweighted classifier on
+              all training images, reducing classification errors by up to
+              42\%. For brain-tissue segmentation and skull stripping our
+              method even significantly outperformed the traditional approach
+              of training on representative training images from the same study
+              as the target image.",
+  journal  = "Med. Image Anal.",
+  volume   =  24,
+  number   =  1,
+  pages    = "245--254",
+  month    =  aug,
+  year     =  2015,
+  keywords = "Brain; Domain adaptation; MRI; Machine learning; Transfer
+              learning",
+  language = "en"
+}
+
+@ARTICLE{Goetz2016-az,
+  title    = "{DALSA}: Domain Adaptation for Supervised Learning From Sparsely
+              Annotated {MR} Images",
+  author   = "Goetz, Michael and Weber, Christian and Binczyk, Franciszek and
+              Polanska, Joanna and Tarnawski, Rafal and Bobek-Billewicz,
+              Barbara and Koethe, Ullrich and Kleesiek, Jens and Stieltjes,
+              Bram and Maier-Hein, Klaus H",
+  abstract = "We propose a new method that employs transfer learning techniques
+              to effectively correct sampling selection errors introduced by
+              sparse annotations during supervised learning for automated tumor
+              segmentation. The practicality of current learning-based
+              automated tissue classification approaches is severely impeded by
+              their dependency on manually segmented training databases that
+              need to be recreated for each scenario of application, site, or
+              acquisition setup. The comprehensive annotation of reference
+              datasets can be highly labor-intensive, complex, and error-prone.
+              The proposed method derives high-quality classifiers for the
+              different tissue classes from sparse and unambiguous annotations
+              and employs domain adaptation techniques for effectively
+              correcting sampling selection errors introduced by the sparse
+              sampling. The new approach is validated on labeled, multi-modal
+              MR images of 19 patients with malignant gliomas and by
+              comparative analysis on the BraTS 2013 challenge data sets.
+              Compared to training on fully labeled data, we reduced the time
+              for labeling and training by a factor greater than 70 and 180
+              respectively without sacrificing accuracy. This dramatically
+              eases the establishment and constant extension of large annotated
+              databases in various scenarios and imaging setups and thus
+              represents an important step towards practical applicability of
+              learning-based approaches in tissue classification.",
+  journal  = "IEEE Trans. Med. Imaging",
+  volume   =  35,
+  number   =  1,
+  pages    = "184--196",
+  month    =  jan,
+  year     =  2016,
+  language = "en"
+}
+
+@ARTICLE{Zhu2020-mv,
+  title    = "{Boundary-Weighted} Domain Adaptive Neural Network for Prostate
+              {MR} Image Segmentation",
+  author   = "Zhu, Qikui and Du, Bo and Yan, Pingkun",
+  abstract = "Accurate segmentation of the prostate from magnetic resonance
+              (MR) images provides useful information for prostate cancer
+              diagnosis and treatment. However, automated prostate segmentation
+              from 3D MR images faces several challenges. The lack of clear
+              edge between the prostate and other anatomical structures makes
+              it challenging to accurately extract the boundaries. The complex
+              background texture and large variation in size, shape and
+              intensity distribution of the prostate itself make segmentation
+              even further complicated. Recently, as deep learning, especially
+              convolutional neural networks (CNNs), emerging as the best
+              performed methods for medical image segmentation, the difficulty
+              in obtaining large number of annotated medical images for
+              training CNNs has become much more pronounced than ever. Since
+              large-scale dataset is one of the critical components for the
+              success of deep learning, lack of sufficient training data makes
+              it difficult to fully train complex CNNs. To tackle the above
+              challenges, in this paper, we propose a boundary-weighted domain
+              adaptive neural network (BOWDA-Net). To make the network more
+              sensitive to the boundaries during segmentation, a
+              boundary-weighted segmentation loss is proposed. Furthermore, an
+              advanced boundary-weighted transfer leaning approach is
+              introduced to address the problem of small medical imaging
+              datasets. We evaluate our proposed model on three different MR
+              prostate datasets. The experimental results demonstrate that the
+              proposed model is more sensitive to object boundaries and
+              outperformed other state-of-the-art methods.",
+  journal  = "IEEE Trans. Med. Imaging",
+  volume   =  39,
+  number   =  3,
+  pages    = "753--763",
+  month    =  mar,
+  year     =  2020,
+  language = "en"
+}
+
+@INPROCEEDINGS{Bermudez-Chacon2018-bf,
+  title     = "A domain-adaptive two-stream {U-Net} for electron microscopy
+               image segmentation",
+  booktitle = "2018 {IEEE} 15th International Symposium on Biomedical Imaging
+               ({ISBI} 2018)",
+  author    = "Berm{\'u}dez-Chac{\'o}n, R{\'o}ger and M{\'a}rquez-Neila, Pablo
+               and Salzmann, Mathieu and Fua, Pascal",
+  abstract  = "Deep networks such as the U-Net are outstanding at segmenting
+               biomedical images when enough training data is available, but
+               only then. Here we introduce a Domain Adaptation approach that
+               relies on two coupled U-Nets that either regularize or share
+               corresponding weights between the two streams, along with a
+               differentiable loss function that approximates the Jaccard
+               index, to leverage training data from one domain in which it is
+               plentiful, to adapt the network weights in another where it is
+               scarce. We showcase our approach for the purpose of segmenting
+               mitochondria and synapses from electron microscopy image stacks
+               of mouse brain, when we have enough training data for one brain
+               region but only very little for another. In such cases, we
+               outperform state-of-the-art Domain Adaptation methods.",
+  pages     = "400--404",
+  month     =  apr,
+  year      =  2018,
+  keywords  = "Training data;Image
+               segmentation;Indexes;Synapses;Training;Mice;Standards;Image
+               segmentation;Domain Adaptation;Electron Microscopy;Machine
+               Learning"
+}
+
+@ARTICLE{Yan2019-cv,
+  title    = "{Edge-Guided} Output Adaptor: Highly Efficient Adaptation Module
+              for {Cross-Vendor} Medical Image Segmentation",
+  author   = "Yan, Wenjun and Wang, Yuanyuan and Xia, Menghua and Tao, Qian",
+  abstract = "Supervised convolutional neural networks (CNNs) have demonstrated
+              state-of-art performance in medical image segmentation tasks.
+              However, the performance of a well-trained CNN on an independent
+              dataset (e.g., different vendors, sequences) relies strongly on
+              the distribution similarity, and may drop unexpectedly in case of
+              distribution shift. To obtain a large amount of annotation from
+              each new dataset for re-training the CNN is expensive and
+              impractical. Adaptation algorithms to improve the CNN
+              generalizability from source domain to target domain has
+              significant practical value. In this work, we propose a highly
+              efficient end-to-end domain adaptation approach, with left
+              ventricle segmentation from cine MRI sequences as an example. We
+              propose to perform domain adaptation in the output space where
+              different domains share the strongest similarities. The core of
+              this algorithm is a flexible and light output adaption module
+              based on adversarial learning. Moreover, Canny edge detector is
+              introduced to enhance model's attention to edges during
+              adversarial learning. Comparative experiments were carried out
+              using images from three major MR vendors (Philips, Siemens, and
+              GE) as three domains. Our results demonstrated that the proposed
+              method substantially improved the generalization of the trained
+              CNN model from one vendor to other vendors without any additional
+              annotation. Moreover, the ablation study proved that introducing
+              Canny edge detector further refined the edge detection in
+              segmentation. The proposed adaption is generic can be extended to
+              other medical image segmentation problems.",
+  journal  = "IEEE Signal Process. Lett.",
+  volume   =  26,
+  number   =  11,
+  pages    = "1593--1597",
+  month    =  nov,
+  year     =  2019,
+  keywords = "Image edge detection;Image segmentation;Adaptation
+              models;Training;Biomedical imaging;Task analysis;Magnetic
+              resonance imaging;Domain adaptation;adversarial
+              learning;semi-supervised learning;edge detection"
+}
+
+@INPROCEEDINGS{Kamnitsas2017-uh,
+  title     = "Unsupervised Domain Adaptation in Brain Lesion Segmentation with
+               Adversarial Networks",
+  booktitle = "Information Processing in Medical Imaging",
+  author    = "Kamnitsas, Konstantinos and Baumgartner, Christian and Ledig,
+               Christian and Newcombe, Virginia and Simpson, Joanna and Kane,
+               Andrew and Menon, David and Nori, Aditya and Criminisi, Antonio
+               and Rueckert, Daniel and Glocker, Ben",
+  abstract  = "Significant advances have been made towards building accurate
+               automatic segmentation systems for a variety of biomedical
+               applications using machine learning. However, the performance of
+               these systems often degrades when they are applied on new data
+               that differ from the training data, for example, due to
+               variations in imaging protocols. Manually annotating new data
+               for each test domain is not a feasible solution. In this work we
+               investigate unsupervised domain adaptation using adversarial
+               neural networks to train a segmentation method which is more
+               robust to differences in the input data, and which does not
+               require any annotations on the test domain. Specifically, we
+               derive domain-invariant features by learning to counter an
+               adversarial network, which attempts to classify the domain of
+               the input data by observing the activations of the segmentation
+               network. Furthermore, we propose a multi-connected domain
+               discriminator for improved adversarial training. Our system is
+               evaluated using two MR databases of subjects with traumatic
+               brain injuries, acquired using different scanners and imaging
+               protocols. Using our unsupervised approach, we obtain
+               segmentation accuracies which are close to the upper bound of
+               supervised domain adaptation.",
+  publisher = "Springer International Publishing",
+  pages     = "597--609",
+  year      =  2017
+}
+
+@INPROCEEDINGS{Javanmardi2018-ym,
+  title     = "Domain adaptation for biomedical image segmentation using
+               adversarial training",
+  booktitle = "2018 {IEEE} 15th International Symposium on Biomedical Imaging
+               ({ISBI} 2018)",
+  author    = "Javanmardi, Mehran and Tasdizen, Tolga",
+  abstract  = "Many biomedical image analysis applications require
+               segmentation. Convolutional neural networks (CNN) have become a
+               promising approach to segment biomedical images; however, the
+               accuracy of these methods is highly dependent on the training
+               data. We focus on biomedical image segmentation in the context
+               where there is variation between source and target datasets and
+               ground truth for the target dataset is very limited or
+               non-existent. We use an adversarial based training approach to
+               train CNNs to achieve good accuracy on the target domain. We use
+               the DRIVE and STARE eye vasculture segmentation datasets and
+               show that our approach can significantly improve results where
+               we only use labels of one domain in training and test on the
+               other domain. We also show improvements on membrane detection
+               between MIC-CAI 2016 CREMI challenge and ISBI2013 EM
+               segmentation challenge datasets.",
+  pages     = "554--558",
+  month     =  apr,
+  year      =  2018,
+  keywords  = "Image segmentation;Testing;Training;Task analysis;Biomedical
+               imaging;Training data;Neurons;Convolutional Neural
+               Networks;Domain Adaptation;Adversarial Training"
+}
+
+@ARTICLE{Wang2019-ue,
+  title    = "{Patch-Based} Output Space Adversarial Learning for Joint Optic
+              Disc and Cup Segmentation",
+  author   = "Wang, Shujun and Yu, Lequan and Yang, Xin and Fu, Chi-Wing and
+              Heng, Pheng-Ann",
+  abstract = "Glaucoma is a leading cause of irreversible blindness. Accurate
+              segmentation of the optic disc (OD) and optic cup (OC) from
+              fundus images is beneficial to glaucoma screening and diagnosis.
+              Recently, convolutional neural networks demonstrate promising
+              progress in the joint OD and OC segmentation. However, affected
+              by the domain shift among different datasets, deep networks are
+              severely hindered in generalizing across different scanners and
+              institutions. In this paper, we present a novel patch-based
+              output space adversarial learning framework ( p OSAL) to jointly
+              and robustly segment the OD and OC from different fundus image
+              datasets. We first devise a lightweight and efficient
+              segmentation network as a backbone. Considering the specific
+              morphology of OD and OC, a novel morphology-aware segmentation
+              loss is proposed to guide the network to generate accurate and
+              smooth segmentation. Our p OSAL framework then exploits
+              unsupervised domain adaptation to address the domain shift
+              challenge by encouraging the segmentation in the target domain to
+              be similar to the source ones. Since the whole-segmentation-based
+              adversarial loss is insufficient to drive the network to capture
+              segmentation details, we further design the p OSAL in a
+              patch-based fashion to enable fine-grained discrimination on
+              local segmentation details. We extensively evaluate our p OSAL
+              framework and demonstrate its effectiveness in improving the
+              segmentation performance on three public retinal fundus image
+              datasets, i.e., Drishti-GS, RIM-ONE-r3, and REFUGE. Furthermore,
+              our p OSAL framework achieved the first place in the OD and OC
+              segmentation tasks in the MICCAI 2018 Retinal Fundus Glaucoma
+              Challenge.",
+  journal  = "IEEE Trans. Med. Imaging",
+  volume   =  38,
+  number   =  11,
+  pages    = "2485--2495",
+  month    =  nov,
+  year     =  2019,
+  language = "en"
+}
+
+@INPROCEEDINGS{Panfilov2019-gc,
+  title           = "Improving robustness of deep learning based knee {MRI} segmentation: 
+  					 Mixup and adversarial domain adaptation",
+  booktitle       = "2019 {IEEE/CVF} International Conference on Computer
+                     Vision Workshop ({ICCVW})",
+  author          = "Panfilov, Egor and Tiulpin, Aleksei and Klein, Stefan and
+                     Nieminen, Miika T and Saarakkala, Simo",
+  publisher       = "IEEE",
+  month           =  oct,
+  year            =  2019,
+  conference      = "2019 IEEE/CVF International Conference on Computer Vision
+                     Workshop (ICCVW)",
+  location        = "Seoul, Korea (South)"
+}
+
+@ARTICLE{Dou2019-ey,
+  title    = "{PnP-AdaNet}: {Plug-and-Play} Adversarial Domain Adaptation
+              Network at Unpaired {Cross-Modality} Cardiac Segmentation",
+  author   = "Dou, Qi and Ouyang, Cheng and Chen, Cheng and Chen, Hao and
+              Glocker, Ben and Zhuang, Xiahai and Heng, Pheng-Ann",
+  abstract = "Deep convolutional networks have demonstrated state-of-the-art
+              performance on various challenging medical image processing
+              tasks. Leveraging images from different modalities for the same
+              analysis task holds large clinical benefits. However, the
+              generalization capability of deep networks on test data sampled
+              from different distribution remains as a major challenge. In this
+              paper, we propose a plug-and-play adversarial domain adaptation
+              network (PnP-AdaNet) for adapting segmentation networks between
+              different modalities of medical images, e.g., MRI and CT. We
+              tackle the significant domain shift by aligning the feature
+              spaces of source and target domains at multiple scales in an
+              unsupervised manner. With the adversarial loss, we learn a domain
+              adaptation module which flexibly replaces the early encoder
+              layers of the source network, and the higher layers are shared
+              between two domains. We validate our domain adaptation method on
+              cardiac segmentation in unpaired MRI and CT, with four different
+              anatomical structures. The average Dice achieved 63.9\%, which is
+              a significant recover from the complete failure (Dice score of
+              13.2\%) if we directly test an MRI segmentation network on CT
+              data. In addition, our proposed PnP-AdaNet outperforms many
+              state-of-the-art unsupervised domain adaptation approaches on the
+              same dataset. The experimental results with comprehensive
+              ablation studies have demonstrated the excellent efficacy of our
+              proposed method for unsupervised cross-modality domain
+              adaptation. Our code is publically available at
+              https://github.com/carrenD/Medical-Cross-Modality-Domain-Adaptation",
+  journal  = "IEEE Access",
+  volume   =  7,
+  pages    = "99065--99076",
+  year     =  2019,
+  keywords = "Image segmentation;Magnetic resonance imaging;Computed
+              tomography;Feature extraction;Task analysis;Biomedical
+              imaging;Adaptation models;Domain adaptation;adversarial
+              learning;cardiac segmentation;medical imaging"
+}
+
+@INPROCEEDINGS{Bateson2019-of,
+  title     = "Constrained Domain Adaptation for Segmentation",
+  booktitle = "Medical Image Computing and Computer Assisted Intervention --
+               {MICCAI} 2019",
+  author    = "Bateson, Mathilde and Kervadec, Hoel and Dolz, Jose and
+               Lombaert, Herv{\'e} and Ayed, Ismail Ben",
+  abstract  = "We propose to adapt segmentation networks with a constrained
+               formulation, which embeds domain-invariant prior knowledge about
+               the segmentation regions. Such knowledge may take the form of
+               simple anatomical information, e.g., structure size or shape,
+               estimated from source samples or known a priori. Our method
+               imposes domain-invariant inequality constraints on a network
+               output of unlabeled target samples. It implicitly matches
+               prediction statistics between target and source domains with
+               permitted uncertainty of prior knowledge. We address our
+               constrained problem with a differentiable penalty, fully suited
+               for conventional gradient descent approaches, removing the need
+               for computationally expensive Lagrangian optimization with dual
+               projections. Unlike current two-step adversarial training, our
+               formulation is based on a single loss in a single network, which
+               simplifies adaptation by avoiding extra adversarial steps, while
+               improving convergence and quality of training. The comparison of
+               our approach with state-of-the-art adversarial methods reveals
+               substantially better performance on the challenging task of
+               adapting spine segmentation across different MRI modalities. Our
+               results also show a robustness to imprecision of size priors,
+               approaching the accuracy of a fully supervised model trained
+               directly in a target domain. Our method can be readily used for
+               various constraints and segmentation problems.",
+  publisher = "Springer International Publishing",
+  pages     = "326--334",
+  year      =  2019
+}
+
+@ARTICLE{Xun2021-ne,
+  title    = "Generative adversarial networks in medical image segmentation: A
+              review",
+  author   = "Xun, Siyi and Li, Dengwang and Zhu, Hui and Chen, Min and Wang,
+              Jianbo and Li, Jie and Chen, Meirong and Wu, Bing and Zhang, Hua
+              and Chai, Xiangfei and Jiang, Zekun and Zhang, Yan and Huang, Pu",
+  abstract = "PURPOSE: Since Generative Adversarial Network (GAN) was
+              introduced into the field of deep learning in 2014, it has
+              received extensive attention from academia and industry, and a
+              lot of high-quality papers have been published. GAN effectively
+              improves the accuracy of medical image segmentation because of
+              its good generating ability and capability to capture data
+              distribution. This paper introduces the origin, working
+              principle, and extended variant of GAN, and it reviews the latest
+              development of GAN-based medical image segmentation methods.
+              METHOD: To find the papers, we searched on Google Scholar and
+              PubMed with the keywords like ``segmentation'', ``medical
+              image'', and ``GAN (or generative adversarial network)''. Also,
+              additional searches were performed on Semantic Scholar, Springer,
+              arXiv, and the top conferences in computer science with the above
+              keywords related to GAN. RESULTS: We reviewed more than 120
+              GAN-based architectures for medical image segmentation that were
+              published before September 2021. We categorized and summarized
+              these papers according to the segmentation regions, imaging
+              modality, and classification methods. Besides, we discussed the
+              advantages, challenges, and future research directions of GAN in
+              medical image segmentation. CONCLUSIONS: We discussed in detail
+              the recent papers on medical image segmentation using GAN. The
+              application of GAN and its extended variants has effectively
+              improved the accuracy of medical image segmentation. Obtaining
+              the recognition of clinicians and patients and overcoming the
+              instability, low repeatability, and uninterpretability of GAN
+              will be an important research direction in the future.",
+  journal  = "Comput. Biol. Med.",
+  volume   =  140,
+  pages    = "105063",
+  month    =  nov,
+  year     =  2021,
+  keywords = "Computer vision; Deep learning; Generative adversarial networks;
+              Medical image; Segmentation",
+  language = "en"
+}
+
+@INPROCEEDINGS{Gholami2019-li,
+  title     = "A Novel Domain Adaptation Framework for Medical Image
+               Segmentation",
+  booktitle = "Brainlesion: Glioma, Multiple Sclerosis, Stroke and Traumatic
+               Brain Injuries",
+  author    = "Gholami, Amir and Subramanian, Shashank and Shenoy, Varun and
+               Himthani, Naveen and Yue, Xiangyu and Zhao, Sicheng and Jin,
+               Peter and Biros, George and Keutzer, Kurt",
+  abstract  = "We propose a segmentation framework that uses deep neural
+               networks and introduce two innovations. First, we describe a
+               biophysics-based domain adaptation method. Second, we propose an
+               automatic method to segment white matter, gray matter, glial
+               matter and cerebrospinal fluid, in addition to tumorous tissue.
+               Regarding our first innovation, we use a domain adaptation
+               framework that combines a novel multispecies biophysical tumor
+               growth model with a generative adversarial model to create
+               realistic looking synthetic multimodal MR images with known
+               segmentation. These images are used for the purpose of training
+               time data augmentation. Regarding our second innovation, we
+               propose an automatic approach to enrich available segmentation
+               data by computing the segmentation for healthy tissues. This
+               segmentation, which is done using diffeomorphic image
+               registration between the BraTS training data and a set of
+               pre-labeled atlases, provides more information for training and
+               reduces the class imbalance problem. Our overall approach is not
+               specific to any particular neural network and can be used in
+               conjunction with existing solutions. We demonstrate the
+               performance improvement using a 2D U-Net for the BraTS'18
+               segmentation challenge. Our biophysics based domain adaptation
+               achieves better results, as compared to the existing
+               state-of-the-art GAN model used to create synthetic data for
+               training.",
+  publisher = "Springer International Publishing",
+  pages     = "289--298",
+  year      =  2019
+}
+
+@INPROCEEDINGS{Jue2019-co,
+  title     = "Integrating Cross-modality Hallucinated {MRI} with {CT} to Aid
+               Mediastinal Lung Tumor Segmentation",
+  booktitle = "Medical Image Computing and Computer Assisted Intervention --
+               {MICCAI} 2019",
+  author    = "Jue, Jiang and Jason, Hu and Neelam, Tyagi and Andreas, Rimner
+               and Sean, Berry L and Joseph, Deasy O and Harini, Veeraraghavan",
+  abstract  = "Lung tumors, especially those located close to or surrounded by
+               soft tissues like the mediastinum, are difficult to segment due
+               to the low soft tissue contrast on computed tomography images.
+               Magnetic resonance images contain superior soft-tissue contrast
+               information that can be leveraged if both modalities were
+               available for training. Therefore, we developed a cross-modality
+               educed learning approach where MR information that is educed
+               from CT is used to hallucinate MRI and improve CT segmentation.
+               Our approach, called cross-modality educed deep learning
+               segmentation (CMEDL) combines CT and pseudo MR produced from CT
+               by aligning their features to obtain segmentation on CT.
+               Features computed in the last two layers of parallelly trained
+               CT and MR segmentation networks are aligned. We implemented this
+               approach on U-net and dense fully convolutional networks
+               (dense-FCN). Our networks were trained on unrelated cohorts from
+               open-source the Cancer Imaging Archive CT images (N = 377), an
+               internal archive T2-weighted MR (N = 81), and evaluated using
+               separate validation (N = 304) and testing (N = 333)
+               CT-delineated tumors. Our approach using both networks were
+               significantly more accurate (U-net $$P <0.001$$P<0.001; denseFCN
+               $$P <0.001$$P<0.001) than CT-only networks and achieved an
+               accuracy (Dice similarity coefficient) of $$0.71\textbackslashpm
+               0.15$$0.71$\pm$0.15(U-net), $$0.74\textbackslashpm
+               0.12$$0.74$\pm$0.12(denseFCN) on validation and
+               $$0.72\textbackslashpm 0.14$$0.72$\pm$0.14(U-net),
+               $$0.73\textbackslashpm 0.12$$0.73$\pm$0.12(denseFCN) on the
+               testing sets. Our novel approach demonstrated that educing
+               cross-modality information through learned priors enhances CT
+               segmentation performance.",
+  publisher = "Springer International Publishing",
+  pages     = "221--229",
+  year      =  2019
+}
+
+@INPROCEEDINGS{Jiang2018-vm,
+  title     = "{Tumor-Aware}, Adversarial Domain Adaptation from {CT} to {MRI} for Lung Cancer Segmentation",
+  booktitle = "Medical Image Computing and Computer Assisted Intervention --
+               {MICCAI} 2018",
+  author    = "Jiang, Jue and Hu, Yu-Chi and Tyagi, Neelam and Zhang, Pengpeng
+               and Rimner, Andreas and Mageras, Gig S and Deasy, Joseph O and
+               Veeraraghavan, Harini",
+  abstract  = "We present an adversarial domain adaptation based deep learning
+               approach for automatic tumor segmentation from T2-weighted MRI.
+               Our approach is composed of two steps: (i) a tumor-aware
+               unsupervised cross-domain adaptation (CT to MRI), followed by
+               (ii) semi-supervised tumor segmentation using Unet trained with
+               synthesized and limited number of original MRIs. We introduced a
+               novel target specific loss, called tumor-aware loss, for
+               unsupervised cross-domain adaptation that helps to preserve
+               tumors on synthesized MRIs produced from CT images. In
+               comparison, state-of-the art adversarial networks trained
+               without our tumor-aware loss produced MRIs with ill-preserved or
+               missing tumors. All networks were trained using labeled CT
+               images from 377 patients with non-small cell lung cancer
+               obtained from the Cancer Imaging Archive and unlabeled T2w MRIs
+               from a completely unrelated cohort of 6 patients with
+               pre-treatment and 36 on-treatment scans. Next, we combined 6
+               labeled pre-treatment MRI scans with the synthesized MRIs to
+               boost tumor segmentation accuracy through semi-supervised
+               learning. Semi-supervised training of cycle-GAN produced a
+               segmentation accuracy of 0.66 computed using Dice Score
+               Coefficient (DSC). Our method trained with only synthesized MRIs
+               produced an accuracy of 0.74 while the same method trained in
+               semi-supervised setting produced the best accuracy of 0.80 on
+               test. Our results show that tumor-aware adversarial domain
+               adaptation helps to achieve reasonably accurate cancer
+               segmentation from limited MRI data by leveraging large CT
+               datasets.",
+  publisher = "Springer International Publishing",
+  pages     = "777--785",
+  year      =  2018
+}
+
+@INPROCEEDINGS{Zhang2018-yj,
+  title     = "Task Driven Generative Modeling for Unsupervised Domain
+               Adaptation: Application to X-ray Image Segmentation",
+  booktitle = "Medical Image Computing and Computer Assisted Intervention --
+               {MICCAI} 2018",
+  author    = "Zhang, Yue and Miao, Shun and Mansi, Tommaso and Liao, Rui",
+  abstract  = "Automatic parsing of anatomical objects in X-ray images is
+               critical to many clinical applications in particular towards
+               image-guided invention and workflow automation. Existing deep
+               network models require a large amount of labeled data. However,
+               obtaining accurate pixel-wise labeling in X-ray images relies
+               heavily on skilled clinicians due to the large overlaps of
+               anatomy and the complex texture patterns. On the other hand,
+               organs in 3D CT scans preserve clearer structures as well as
+               sharper boundaries and thus can be easily delineated. In this
+               paper, we propose a novel model framework for learning automatic
+               X-ray image parsing from labeled CT scans. Specifically, a Dense
+               Image-to-Image network (DI2I) for multi-organ segmentation is
+               first trained on X-ray like Digitally Reconstructed Radiographs
+               (DRRs) rendered from 3D CT volumes. Then we introduce a Task
+               Driven Generative Adversarial Network (TD-GAN) architecture to
+               achieve simultaneous style transfer and parsing for unseen real
+               X-ray images. TD-GAN consists of a modified cycle-GAN
+               substructure for pixel-to-pixel translation between DRRs and
+               X-ray images and an added module leveraging the pre-trained DI2I
+               to enforce segmentation consistency. The TD-GAN framework is
+               general and can be easily adapted to other learning tasks. In
+               the numerical experiments, we validate the proposed model on 815
+               DRRs and 153 topograms. While the vanilla DI2I without any
+               adaptation fails completely on segmenting the topograms, the
+               proposed model does not require any topogram labels and is able
+               to provide a promising average dice of $$85\%$$which achieves
+               the same level accuracy of supervised training (88\%).",
+  publisher = "Springer International Publishing",
+  pages     = "599--607",
+  year      =  2018
+}
+
+@ARTICLE{Zhang2020-eu,
+  title    = "Noise Adaptation Generative Adversarial Network for Medical Image
+              Analysis",
+  author   = "Zhang, Tianyang and Cheng, Jun and Fu, Huazhu and Gu, Zaiwang and
+              Xiao, Yuting and Zhou, Kang and Gao, Shenghua and Zheng, Rui and
+              Liu, Jiang",
+  abstract = "Machine learning has been widely used in medical image analysis
+              under an assumption that the training and test data are under the
+              same feature distributions. However, medical images from
+              difference devices or the same device with different parameter
+              settings are often contaminated with different amount and types
+              of noises, which violate the above assumption. Therefore, the
+              models trained using data from one device or setting often fail
+              to work for that from another. Moreover, it is very expensive and
+              tedious to label data and re-train models for all different
+              devices or settings. To overcome this noise adaptation issue, it
+              is necessary to leverage on the models trained with data from one
+              device or setting for new data. In this paper, we reformulate
+              this noise adaptation task as an image-to-image translation task
+              such that the noise patterns from the test data are modified to
+              be similar to those from the training data while the contents of
+              the data are unchanged. In this paper, we propose a novel Noise
+              Adaptation Generative Adversarial Network (NAGAN), which contains
+              a generator and two discriminators. The generator aims to map the
+              data from source domain to target domain. Among the two
+              discriminators, one discriminator enforces the generated images
+              to have the same noise patterns as those from the target domain,
+              and the second discriminator enforces the content to be preserved
+              in the generated images. We apply the proposed NAGAN on both
+              optical coherence tomography (OCT) images and ultrasound images.
+              Results show that the method is able to translate the noise
+              style. In addition, we also evaluate our proposed method with
+              segmentation task in OCT and classification task in ultrasound.
+              The experimental results show that the proposed NAGAN improves
+              the analysis outcome.",
+  journal  = "IEEE Trans. Med. Imaging",
+  volume   =  39,
+  number   =  4,
+  pages    = "1149--1159",
+  month    =  apr,
+  year     =  2020,
+  language = "en"
+}
+
+@ARTICLE{Chen2019-ov,
+  title    = "Synergistic Image and Feature Adaptation: Towards
+              {Cross-Modality} Domain Adaptation for Medical Image Segmentation",
+  author   = "Chen, Cheng and Dou, Qi and Chen, Hao and Qin, Jing and Heng,
+              Pheng-Ann",
+  journal  = "AAAI",
+  volume   =  33,
+  number   =  01,
+  pages    = "865--872",
+  month    =  jul,
+  year     =  2019,
+  language = "en"
+}
+
+@INPROCEEDINGS{Yan2019-wf,
+  title     = "The Domain Shift Problem of Medical Image Segmentation and
+               {Vendor-Adaptation} by {Unet-GAN}",
+  booktitle = "Medical Image Computing and Computer Assisted Intervention --
+               {MICCAI} 2019",
+  author    = "Yan, Wenjun and Wang, Yuanyuan and Gu, Shengjia and Huang, Lu
+               and Yan, Fuhua and Xia, Liming and Tao, Qian",
+  abstract  = "Convolutional neural network (CNN), in particular the Unet, is a
+               powerful method for medical image segmentation. To date Unet has
+               demonstrated state-of-art performance in many complex medical
+               image segmentation tasks, especially under the condition when
+               the training and testing data share the same distribution (i.e.
+               come from the same source domain). However, in clinical
+               practice, medical images are acquired from different vendors and
+               centers. The performance of a U-Net trained from a particular
+               source domain, when transferred to a different target domain
+               (e.g. different vendor, acquisition parameter), can drop
+               unexpectedly. Collecting a large amount of annotation from each
+               new domain to retrain the U-Net is expensive, tedious, and
+               practically impossible.",
+  publisher = "Springer International Publishing",
+  pages     = "623--631",
+  year      =  2019
+}
+
+@INPROCEEDINGS{Yang2019-cq,
+  title     = "Unsupervised Domain Adaptation via Disentangled Representations:
+               Application to {Cross-Modality} Liver Segmentation",
+  booktitle = "Medical Image Computing and Computer Assisted Intervention --
+               {MICCAI} 2019",
+  author    = "Yang, Junlin and Dvornek, Nicha C and Zhang, Fan and Chapiro,
+               Julius and Lin, Mingde and Duncan, James S",
+  abstract  = "A deep learning model trained on some labeled data from a
+               certain source domain generally performs poorly on data from
+               different target domains due to domain shifts. Unsupervised
+               domain adaptation methods address this problem by alleviating
+               the domain shift between the labeled source data and the
+               unlabeled target data. In this work, we achieve cross-modality
+               domain adaptation, i.e. between CT and MRI images, via
+               disentangled representations. Compared to learning a one-to-one
+               mapping as the state-of-art CycleGAN, our model recovers a
+               many-to-many mapping between domains to capture the complex
+               cross-domain relations. It preserves semantic feature-level
+               information by finding a shared content space instead of a
+               direct pixelwise style transfer. Domain adaptation is achieved
+               in two steps. First, images from each domain are embedded into
+               two spaces, a shared domain-invariant content space and a
+               domain-specific style space. Next, the representation in the
+               content space is extracted to perform a task. We validated our
+               method on a cross-modality liver segmentation task, to train a
+               liver segmentation model on CT images that also performs well on
+               MRI. Our method achieved Dice Similarity Coefficient (DSC) of
+               0.81, outperforming a CycleGAN-based method of 0.72. Moreover,
+               our model achieved good generalization to joint-domain learning,
+               in which unpaired data from different modalities are jointly
+               learned to improve the segmentation performance on each
+               individual modality. Lastly, under a multi-modal target domain
+               with significant diversity, our approach exhibited the potential
+               for diverse image generation and remained effective with DSC of
+               0.74 on multi-phasic MRI while the CycleGAN-based method
+               performed poorly with a DSC of only 0.52.",
+  publisher = "Springer International Publishing",
+  pages     = "255--263",
+  year      =  2019
+}
+
+@ARTICLE{Perone2019-wy,
+  title    = "Unsupervised domain adaptation for medical imaging segmentation
+              with self-ensembling",
+  author   = "Perone, Christian S and Ballester, Pedro and Barros, Rodrigo C
+              and Cohen-Adad, Julien",
+  abstract = "Recent advances in deep learning methods have redefined the
+              state-of-the-art for many medical imaging applications,
+              surpassing previous approaches and sometimes even competing with
+              human judgment in several tasks. Those models, however, when
+              trained to reduce the empirical risk on a single domain, fail to
+              generalize when applied to other domains, a very common scenario
+              in medical imaging due to the variability of images and
+              anatomical structures, even across the same imaging modality. In
+              this work, we extend the method of unsupervised domain adaptation
+              using self-ensembling for the semantic segmentation task and
+              explore multiple facets of the method on a small and realistic
+              publicly-available magnetic resonance (MRI) dataset. Through an
+              extensive evaluation, we show that self-ensembling can indeed
+              improve the generalization of the models even when using a small
+              amount of unlabeled data.",
+  journal  = "Neuroimage",
+  volume   =  194,
+  pages    = "1--11",
+  month    =  jul,
+  year     =  2019,
+  language = "en"
+}
+
+@INPROCEEDINGS{Shanis2019-cz,
+  title     = "Intramodality Domain Adaptation Using Self Ensembling and
+               Adversarial Training",
+  booktitle = "Domain Adaptation and Representation Transfer and Medical Image
+               Learning with Less Labels and Imperfect Data",
+  author    = "Shanis, Zahil and Gerber, Samuel and Gao, Mingchen and
+               Enquobahrie, Andinet",
+  abstract  = "Advances in deep learning techniques have led to compelling
+               achievements in medical image analysis. However, performance of
+               neural network models degrades drastically if the test data is
+               from a domain different from training data. In this paper, we
+               present and evaluate a novel unsupervised domain adaptation (DA)
+               framework for semantic segmentation which uses self ensembling
+               and adversarial training methods to effectively tackle domain
+               shift between MR images. We evaluate our method on two publicly
+               available MRI dataset to address two different types of domain
+               shifts: On the BraTS dataset [11] to mitigate domain shift
+               between high grade and low grade gliomas and on the SCGM dataset
+               [13] to tackle cross institutional domain shift. Through
+               extensive evaluation, we show that our method achieves favorable
+               results on both datasets.",
+  publisher = "Springer International Publishing",
+  pages     = "28--36",
+  year      =  2019
+}
+
+@INPROCEEDINGS{Orbes-Arteaga2019-pu,
+  title     = "Multi-domain Adaptation in Brain {MRI} Through Paired
+               Consistency and Adversarial Learning",
+  booktitle = "Domain Adaptation and Representation Transfer and Medical Image
+               Learning with Less Labels and Imperfect Data",
+  author    = "Orbes-Arteaga, Mauricio and Varsavsky, Thomas and Sudre, Carole
+               H and Eaton-Rosen, Zach and Haddow, Lewis J and S{\o}rensen,
+               Lauge and Nielsen, Mads and Pai, Akshay and Ourselin,
+               S{\'e}bastien and Modat, Marc and Nachev, Parashkev and Cardoso,
+               M Jorge",
+  abstract  = "Supervised learning algorithms trained on medical images will
+               often fail to generalize across changes in acquisition
+               parameters. Recent work in domain adaptation addresses this
+               challenge and successfully leverages labeled data in a source
+               domain to perform well on an unlabeled target domain. Inspired
+               by recent work in semi-supervised learning we introduce a novel
+               method to adapt from one source domain to n target domains (as
+               long as there is paired data covering all domains). Our
+               multi-domain adaptation method utilises a consistency loss
+               combined with adversarial learning. We provide results on white
+               matter lesion hyperintensity segmentation from brain MRIs using
+               the MICCAI 2017 challenge data as the source domain and two
+               target domains. The proposed method significantly outperforms
+               other domain adaptation baselines.",
+  publisher = "Springer International Publishing",
+  pages     = "54--62",
+  year      =  2019
+}
+
+@INPROCEEDINGS{Karani2018-ln,
+  title     = "A Lifelong Learning Approach to Brain {MR} Segmentation Across
+               Scanners and Protocols",
+  booktitle = "Medical Image Computing and Computer Assisted Intervention --
+               {MICCAI} 2018",
+  author    = "Karani, Neerav and Chaitanya, Krishna and Baumgartner, Christian
+               and Konukoglu, Ender",
+  abstract  = "Convolutional neural networks (CNNs) have shown promising
+               results on several segmentation tasks in magnetic resonance (MR)
+               images. However, the accuracy of CNNs may degrade severely when
+               segmenting images acquired with different scanners and/or
+               protocols as compared to the training data, thus limiting their
+               practical utility. We address this shortcoming in a lifelong
+               multi-domain learning setting by treating images acquired with
+               different scanners or protocols as samples from different, but
+               related domains. Our solution is a single CNN with shared
+               convolutional filters and domain-specific batch normalization
+               layers, which can be tuned to new domains with only a few
+               ($$\{\textbackslashapprox \}$$4) labelled images. Importantly,
+               this is achieved while retaining performance on the older
+               domains whose training data may no longer be available. We
+               evaluate the method for brain structure segmentation in MR
+               images. Results demonstrate that the proposed method largely
+               closes the gap to the benchmark, which is training a dedicated
+               CNN for each scanner.",
+  publisher = "Springer International Publishing",
+  pages     = "476--484",
+  year      =  2018
+}
+
+@ARTICLE{Yang2021-qs,
+  title    = "Minimizing Labeling Cost for Nuclei Instance Segmentation and
+              Classification with Cross-domain Images and Weak Labels",
+  author   = "Yang, Siqi and Zhang, Jun and Huang, Junzhou and Lovell, Brian C
+              and Han, Xiao",
+  journal  = "AAAI",
+  volume   =  35,
+  number   =  1,
+  pages    = "697--705",
+  month    =  may,
+  year     =  2021,
+  language = "en"
+}
+
+@INPROCEEDINGS{Li2021-mg,
+  title     = "Unsupervised Domain Adaptation for the Histopathological Cell
+               Segmentation through {Self-Ensembling}",
+  booktitle = "Proceedings of the {MICCAI} Workshop on Computational Pathology",
+  author    = "Li, Chaoqun and Zhou, Yitian and Shi, Tangqi and Wu, Yenan and
+               Yang, Meng and Li, Zhongyu",
+  editor    = "Atzori, Manfredo and Burlutskiy, Nikolay and Ciompi, Francesco
+               and Li, Zhang and Minhas, Fayyaz and M{\"u}ller, Henning and
+               Peng, Tingying and Rajpoot, Nasir and Torben-Nielsen, Ben and
+               van der Laak, Jeroen and Veta, Mitko and Yuan, Yinyin and
+               Zlobec, Inti",
+  abstract  = "Histopathological images are generally considered as the golden
+               standard for clinical diagnosis and cancer grading. Accurate
+               segmentation of cells/nuclei from histopathological images is a
+               critical step to obtain reliable morphological information for
+               quantitative analysis. However, cell/nuclei segmentation relies
+               heavily on well-annotated datasets, which are extremely
+               labor-intensive, time-consuming, and expensive in practical
+               applications. Meanwhile, one might want to fine-tune pretrained
+               models on certain target datasets. But it is always difficult to
+               collect enough target training images for proper fine-tuning.
+               Therefore, there is a need for methods that can transfer learned
+               information from one domain to another without additional target
+               annotations. In this paper, we propose a novel framework for
+               cell segmentation on the unlabeled images through the
+               unsupervised domain adaptation with self-ensembling. It is
+               achieved by applying generative adversarial networks (GANs) for
+               the unsupervised domain adaptation of cell segmentation crossing
+               different tissues. Images in the source and target domain can be
+               differentiated through the learned discriminator. Meanwhile, we
+               present a self-ensembling model to consider the source and the
+               target domain together as a semi-supervised segmentation task to
+               reduce the differences of outputs. Additionally, we introduce
+               conditional random field (CRF) as post-processing to preserve
+               the local consistency on the outputs. We validate our framework
+               with unsupervised domain adaptation on three public cell
+               segmentation datasets captured from different types of tissues,
+               which achieved superior performance in comparison with
+               state-of-the-art.",
+  publisher = "PMLR",
+  volume    =  156,
+  pages     = "151--158",
+  series    = "Proceedings of Machine Learning Research",
+  month     =  sep,
+  year      =  2021
+}
+
+
+@ARTICLE{Naylor2019-ak,
+  title    = "Segmentation of Nuclei in Histopathology Images by Deep
+              Regression of the Distance Map",
+  author   = "Naylor, Peter and Lae, Marick and Reyal, Fabien and Walter,
+              Thomas",
+  abstract = "The advent of digital pathology provides us with the challenging
+              opportunity to automatically analyze whole slides of diseased
+              tissue in order to derive quantitative profiles that can be used
+              for diagnosis and prognosis tasks. In particular, for the
+              development of interpretable models, the detection and
+              segmentation of cell nuclei is of the utmost importance. In this
+              paper, we describe a new method to automatically segment nuclei
+              from Haematoxylin and Eosin (H\&E) stained histopathology data
+              with fully convolutional networks. In particular, we address the
+              problem of segmenting touching nuclei by formulating the
+              segmentation problem as a regression task of the distance map. We
+              demonstrate superior performance of this approach as compared to
+              other approaches using Convolutional Neural Networks.",
+  journal  = "IEEE Trans. Med. Imaging",
+  volume   =  38,
+  number   =  2,
+  pages    = "448--459",
+  month    =  feb,
+  year     =  2019,
+  language = "en"
+}
+
+@Article{Shimodaira2000-rp,
+  author    = {Shimodaira, Hidetoshi},
+  journal   = {J. Stat. Plan. Inference},
+  title     = {Improving predictive inference under covariate shift by weighting the log-likelihood function},
+  year      = {2000},
+  month     = oct,
+  number    = {2},
+  pages     = {227--244},
+  volume    = {90},
+  abstract  = {Abstract A class of predictive densities is derived by weighting
+               the observed samples in maximizing the log-likelihood function.
+               This approach is effective in cases such as sample surveys or
+               design of experiments, where the observed covariate follows a
+               different distribution than that in the whole population. Under
+               misspecification of the parametric model, the optimal choice of
+               the weight function is asymptotically shown to be the ratio of
+               the density function of the covariate in the population to that
+               in the observations. This is the pseudo-maximum likelihood
+               estimation of sample surveys. The optimality is defined by the
+               expected Kullback--Leibler loss, and the optimal weight is
+               obtained by considering the importance sampling identity. Under
+               correct specification of the model, however, the ordinary
+               maximum likelihood estimate (i.e. the uniform weight) is shown
+               to be optimal asymptotically. For moderate sample size, the
+               situation is in between the two extreme cases, and the weight
+               function is selected by minimizing a variant of the information
+               criterion derived as an estimate of the expected loss. The
+               method is also applied to a weighted version of the Bayesian
+               predictive density. Numerical examples as well as Monte-Carlo
+               simulations are shown for polynomial regression. A connection
+               with the robust parametric estimation is discussed.},
+  language  = {en},
+  publisher = {Elsevier BV},
+}
+
+@Article{Ljosa2012-si,
+  author   = {Ljosa, Vebjorn and Sokolnicki, Katherine L and Carpenter, Anne E},
+  journal  = {Nat. Methods},
+  title    = {Annotated high-throughput microscopy image sets for validation},
+  year     = {2012},
+  month    = jun,
+  number   = {7},
+  pages    = {637},
+  volume   = {9},
+  language = {en},
+}
+
+@Unpublished{cil_dataset,
+  author = {Yu, Weimiao and Lee, Hwee Kuan and Hariharan, Srivats and Bu, Wen Yu and Ahmed, Sohail},
+  note   = {CIL. Dataset. https://doi.org/doi:10.7295/W9CCDB6843},
+  title  = {CCDB:6843, mus musculus, Neuroblastoma},
+  url    = {https://doi.org/doi:10.7295/W9CCDB6843},
+}
+
+@Book{Goodfellow2016-iu,
+  author    = {Goodfellow, Ian and Bengio, Yoshua and Courville, Aaron and Bengio, Yoshua},
+  publisher = {MIT press Cambridge},
+  title     = {Deep learning},
+  year      = {2016},
+  volume    = {1},
+}
+
+@InProceedings{Hadsell2006-er,
+  author    = {Hadsell, R and Chopra, S and LeCun, Y},
+  booktitle = {2006 {IEEE} Computer Society Conference on Computer Vision and Pattern Recognition ({CVPR'06})},
+  title     = {Dimensionality Reduction by Learning an Invariant Mapping},
+  year      = {2006},
+  month     = jun,
+  pages     = {1735--1742},
+  volume    = {2},
+  abstract  = {Dimensionality reduction involves mapping a set of high
+               dimensional input points onto a low dimensional manifold so that
+               'similar`` points in input space are mapped to nearby points on
+               the manifold. We present a method - called Dimensionality
+               Reduction by Learning an Invariant Mapping (DrLIM) - for
+               learning a globally coherent nonlinear function that maps the
+               data evenly to the output manifold. The learning relies solely
+               on neighborhood relationships and does not require any
+               distancemeasure in the input space. The method can learn
+               mappings that are invariant to certain transformations of the
+               inputs, as is demonstrated with a number of experiments.
+               Comparisons are made to other techniques, in particular LLE.},
+  keywords  = {Extraterrestrial measurements;Image generation;Biology;Geoscience;Astronomy;Service robots;Manufacturing industries;Image analysis;Feature extraction;Data visualization},
+}
+
+@InProceedings{Sohn2016-ar,
+  author    = {Sohn, Kihyuk},
+  booktitle = {Proceedings of the 30th International Conference on Neural Information Processing Systems},
+  title     = {Improved deep metric learning with multi-class N-pair loss objective},
+  year      = {2016},
+  address   = {Red Hook, NY, USA},
+  month     = dec,
+  pages     = {1857--1865},
+  publisher = {Curran Associates Inc.},
+  series    = {NIPS'16},
+  abstract  = {Deep metric learning has gained much popularity in recent years,
+               following the success of deep learning. However, existing
+               frameworks of deep metric learning based on contrastive loss and
+               triplet loss often suffer from slow convergence, partially
+               because they employ only one negative example while not
+               interacting with the other negative classes in each update. In
+               this paper, we propose to address this problem with a new metric
+               learning objective called multi-class N-pair loss. The proposed
+               objective function firstly generalizes triplet loss by allowing
+               joint comparison among more than one negative examples - more
+               specifically, N-1 negative examples - and secondly reduces the
+               computational burden of evaluating deep embedding vectors via an
+               efficient batch construction strategy using only N pairs of
+               examples, instead of (N+1) x N. We demonstrate the superiority
+               of our proposed loss to the triplet loss as well as other
+               competing loss functions for a variety of tasks on several
+               visual recognition benchmark, including fine-grained object
+               recognition and verification, image clustering and retrieval,
+               and face verification and identification.},
+  location  = {Barcelona, Spain},
+}
+
+@Article{Van_den_Oord2018-qw,
+  author        = {van den Oord, Aaron and Li, Yazhe and Vinyals, Oriol},
+  title         = {Representation Learning with Contrastive Predictive Coding},
+  year          = {2018},
+  month         = jul,
+  abstract      = {While supervised learning has enabled great progress in many
+                   applications, unsupervised learning has not seen such
+                   widespread adoption, and remains an important and
+                   challenging endeavor for artificial intelligence. In this
+                   work, we propose a universal unsupervised learning approach
+                   to extract useful representations from high-dimensional
+                   data, which we call Contrastive Predictive Coding. The key
+                   insight of our model is to learn such representations by
+                   predicting the future in latent space by using powerful
+                   autoregressive models. We use a probabilistic contrastive
+                   loss which induces the latent space to capture information
+                   that is maximally useful to predict future samples. It also
+                   makes the model tractable by using negative sampling. While
+                   most prior work has focused on evaluating representations
+                   for a particular modality, we demonstrate that our approach
+                   is able to learn useful representations achieving strong
+                   performance on four distinct domains: speech, images, text
+                   and reinforcement learning in 3D environments.},
+  archiveprefix = {arXiv},
+  eprint        = {1807.03748},
+  primaryclass  = {cs.LG},
+}
+
+
+@misc{Authors14,
+ author = {FirstName LastName},
+ title = {The frobnicatable foo filter},
+ note = {Face and Gesture submission ID 324. Supplied as supplemental material {\tt fg324.pdf}},
+ year = 2014
+}
+
+@misc{Authors14b,
+ author = {FirstName LastName},
+ title = {Frobnication tutorial},
+ note = {Supplied as supplemental material {\tt tr.pdf}},
+ year = 2014
+}
+
+@article{Alpher02,
+author = {FirstName Alpher},
+title = {Frobnication},
+journal = PAMI,
+volume = 12,
+number = 1,
+pages = {234--778},
+year = 2002
+}
+
+@article{Alpher03,
+author = {FirstName Alpher and  FirstName Fotheringham-Smythe},
+title = {Frobnication revisited},
+journal = {Journal of Foo},
+volume = 13,
+number = 1,
+pages = {234--778},
+year = 2003
+}
+
+@article{Alpher04,
+author = {FirstName Alpher and FirstName Fotheringham-Smythe and FirstName Gamow},
+title = {Can a machine frobnicate?},
+journal = {Journal of Foo},
+volume = 14,
+number = 1,
+pages = {234--778},
+year = 2004
+}
+
+@inproceedings{Alpher05,
+author = {FirstName Alpher and FirstName Gamow},
+title = {Can a computer frobnicate?},
+booktitle = CVPR,
+pages = {234--778},
+year = 2005
+}
+
+
+@misc{githubGitHubGot10ktoolkit,
+	author = {},
+	title = {{G}it{H}ub - got-10k/toolkit: {O}fficial {P}ython toolkit for generic object tracking benchmark {G}{O}{T}-10k and beyond --- github.com},
+	howpublished = {\url{https://github.com/got-10k/toolkit}},
+	year = {},
+}
+
+@article{khurana2021sita,
+  title={Sita: Single image test-time adaptation},
+  author={Khurana, Ansh and Paul, Sujoy and Rai, Piyush and Biswas, Soma and Aggarwal, Gaurav},
+  journal={arXiv preprint arXiv:2112.02355},
+  year={2021}
+}
+@inproceedings{mirza2022norm,
+  title={The norm must go on: Dynamic unsupervised domain adaptation by normalization},
+  author={Mirza, M Jehanzeb and Micorek, Jakub and Possegger, Horst and Bischof, Horst},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={14765--14775},
+  year={2022}
+}
+
+@inproceedings{chen2022contrastive,
+  title={Contrastive test-time adaptation},
+  author={Chen, Dian and Wang, Dequan and Darrell, Trevor and Ebrahimi, Sayna},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={295--305},
+  year={2022}
+}
+
+
+@inproceedings{wu2023dropmae,
+  title={DropMAE: Masked Autoencoders with Spatial-Attention Dropout for Tracking Tasks},
+  author={Wu, Qiangqiang and Yang, Tianyu and Liu, Ziquan and Wu, Baoyuan and Shan, Ying and Chan, Antoni B},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={14561--14571},
+  year={2023}
+}
+@article{li2016revisiting,
+  title={Revisiting batch normalization for practical domain adaptation},
+  author={Li, Yanghao and Wang, Naiyan and Shi, Jianping and Liu, Jiaying and Hou, Xiaodi},
+  journal={arXiv preprint arXiv:1603.04779},
+  year={2016}
+}
+
+@inproceedings{rezatofighi2019generalized,
+  title={Generalized intersection over union: A metric and a loss for bounding box regression},
+  author={Rezatofighi, Hamid and Tsoi, Nathan and Gwak, JunYoung and Sadeghian, Amir and Reid, Ian and Savarese, Silvio},
+  booktitle={Proceedings of the IEEE/CVF conference on computer vision and pattern recognition},
+  pages={658--666},
+  year={2019}
+}
+@article{alfarra2023revisiting,
+  title={Revisiting Test Time Adaptation under Online Evaluation},
+  author={Alfarra, Motasem and Itani, Hani and Pardo, Alejandro and Alhuwaider, Shyma and Ramazanova, Merey and P{\'e}rez, Juan C and Cai, Zhipeng and M{\"u}ller, Matthias and Ghanem, Bernard},
+  journal={arXiv preprint arXiv:2304.04795},
+  year={2023}
+}
+
+@article{liu2021ttt++,
+  title={Ttt++: When does self-supervised test-time training fail or thrive?},
+  author={Liu, Yuejiang and Kothari, Parth and Van Delft, Bastien and Bellot-Gurlet, Baptiste and Mordan, Taylor and Alahi, Alexandre},
+  journal={Advances in Neural Information Processing Systems},
+  volume={34},
+  pages={21808--21820},
+  year={2021}
+}
+@inproceedings{sun2020test,
+  title={Test-time training with self-supervision for generalization under distribution shifts},
+  author={Sun, Yu and Wang, Xiaolong and Liu, Zhuang and Miller, John and Efros, Alexei and Hardt, Moritz},
+  booktitle={International conference on machine learning},
+  pages={9229--9248},
+  year={2020},
+  organization={PMLR}
+}
+@article{mehta2022separable,
+  title={Separable self-attention for mobile vision transformers},
+  author={Mehta, Sachin and Rastegari, Mohammad},
+  journal={arXiv preprint arXiv:2206.02680},
+  year={2022}
+}
+
+@article{cui2024mixformerv2,
+  title={Mixformerv2: Efficient fully transformer tracking},
+  author={Cui, Yutao and Song, Tianhui and Wu, Gangshan and Wang, Limin},
+  journal={Advances in Neural Information Processing Systems},
+  volume={36},
+  year={2024}
+}
+@inproceedings{chen2022efficient,
+  title={Efficient visual tracking via hierarchical cross-attention transformer},
+  author={Chen, Xin and Kang, Ben and Wang, Dong and Li, Dongdong and Lu, Huchuan},
+  booktitle={European Conference on Computer Vision},
+  pages={461--477},
+  year={2022},
+  organization={Springer}
+}
+
+@inproceedings{blatter2023efficient,
+  title={Efficient visual tracking with exemplar transformers},
+  author={Blatter, Philippe and Kanakis, Menelaos and Danelljan, Martin and Van Gool, Luc},
+  booktitle={Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision},
+  pages={1571--1581},
+  year={2023}
+}
+
+@article{schneider2020improving,
+  title={Improving robustness against common corruptions by covariate shift adaptation},
+  author={Schneider, Steffen and Rusak, Evgenia and Eck, Luisa and Bringmann, Oliver and Brendel, Wieland and Bethge, Matthias},
+  journal={Advances in neural information processing systems},
+  volume={33},
+  pages={11539--11551},
+  year={2020}
+}
+
+@inproceedings{pan2018two,
+  title={Two at once: Enhancing learning and generalization capacities via ibn-net},
+  author={Pan, Xingang and Luo, Ping and Shi, Jianping and Tang, Xiaoou},
+  booktitle={Proceedings of the European Conference on Computer Vision (ECCV)},
+  pages={464--479},
+  year={2018}
+}
+
+@inproceedings{niu2022efficient,
+  title={Efficient test-time model adaptation without forgetting},
+  author={Niu, Shuaicheng and Wu, Jiaxiang and Zhang, Yifan and Chen, Yaofo and Zheng, Shijian and Zhao, Peilin and Tan, Mingkui},
+  booktitle={International conference on machine learning},
+  pages={16888--16905},
+  year={2022},
+  organization={PMLR}
+}
+
+@inproceedings{wang2022continual,
+  title={Continual test-time domain adaptation},
+  author={Wang, Qin and Fink, Olga and Van Gool, Luc and Dai, Dengxin},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={7201--7211},
+  year={2022}
+}
+
+@misc{Anonymous24,
+ author = {Anonymous},
+ title = {The frobnicatable foo filter},
+ note = {{ECCV} submission ID 00324, supplied as supplemental material {\tt 00324.pdf}},
+ year = 2024
+}
+
+@misc{Anonymous24b,
+ author = {Anonymous},
+ title = {Frobnication tutorial},
+ note = {Supplied as supplemental material {\tt tr.pdf}},
+ year = 2024
+}
+
+@article{Alpher02,
+author = {FirstName Alpher},
+title = {Frobnication},
+journal = PAMI,
+volume = 12,
+number = 1,
+pages = {234--778},
+year = 2002
+}
+
+@article{Alpher03,
+author = {FirstName Alpher and FirstName Fotheringham-Smythe},
+title = {Frobnication revisited},
+journal = {Journal of Foo},
+volume = 13,
+number = 1,
+pages = {234--778},
+year = 2003
+}
+
+@article{Alpher04,
+author = {FirstName Alpher and FirstName Fotheringham-Smythe and FirstName Gamow},
+title = {Can a machine frobnicate?},
+journal = {Journal of Foo},
+volume = 14,
+number = 1,
+pages = {234--778},
+year = 2004
+}
+
+@inproceedings{Alpher05,
+author = {FirstName Alpher and FirstName Gamow},
+title = {Can a computer frobnicate?},
+booktitle = CVPR,
+pages = {234--778},
+year = 2005
+}
+
+@book{ECCV2022,
+    editor = {Shai Avidan and Gabriel Brostow and Moustapha Cissé and Giovanni Maria Farinella and Tal Hassner},
+    title = {Computer Vision -- ECCV 2022},
+    year = {2022},
+    publisher = {Springer},
+    doi = {10.1007/978-3-031-19769-7}
+}
+
+
+@inproceedings{xing2022siamese,
+  title={Siamese transformer pyramid networks for real-time UAV tracking},
+  author={Xing, Daitao and Evangeliou, Nikolaos and Tsoukalas, Athanasios and Tzes, Anthony},
+  booktitle={Proceedings of the IEEE/CVF winter conference on applications of computer vision},
+  pages={2139--2148},
+  year={2022}
+}
+
+@inproceedings{danelljan2017eco,
+  title={Eco: Efficient convolution operators for tracking},
+  author={Danelljan, Martin and Bhat, Goutam and Shahbaz Khan, Fahad and Felsberg, Michael},
+  booktitle={Proceedings of the IEEE conference on computer vision and pattern recognition},
+  pages={6638--6646},
+  year={2017}
+}
+
+@InProceedings{Jung_2018_ECCV,
+author = {Jung, Ilchae and Son, Jeany and Baek, Mooyeol and Han, Bohyung},
+title = {Real-Time MDNet},
+booktitle = {Proceedings of the European Conference on Computer Vision (ECCV)},
+month = {September},
+year = {2018}
+}
+
+@inproceedings{cao2021siamapn++,
+  title={SiamAPN++: Siamese attentional aggregation network for real-time UAV tracking},
+  author={Cao, Ziang and Fu, Changhong and Ye, Junjie and Li, Bowen and Li, Yiming},
+  booktitle={2021 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+  pages={3086--3092},
+  year={2021},
+  organization={IEEE}
+}
+
+@inproceedings{mayer2022transforming,
+  title={Transforming model prediction for tracking},
+  author={Mayer, Christoph and Danelljan, Martin and Bhat, Goutam and Paul, Matthieu and Paudel, Danda Pani and Yu, Fisher and Van Gool, Luc},
+  booktitle={Proceedings of the IEEE/CVF conference on computer vision and pattern recognition},
+  pages={8731--8740},
+  year={2022}
+}
+
+@inproceedings{chen2021transformer,
+  title={Transformer tracking},
+  author={Chen, Xin and Yan, Bin and Zhu, Jiawen and Wang, Dong and Yang, Xiaoyun and Lu, Huchuan},
+  booktitle={Proceedings of the IEEE/CVF conference on computer vision and pattern recognition},
+  pages={8126--8135},
+  year={2021}
+}
+
+@inproceedings{wang2021transformer,
+  title={Transformer meets tracker: Exploiting temporal context for robust visual tracking},
+  author={Wang, Ning and Zhou, Wengang and Wang, Jie and Li, Houqiang},
+  booktitle={Proceedings of the IEEE/CVF conference on computer vision and pattern recognition},
+  pages={1571--1580},
+  year={2021}
+}
+
+@inproceedings{bhat2020know,
+  title={Know your surroundings: Exploiting scene information for object tracking},
+  author={Bhat, Goutam and Danelljan, Martin and Van Gool, Luc and Timofte, Radu},
+  booktitle={Computer Vision--ECCV 2020: 16th European Conference, Glasgow, UK, August 23--28, 2020, Proceedings, Part XXIII 16},
+  pages={205--221},
+  year={2020},
+  organization={Springer}
+}
+
+@article{li2021informative,
+  title={An informative tracking benchmark},
+  author={Li, Xin and Liu, Qiao and Pei, Wenjie and Shen, Qiuhong and Wang, Yaowei and Lu, Huchuan and Yang, Ming-Hsuan},
+  journal={arXiv preprint arXiv:2112.06467},
+  year={2021}
+}
+
+@misc{githubGitHubVisionmlpytracking,
+	author = {},
+	title = {{G}it{H}ub - visionml/pytracking: {V}isual tracking library based on {P}y{T}orch. --- github.com},
+	howpublished = {\url{https://github.com/visionml/pytracking}},
+	year = {},
+	note = {[Accessed 26-11-2023]},
+}
+@inproceedings{guo2021graph,
+  title={Graph attention tracking},
+  author={Guo, Dongyan and Shao, Yanyan and Cui, Ying and Wang, Zhenhua and Zhang, Liyan and Shen, Chunhua},
+  booktitle={Proceedings of the IEEE/CVF conference on computer vision and pattern recognition},
+  pages={9543--9552},
+  year={2021}
+}
+
+@inproceedings{choi2020robust,
+  title={Robust long-term object tracking via improved discriminative model prediction},
+  author={Choi, Seokeon and Lee, Junhyun and Lee, Yunsung and Hauptmann, Alexander},
+  booktitle={Computer Vision--ECCV 2020 Workshops: Glasgow, UK, August 23--28, 2020, Proceedings, Part V 16},
+  pages={602--617},
+  year={2020},
+  organization={Springer}
+}
+
+@inproceedings{danelljan2020probabilistic,
+  title={Probabilistic regression for visual tracking},
+  author={Danelljan, Martin and Gool, Luc Van and Timofte, Radu},
+  booktitle={Proceedings of the IEEE/CVF conference on computer vision and pattern recognition},
+  pages={7183--7192},
+  year={2020}
+}
+
+
+@inproceedings{bhat2019learning,
+  title={Learning discriminative model prediction for tracking},
+  author={Bhat, Goutam and Danelljan, Martin and Gool, Luc Van and Timofte, Radu},
+  booktitle={Proceedings of the IEEE/CVF international conference on computer vision},
+  pages={6182--6191},
+  year={2019}
+}
+
+@inproceedings{danelljan2019atom,
+  title={Atom: Accurate tracking by overlap maximization},
+  author={Danelljan, Martin and Bhat, Goutam and Khan, Fahad Shahbaz and Felsberg, Michael},
+  booktitle={Proceedings of the IEEE/CVF conference on computer vision and pattern recognition},
+  pages={4660--4669},
+  year={2019}
+}
+
+@article{dosovitskiy2020image,
+  title={An image is worth 16x16 words: Transformers for image recognition at scale},
+  author={Dosovitskiy, Alexey and Beyer, Lucas and Kolesnikov, Alexander and Weissenborn, Dirk and Zhai, Xiaohua and Unterthiner, Thomas and Dehghani, Mostafa and Minderer, Matthias and Heigold, Georg and Gelly, Sylvain and others},
+  journal={arXiv preprint arXiv:2010.11929},
+  year={2020}
+}
+
+@inproceedings{cui2022mixformer,
+  title={Mixformer: End-to-end tracking with iterative mixed attention},
+  author={Cui, Yutao and Jiang, Cheng and Wang, Limin and Wu, Gangshan},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={13608--13618},
+  year={2022}
+}
+
+
+@inproceedings{mayer2021learning,
+  title={Learning target candidate association to keep track of what not to track},
+  author={Mayer, Christoph and Danelljan, Martin and Paudel, Danda Pani and Van Gool, Luc},
+  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
+  pages={13444--13454},
+  year={2021}
+}
+
+@misc{githubGitHubHonglinChuNanoTrack,
+	author = {},
+	title = {{G}it{H}ub - {H}onglin{C}hu/{N}ano{T}rack: {D}eep learning-based mobile model deployment({O}bject {T}racking). {L}ightweight {O}bject {T}racking, {N}{C}{N}{N}, --- github.com},
+	howpublished = {\url{https://github.com/HonglinChu/NanoTrack}},
+	year = {},
+	note = {[Accessed 22-10-2023]},
+}
+
+@inproceedings{pham2018efficient,
+  title={Efficient neural architecture search via parameters sharing},
+  author={Pham, Hieu and Guan, Melody and Zoph, Barret and Le, Quoc and Dean, Jeff},
+  booktitle={International conference on machine learning},
+  pages={4095--4104},
+  year={2018},
+  organization={PMLR}
+}
+
+
+@inproceedings{yan2021lighttrack,
+  title={Lighttrack: Finding lightweight neural networks for object tracking via one-shot architecture search},
+  author={Yan, Bin and Peng, Houwen and Wu, Kan and Wang, Dong and Fu, Jianlong and Lu, Huchuan},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={15180--15189},
+  year={2021}
+}
+
+@article{iandola2016squeezenet,
+  title={SqueezeNet: AlexNet-level accuracy with 50x fewer parameters and< 0.5 MB model size},
+  author={Iandola, Forrest N and Han, Song and Moskewicz, Matthew W and Ashraf, Khalid and Dally, William J and Keutzer, Kurt},
+  journal={arXiv preprint arXiv:1602.07360},
+  year={2016}
+}
+
+
+@inproceedings{howard2019searching,
+  title={Searching for mobilenetv3},
+  author={Howard, Andrew and Sandler, Mark and Chu, Grace and Chen, Liang-Chieh and Chen, Bo and Tan, Mingxing and Wang, Weijun and Zhu, Yukun and Pang, Ruoming and Vasudevan, Vijay and others},
+  booktitle={Proceedings of the IEEE/CVF international conference on computer vision},
+  pages={1314--1324},
+  year={2019}
+}
+
+@inproceedings{wan2020fbnetv2,
+  title={Fbnetv2: Differentiable neural architecture search for spatial and channel dimensions},
+  author={Wan, Alvin and Dai, Xiaoliang and Zhang, Peizhao and He, Zijian and Tian, Yuandong and Xie, Saining and Wu, Bichen and Yu, Matthew and Xu, Tao and Chen, Kan and others},
+  booktitle={Proceedings of the IEEE/CVF conference on computer vision and pattern recognition},
+  pages={12965--12974},
+  year={2020}
+}
+
+@inproceedings{mueller2016benchmark,
+  title={A benchmark and simulator for uav tracking},
+  author={Mueller, Matthias and Smith, Neil and Ghanem, Bernard},
+  booktitle={Computer Vision--ECCV 2016: 14th European Conference, Amsterdam, The Netherlands, October 11--14, 2016, Proceedings, Part I 14},
+  pages={445--461},
+  year={2016},
+  organization={Springer}
+}
+
+@ARTICLE{7001050,
+  author={Wu, Yi and Lim, Jongwoo and Yang, Ming-Hsuan},
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence}, 
+  title={Object Tracking Benchmark}, 
+  year={2015},
+  volume={37},
+  number={9},
+  pages={1834-1848},
+  doi={10.1109/TPAMI.2014.2388226}}
+
+
+@inproceedings{muller2018trackingnet,
+  title={Trackingnet: A large-scale dataset and benchmark for object tracking in the wild},
+  author={Muller, Matthias and Bibi, Adel and Giancola, Silvio and Alsubaihi, Salman and Ghanem, Bernard},
+  booktitle={Proceedings of the European conference on computer vision (ECCV)},
+  pages={300--317},
+  year={2018}
+}
+
+
+@inproceedings{kiani2017need,
+  title={Need for speed: A benchmark for higher frame rate object tracking},
+  author={Kiani Galoogahi, Hamed and Fagg, Ashton and Huang, Chen and Ramanan, Deva and Lucey, Simon},
+  booktitle={Proceedings of the IEEE International Conference on Computer Vision},
+  pages={1125--1134},
+  year={2017}
+}
+
+@article{gordon2020watching,
+  title={Watching the world go by: Representation learning from unlabeled videos},
+  author={Gordon, Daniel and Ehsani, Kiana and Fox, Dieter and Farhadi, Ali},
+  journal={arXiv preprint arXiv:2003.07990},
+  year={2020}
+}
+
+@inproceedings{wu2021progressive,
+  title={Progressive unsupervised learning for visual object tracking},
+  author={Wu, Qiangqiang and Wan, Jia and Chan, Antoni B},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={2993--3002},
+  year={2021}
+}
+
+
+
+@inproceedings{yuan2022contextualized,
+  title={Contextualized spatio-temporal contrastive learning with self-supervision},
+  author={Yuan, Liangzhe and Qian, Rui and Cui, Yin and Gong, Boqing and Schroff, Florian and Yang, Ming-Hsuan and Adam, Hartwig and Liu, Ting},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={13977--13986},
+  year={2022}
+}
+
+@inproceedings{li2022locality,
+  title={Locality-aware inter-and intra-video reconstruction for self-supervised correspondence learning},
+  author={Li, Liulei and Zhou, Tianfei and Wang, Wenguan and Yang, Lu and Li, Jianwu and Yang, Yi},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={8719--8730},
+  year={2022}
+}
+
+@article{yang2020siamatt,
+  title={SiamAtt: Siamese attention network for visual tracking},
+  author={Yang, Kai and He, Zhenyu and Zhou, Zikun and Fan, Nana},
+  journal={Knowledge-based systems},
+  volume={203},
+  pages={106079},
+  year={2020},
+  publisher={Elsevier}
+}
+
+@inproceedings{yu2020deformable,
+  title={Deformable siamese attention networks for visual object tracking},
+  author={Yu, Yuechen and Xiong, Yilei and Huang, Weilin and Scott, Matthew R},
+  booktitle={Proceedings of the IEEE/CVF conference on computer vision and pattern recognition},
+  pages={6728--6737},
+  year={2020}
+}
+
+@inproceedings{yan2021learning,
+  title={Learning spatio-temporal transformer for visual tracking},
+  author={Yan, Bin and Peng, Houwen and Fu, Jianlong and Wang, Dong and Lu, Huchuan},
+  booktitle={Proceedings of the IEEE/CVF international conference on computer vision},
+  pages={10448--10457},
+  year={2021}
+}
+
+@inproceedings{chen2023seqtrack,
+  title={SeqTrack: Sequence to Sequence Learning for Visual Object Tracking},
+  author={Chen, Xin and Peng, Houwen and Wang, Dong and Lu, Huchuan and Hu, Han},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={14572--14581},
+  year={2023}
+}
+
+@inproceedings{wei2023autoregressive,
+  title={Autoregressive Visual Tracking},
+  author={Wei, Xing and Bai, Yifan and Zheng, Yongchao and Shi, Dahu and Gong, Yihong},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={9697--9706},
+  year={2023}
+}
+
+@inproceedings{gao2022aiatrack,
+  title={Aiatrack: Attention in attention for transformer visual tracking},
+  author={Gao, Shenyuan and Zhou, Chunluan and Ma, Chao and Wang, Xinggang and Yuan, Junsong},
+  booktitle={European Conference on Computer Vision},
+  pages={146--164},
+  year={2022},
+  organization={Springer}
+}
+
+@inproceedings{chen2020siamese,
+  title={Siamese box adaptive network for visual tracking},
+  author={Chen, Zedu and Zhong, Bineng and Li, Guorong and Zhang, Shengping and Ji, Rongrong},
+  booktitle={Proceedings of the IEEE/CVF conference on computer vision and pattern recognition},
+  pages={6668--6677},
+  year={2020}
+}
+
+@inproceedings{wang2019fast,
+  title={Fast online object tracking and segmentation: A unifying approach},
+  author={Wang, Qiang and Zhang, Li and Bertinetto, Luca and Hu, Weiming and Torr, Philip HS},
+  booktitle={Proceedings of the IEEE/CVF conference on Computer Vision and Pattern Recognition},
+  pages={1328--1338},
+  year={2019}
+}
+
+@inproceedings{guo2020siamcar,
+  title={SiamCAR: Siamese fully convolutional classification and regression for visual tracking},
+  author={Guo, Dongyan and Wang, Jun and Cui, Ying and Wang, Zhenhua and Chen, Shengyong},
+  booktitle={Proceedings of the IEEE/CVF conference on computer vision and pattern recognition},
+  pages={6269--6277},
+  year={2020}
+}
+@inproceedings{xu2020siamfc++,
+  title={Siamfc++: Towards robust and accurate visual tracking with target estimation guidelines},
+  author={Xu, Yinda and Wang, Zeyu and Li, Zuoxin and Yuan, Ye and Yu, Gang},
+  booktitle={Proceedings of the AAAI conference on artificial intelligence},
+  volume={34},
+  number={07},
+  pages={12549--12556},
+  year={2020}
+}
+
+@inproceedings{li2019siamrpn++,
+  title={Siamrpn++: Evolution of siamese visual tracking with very deep networks},
+  author={Li, Bo and Wu, Wei and Wang, Qiang and Zhang, Fangyi and Xing, Junliang and Yan, Junjie},
+  booktitle={Proceedings of the IEEE/CVF conference on computer vision and pattern recognition},
+  pages={4282--4291},
+  year={2019}
+}
+
+@inproceedings{zhang2019learning,
+  title={Learning the model update for siamese trackers},
+  author={Zhang, Lichao and Gonzalez-Garcia, Abel and Weijer, Joost Van De and Danelljan, Martin and Khan, Fahad Shahbaz},
+  booktitle={Proceedings of the IEEE/CVF international conference on computer vision},
+  pages={4010--4019},
+  year={2019}
+}
+
+@inproceedings{li2018high,
+  title={High performance visual tracking with siamese region proposal network},
+  author={Li, Bo and Yan, Junjie and Wu, Wei and Zhu, Zheng and Hu, Xiaolin},
+  booktitle={Proceedings of the IEEE conference on computer vision and pattern recognition},
+  pages={8971--8980},
+  year={2018}
+}
+
+
+@inproceedings{held2016learning,
+  title={Learning to track at 100 fps with deep regression networks},
+  author={Held, David and Thrun, Sebastian and Savarese, Silvio},
+  booktitle={Computer Vision--ECCV 2016: 14th European Conference, Amsterdam, The Netherlands, October 11--14, 2016, Proceedings, Part I 14},
+  pages={749--765},
+  year={2016},
+  organization={Springer}
+}
+
+@inproceedings{melekhov2016siamese,
+  title={Siamese network features for image matching},
+  author={Melekhov, Iaroslav and Kannala, Juho and Rahtu, Esa},
+  booktitle={2016 23rd international conference on pattern recognition (ICPR)},
+  pages={378--383},
+  year={2016},
+  organization={IEEE}
+}
+
+
+@inproceedings{koch2015siamese,
+  title={Siamese neural networks for one-shot image recognition},
+  author={Koch, Gregory and Zemel, Richard and Salakhutdinov, Ruslan and others},
+  booktitle={ICML deep learning workshop},
+  volume={2},
+  number={1},
+  year={2015},
+  organization={Lille}
+}
+
+@article{krizhevsky2012imagenet,
+  title={Imagenet classification with deep convolutional neural networks},
+  author={Krizhevsky, Alex and Sutskever, Ilya and Hinton, Geoffrey E},
+  journal={Advances in neural information processing systems},
+  volume={25},
+  year={2012}
+}
+
+@inproceedings{van2007learning,
+  title={Learning color names from real-world images},
+  author={Van De Weijer, Joost and Schmid, Cordelia and Verbeek, Jakob},
+  booktitle={2007 IEEE conference on computer vision and pattern recognition},
+  pages={1--8},
+  year={2007},
+  organization={IEEE}
+}
+
+@inproceedings{dalal2005histograms,
+  title={Histograms of oriented gradients for human detection},
+  author={Dalal, Navneet and Triggs, Bill},
+  booktitle={2005 IEEE computer society conference on computer vision and pattern recognition (CVPR'05)},
+  volume={1},
+  pages={886--893},
+  year={2005},
+  organization={Ieee}
+}
+
+
+
+@inproceedings{lychkov2018tracking,
+  title={Tracking of moving objects with regeneration of object feature points},
+  author={Lychkov, Igor I and Alfimtsev, Alexander N and Sakulin, Sergey A},
+  booktitle={2018 Global Smart Industry Conference (GloSIC)},
+  pages={1--6},
+  year={2018},
+  organization={IEEE}
+}
+
+@article{bruni2014improvement,
+  title={An improvement of kernel-based object tracking based on human perception},
+  author={Bruni, Vittoria and Vitulano, Domenico},
+  journal={IEEE Transactions on Systems, Man, and Cybernetics: Systems},
+  volume={44},
+  number={11},
+  pages={1474--1485},
+  year={2014},
+  publisher={IEEE}
+}
+
+
+@inproceedings{xiao2016efficient,
+  title={Efficient tracking with distinctive target colors and silhouette},
+  author={Xiao, Changlin and Yilmaz, Alper},
+  booktitle={2016 23rd International Conference on Pattern Recognition (ICPR)},
+  pages={2728--2733},
+  year={2016},
+  organization={IEEE}
+}
+
+@article{marvasti2021efficient,
+  title={Efficient scale estimation methods using lightweight deep convolutional neural networks for visual tracking},
+  author={Marvasti-Zadeh, Seyed Mojtaba and Ghanei-Yakhdan, Hossein and Kasaei, Shohreh},
+  journal={Neural Computing and Applications},
+  volume={33},
+  pages={8319--8334},
+  year={2021},
+  publisher={Springer}
+}
+
+
+@article{marvasti2021adaptive,
+  title={Adaptive exploitation of pre-trained deep convolutional neural networks for robust visual tracking},
+  author={Marvasti-Zadeh, Seyed Mojtaba and Ghanei-Yakhdan, Hossein and Kasaei, Shohreh},
+  journal={Multimedia Tools and Applications},
+  volume={80},
+  number={14},
+  pages={22027--22076},
+  year={2021},
+  publisher={Springer}
+}
+
+@inproceedings{marvasti2019rotation,
+  title={Rotation-aware discriminative scale space tracking},
+  author={Marvasti-Zadeh, Seyed Mojtaba and Ghanei-Yakhdan, Hossein and Kasaei, Shohreh},
+  booktitle={2019 27th Iranian Conference on Electrical Engineering (ICEE)},
+  pages={1272--1276},
+  year={2019},
+  organization={IEEE}
+}
+
+@article{ding2017real,
+  title={Real-time scalable visual tracking via quadrangle kernelized correlation filters},
+  author={Ding, Guiguang and Chen, Wenshuo and Zhao, Sicheng and Han, Jungong and Liu, Qiaoyan},
+  journal={IEEE Transactions on Intelligent Transportation Systems},
+  volume={19},
+  number={1},
+  pages={140--150},
+  year={2017},
+  publisher={IEEE}
+}
+
+
+@article{henriques2014high,
+  title={High-speed tracking with kernelized correlation filters},
+  author={Henriques, Jo{\~a}o F and Caseiro, Rui and Martins, Pedro and Batista, Jorge},
+  journal={IEEE transactions on pattern analysis and machine intelligence},
+  volume={37},
+  number={3},
+  pages={583--596},
+  year={2014},
+  publisher={IEEE}
+}
+
+@article{noman2022avist,
+  title={Avist: A benchmark for visual object tracking in adverse visibility},
+  author={Noman, Mubashir and Ghallabi, Wafa Al and Najiha, Daniya and Mayer, Christoph and Dudhane, Akshay and Danelljan, Martin and Cholakkal, Hisham and Khan, Salman and Van Gool, Luc and Khan, Fahad Shahbaz},
+  journal={arXiv preprint arXiv:2208.06888},
+  year={2022}
+}
+
+@article{marvasti2021deep,
+  title={Deep learning for visual tracking: A comprehensive survey},
+  author={Marvasti-Zadeh, Seyed Mojtaba and Cheng, Li and Ghanei-Yakhdan, Hossein and Kasaei, Shohreh},
+  journal={IEEE Transactions on Intelligent Transportation Systems},
+  volume={23},
+  number={5},
+  pages={3943--3968},
+  year={2021},
+  publisher={IEEE}
+}
+
+@article{xu2022regnet,
+  title={RegNet: self-regulated network for image classification},
+  author={Xu, Jing and Pan, Yu and Pan, Xinglin and Hoi, Steven and Yi, Zhang and Xu, Zenglin},
+  journal={IEEE Transactions on Neural Networks and Learning Systems},
+  year={2022},
+  publisher={IEEE}
+}
+
+
+@inproceedings{real2017youtube,
+  title={Youtube-boundingboxes: A large high-precision human-annotated data set for object detection in video},
+  author={Real, Esteban and Shlens, Jonathon and Mazzocchi, Stefano and Pan, Xin and Vanhoucke, Vincent},
+  booktitle={proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
+  pages={5296--5305},
+  year={2017}
+}
+
+@inproceedings{lin2014microsoft,
+  title={Microsoft coco: Common objects in context},
+  author={Lin, Tsung-Yi and Maire, Michael and Belongie, Serge and Hays, James and Perona, Pietro and Ramanan, Deva and Doll{\'a}r, Piotr and Zitnick, C Lawrence},
+  booktitle={Computer Vision--ECCV 2014: 13th European Conference, Zurich, Switzerland, September 6-12, 2014, Proceedings, Part V 13},
+  pages={740--755},
+  year={2014},
+  organization={Springer}
+}
+
+@article{fan2021lasot,
+  title={Lasot: A high-quality large-scale single object tracking benchmark},
+  author={Fan, Heng and Bai, Hexin and Lin, Liting and Yang, Fan and Chu, Peng and Deng, Ge and Yu, Sijia and Harshit and Huang, Mingzhen and Liu, Juehuan and others},
+  journal={International Journal of Computer Vision},
+  volume={129},
+  pages={439--461},
+  year={2021},
+  publisher={Springer}
+}
+
+@ARTICLE{Huang2021,
+  author={Huang, Lianghua and Zhao, Xin and Huang, Kaiqi},
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence}, 
+  title={GOT-10k: A Large High-Diversity Benchmark for Generic Object Tracking in the Wild}, 
+  year={2021},
+  volume={43},
+  number={5},
+  pages={1562-1577},
+  doi={10.1109/TPAMI.2019.2957464}}
+
+
+@article{kingma2014adam,
+  title={Adam: A method for stochastic optimization},
+  author={Kingma, Diederik P and Ba, Jimmy},
+  journal={arXiv preprint arXiv:1412.6980},
+  year={2014}
+}
+
+@article{paszke2019pytorch,
+  title={Pytorch: An imperative style, high-performance deep learning library},
+  author={Paszke, Adam and Gross, Sam and Massa, Francisco and Lerer, Adam and Bradbury, James and Chanan, Gregory and Killeen, Trevor and Lin, Zeming and Gimelshein, Natalia and Antiga, Luca and others},
+  journal={Advances in neural information processing systems},
+  volume={32},
+  year={2019}
+}
+
+@inproceedings{zhu2018distractor,
+  title={Distractor-aware siamese networks for visual object tracking},
+  author={Zhu, Zheng and Wang, Qiang and Li, Bo and Wu, Wei and Yan, Junjie and Hu, Weiming},
+  booktitle={Proceedings of the European conference on computer vision (ECCV)},
+  pages={101--117},
+  year={2018}
+}
+
+@article{wang2020tent,
+  title={Tent: Fully test-time adaptation by entropy minimization},
+  author={Wang, Dequan and Shelhamer, Evan and Liu, Shaoteng and Olshausen, Bruno and Darrell, Trevor},
+  journal={arXiv preprint arXiv:2006.10726},
+  year={2020}
+}
+
+@InProceedings{Wang_2022_CVPR,
+    author    = {Wang, Qin and Fink, Olga and Van Gool, Luc and Dai, Dengxin},
+    title     = {Continual Test-Time Domain Adaptation},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2022},
+    pages     = {7201-7211}
+}
+
+@article{he2023target,
+  title={Target-Aware Tracking with Long-term Context Attention},
+  author={He, Kaijie and Zhang, Canlong and Xie, Sheng and Li, Zhixin and Wang, Zhiwen},
+  journal={arXiv preprint arXiv:2302.13840},
+  year={2023}
+}
+
+@inproceedings{kristan2020eighth,
+  title={The eighth visual object tracking VOT2020 challenge results},
+  author={Kristan, Matej and Leonardis, Ale{\v{s}} and Matas, Ji{\v{r}}{\'\i} and Felsberg, Michael and Pflugfelder, Roman and K{\"a}m{\"a}r{\"a}inen, Joni-Kristian and Danelljan, Martin and Zajc, Luka {\v{C}}ehovin and Luke{\v{z}}i{\v{c}}, Alan and Drbohlav, Ondrej and others},
+  booktitle={Computer Vision--ECCV 2020 Workshops: Glasgow, UK, August 23--28, 2020, Proceedings, Part V 16},
+  pages={547--601},
+  year={2020},
+  organization={Springer}
+}
+
+@article{grill2020bootstrap,
+  title={Bootstrap your own latent-a new approach to self-supervised learning},
+  author={Grill, Jean-Bastien and Strub, Florian and Altch{\'e}, Florent and Tallec, Corentin and Richemond, Pierre and Buchatskaya, Elena and Doersch, Carl and Avila Pires, Bernardo and Guo, Zhaohan and Gheshlaghi Azar, Mohammad and others},
+  journal={Advances in neural information processing systems},
+  volume={33},
+  pages={21271--21284},
+  year={2020}
+}
+
+
+@inproceedings{ye2022joint,
+  title={Joint feature learning and relation modeling for tracking: A one-stream framework},
+  author={Ye, Botao and Chang, Hong and Ma, Bingpeng and Shan, Shiguang and Chen, Xilin},
+  booktitle={European Conference on Computer Vision},
+  pages={341--357},
+  year={2022},
+  organization={Springer}
+}
+
+@inproceedings{lin2017focal,
+  title={Focal loss for dense object detection},
+  author={Lin, Tsung-Yi and Goyal, Priya and Girshick, Ross and He, Kaiming and Doll{\'a}r, Piotr},
+  booktitle={Proceedings of the IEEE international conference on computer vision},
+  pages={2980--2988},
+  year={2017}
+}
+
+@inproceedings{yan2021alpha,
+  title={Alpha-refine: Boosting tracking performance by precise bounding box estimation},
+  author={Yan, Bin and Zhang, Xinyu and Wang, Dong and Lu, Huchuan and Yang, Xiaoyun},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={5289--5298},
+  year={2021}
+}
+
+@article{shin2019sequential,
+  title={Sequential image-based attention network for inferring force estimation without haptic sensor},
+  author={Shin, Hochul and Cho, Hyeon and Kim, Dongyi and Ko, Dae-Kwan and Lim, Soo-Chul and Hwang, Wonjun},
+  journal={IEEE Access},
+  volume={7},
+  pages={150237--150246},
+  year={2019},
+  publisher={IEEE}
+}
+@inproceedings{borsuk2022fear,
+  title={FEAR: Fast, efficient, accurate and robust visual tracker},
+  author={Borsuk, Vasyl and Vei, Roman and Kupyn, Orest and Martyniuk, Tetiana and Krashenyi, Igor and Matas, Ji{\v{r}}i},
+  booktitle={European Conference on Computer Vision},
+  pages={644--663},
+  year={2022},
+  organization={Springer}
+}
+
+@article{liu1985elements,
+  title={Elements of discrete mathematics},
+  author={Liu, Chung Laung},
+  journal={},
+  year={1985},
+  publisher={McGraw-Hill, Inc.}
+}
+
+@inproceedings{fu2019dual,
+  title={Dual attention network for scene segmentation},
+  author={Fu, Jun and Liu, Jing and Tian, Haijie and Li, Yong and Bao, Yongjun and Fang, Zhiwei and Lu, Hanqing},
+  booktitle={Proceedings of the IEEE/CVF conference on computer vision and pattern recognition},
+  pages={3146--3154},
+  year={2019}
+}
+
+@article{liu2021polarized,
+  title={Polarized self-attention: Towards high-quality pixel-wise regression},
+  author={Liu, Huajun and Liu, Fuqiang and Fan, Xinyi and Huang, Dong},
+  journal={arXiv preprint arXiv:2107.00782},
+  year={2021}
+}
+
+@inproceedings{huang2019ccnet,
+  title={Ccnet: Criss-cross attention for semantic segmentation},
+  author={Huang, Zilong and Wang, Xinggang and Huang, Lichao and Huang, Chang and Wei, Yunchao and Liu, Wenyu},
+  booktitle={Proceedings of the IEEE/CVF international conference on computer vision},
+  pages={603--612},
+  year={2019}
+}
+
+@inproceedings{woo2018cbam,
+  title={Cbam: Convolutional block attention module},
+  author={Woo, Sanghyun and Park, Jongchan and Lee, Joon-Young and Kweon, In So},
+  booktitle={Proceedings of the European conference on computer vision (ECCV)},
+  pages={3--19},
+  year={2018}
+}
+
+@article{vaswani2017attention,
+  title={Attention is all you need},
+  author={Vaswani, Ashish and Shazeer, Noam and Parmar, Niki and Uszkoreit, Jakob and Jones, Llion and Gomez, Aidan N and Kaiser, {\L}ukasz and Polosukhin, Illia},
+  journal={Advances in neural information processing systems},
+  volume={30},
+  year={2017}
+}
+
+
+@inproceedings{bertinetto2016fully,
+  title={Fully-convolutional siamese networks for object tracking},
+  author={Bertinetto, Luca and Valmadre, Jack and Henriques, Joao F and Vedaldi, Andrea and Torr, Philip HS},
+  booktitle={Computer Vision--ECCV 2016 Workshops: Amsterdam, The Netherlands, October 8-10 and 15-16, 2016, Proceedings, Part II 14},
+  pages={850--865},
+  year={2016},
+  organization={Springer}
+}
+
+@inproceedings{zhang2020ocean,
+  title={Ocean: Object-aware anchor-free tracking},
+  author={Zhang, Zhipeng and Peng, Houwen and Fu, Jianlong and Li, Bing and Hu, Weiming},
+  booktitle={Computer Vision--ECCV 2020: 16th European Conference, Glasgow, UK, August 23--28, 2020, Proceedings, Part XXI 16},
+  pages={771--787},
+  year={2020},
+  organization={Springer}
+}
+
+@inproceedings{drone-tracking,
+    title={Visual object tracking for unmanned aerial vehicles: A benchmark and new motion models},
+    author={Li, Siyi and Yeung, Dit-Yan},
+    booktitle = {AAAI},
+    year={2017}
+}
+
+@article{liang2015encoding,
+  title={Encoding color information for visual tracking: Algorithms and benchmark},
+  author={Liang, Pengpeng and Blasch, Erik and Ling, Haibin},
+  journal={IEEE transactions on image processing},
+  volume={24},
+  number={12},
+  pages={5630--5644},
+  year={2015},
+  publisher={IEEE}
+}
+@inproceedings{deng2009imagenet,
+  title={Imagenet: A large-scale hierarchical image database},
+  author={Deng, Jia and Dong, Wei and Socher, Richard and Li, Li-Jia and Li, Kai and Fei-Fei, Li},
+  booktitle={2009 IEEE conference on computer vision and pattern recognition},
+  pages={248--255},
+  year={2009},
+  organization={Ieee}
+}
+
+@inproceedings{he2016deep,
+  title={Deep residual learning for image recognition},
+  author={He, Kaiming and Zhang, Xiangyu and Ren, Shaoqing and Sun, Jian},
+  booktitle={Proceedings of the IEEE conference on computer vision and pattern recognition},
+  pages={770--778},
+  year={2016}
+}
+
+@inproceedings{wu2019fbnet,
+  title={Fbnet: Hardware-aware efficient convnet design via differentiable neural architecture search},
+  author={Wu, Bichen and Dai, Xiaoliang and Zhang, Peizhao and Wang, Yanghan and Sun, Fei and Wu, Yiming and Tian, Yuandong and Vajda, Peter and Jia, Yangqing and Keutzer, Kurt},
+  booktitle={Proceedings of the IEEE/CVF conference on computer vision and pattern recognition},
+  pages={10734--10742},
+  year={2019}
+}
+
+@inproceedings{xu2021rethinking,
+  title={Rethinking self-supervised correspondence learning: A video frame-level similarity perspective},
+  author={Xu, Jiarui and Wang, Xiaolong},
+  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
+  pages={10075--10085},
+  year={2021}
+}
+
+@inproceedings{chen2021exploring,
+  title={Exploring simple siamese representation learning},
+  author={Chen, Xinlei and He, Kaiming},
+  booktitle={Proceedings of the IEEE/CVF conference on computer vision and pattern recognition},
+  pages={15750--15758},
+  year={2021}
+}
+@misc{Authors14b,
+ author = {FirstName LastName},
+ title = {Frobnication tutorial},
+ note = {Supplied as supplemental material {\tt tr.pdf}},
+ year = 2014
+}
+
+@article{Alpher02,
+author = {FirstName Alpher},
+title = {Frobnication},
+journal = PAMI,
+volume = 12,
+number = 1,
+pages = {234--778},
+year = 2002
+}
+
+@article{Alpher03,
+author = {FirstName Alpher and  FirstName Fotheringham-Smythe},
+title = {Frobnication revisited},
+journal = {Journal of Foo},
+volume = 13,
+number = 1,
+pages = {234--778},
+year = 2003
+}
+
+@article{Alpher04,
+author = {FirstName Alpher and FirstName Fotheringham-Smythe and FirstName Gamow},
+title = {Can a machine frobnicate?},
+journal = {Journal of Foo},
+volume = 14,
+number = 1,
+pages = {234--778},
+year = 2004
+}
+
+@inproceedings{Alpher05,
+author = {FirstName Alpher and FirstName Gamow},
+title = {Can a computer frobnicate?},
+booktitle = CVPR,
+pages = {234--778},
+year = 2005
+}
+
+@inproceedings{gopal2024separable,
+  title={Separable self and mixed attention transformers for efficient object tracking},
+  author={Gopal, Goutam Yelluru and Amer, Maria A},
+  booktitle={Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision},
+  pages={6708--6717},
+  year={2024}
+}
+
+@article{urbina2022dual,
+  title={Dual use of artificial-intelligence-powered drug discovery},
+  author={Urbina, Fabio and Lentzos, Filippa and Invernizzi, C{\'e}dric and Ekins, Sean},
+  journal={Nature machine intelligence},
+  volume={4},
+  number={3},
+  pages={189--191},
+  year={2022},
+  publisher={Nature Publishing Group UK London}
+}
+
+@inproceedings{kang2023exploring,
+  title={Exploring lightweight hierarchical vision transformers for efficient visual tracking},
+  author={Kang, Ben and Chen, Xin and Wang, Dong and Peng, Houwen and Lu, Huchuan},
+  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
+  pages={9612--9621},
+  year={2023}
+}
+
+@article{wadekar2022mobilevitv3,
+  title={Mobilevitv3: Mobile-friendly vision transformer with simple and effective fusion of local, global and input features},
+  author={Wadekar, Shakti N and Chaurasia, Abhishek},
+  journal={arXiv preprint arXiv:2209.15159},
+  year={2022}
+}
+@Comment{jabref-meta: databaseType:bibtex;}
