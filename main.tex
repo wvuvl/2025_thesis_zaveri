@@ -21,7 +21,7 @@
 %----------------------------------------------------------------------------------------
 %	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
-
+\PassOptionsToPackage{prologue,dvipsnames}{xcolor}
 \documentclass[
 12pt, % The default document font size, options: 10pt, 11pt, 12pt
 oneside, % Two side (alternating margins) for binding by default, uncomment to switch to one side
@@ -55,7 +55,7 @@ chapterinoneline, % Uncomment to place the chapter title next to the number on o
 \usepackage{booktabs}
 \usepackage{mathtools}
 \usepackage{algpseudocode,algorithm}
-% \usepackage[dvipsnames]{xcolor}
+\usepackage[dvipsnames]{xcolor}
 \usepackage{multirow}
 \usepackage{colortbl}
 
@@ -246,8 +246,8 @@ Efficient visual trackers overfit to their training distributions and lack gener
 \include{Chapters/2_LiteratureReview}
 \include{Chapters/3_ProblemDefinition}
 \include{Chapters/4_ProposedMethods}
-% \include{Chapters/5_Results}
-% \include{Chapters/6_ConclusionFutureWork}
+\include{Chapters/5_Results}
+\include{Chapters/6_ConclusionFutureWork}
 
 %----------------------------------------------------------------------------------------
 %	THESIS CONTENT - APPENDICES

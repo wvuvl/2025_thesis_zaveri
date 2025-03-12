@@ -1,312 +1,299 @@
 \chapter{Results} % Main chapter title
 
-\label{Chapter5} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
-
-\begin{figure*}[ht!]
-\centering
-\includegraphics[width=\textwidth]{figures/Qualitative_BBBC006}
-\caption{\textbf{BBBC006 dataset.} Qualitative results on an image from the BBBC006 dataset at different levels of focus. $\mathtt{z}$=16 is considered in-focus, while values further from this are more out of focus in either direction. Segmentations are shown in gray with cell borders shown in blue. AP values are computed at 0.5 IoU.}
-\label{fig:qualitative_results}
-\end{figure*}
-
-%\section{Experiments}
-
-\noindent
-We evaluate the proposed approach with several datasets and multiple settings. Section~\ref{general_results} presents a series of comparisons with generalist and unsupervised domain adaptation models on multiple datasets. We note that although many other instance segmentation methods have been proposed, the selected comparison approaches used within each experiment represent the state-of-the-art in their respective niche; namely, ``generalist'' (pretrained) and unsupervised approaches. Experiments using a 3-D segmentation extension of CellTranspose are detailed in Section~\ref{3D_results}. Finally, we examine different components of our approach with an ablation study in Section~\ref{ablation_results}.
-
-In absence of additional direction, the following setup is used for each experiment. The model in Section~\ref{sec-pretrained-model} is pretrained with the ``generalized'' dataset of~\cite{Stringer2021-yw} as source data $\mathcal{D}^s$. This dataset is composed of samples from 6 different datasets and image sources, totalling 540 images in the training set and 68 in the test set. Adaptation is done as described in Section~\ref{sec-adaptation}. We find that SGD with initial learning rate $10^{-2}$, momentum 0.9, weight decay $10^{-5}$, and batch size of 2 provides optimal results. For the first five epochs, the learning rate decreases by a factor of 10 each epoch, and is kept constant for the remaining five. We take square patches with side length $h=w=112$, use a minimum overlap of $84$ during evaluation, and enforce a nominal cell size $m_n=30$. Additional hyperparameters are set as: $| \mathcal{N}_i |=20$, $\tau=0.1$, $m=10$, $\lambda=1$, $\gamma_1=0.05$, $\gamma_2=2$, and $\delta=0.05$. Because the source dataset used is always significantly larger than the target data, adaptation takes roughly the same amount of time regardless of the size of $K$ or the target data to which the model is adapted. Using a singular NVIDIA TITAN Xp GPU, adaptation takes approximately 5 minutes to complete for each experiment.
-
-%Argument for not showing other segmentation approaches - NuSeT will effectively always underperform Cellpose, same with Mask-RCNN and vanilla U-Net, as shown in Cellpose paper. ``We primarily focus on Cellpose due to the following reasons:''
-
-\section{General Results} \label{general_results}
-
-Details of each dataset and the method utilized for creating splits of data are described below. In general, we follow the data splitting guidelines laid out by previous works to ensure fair comparisons. In order to fit our approach to these guidelines, we draw our $K$ sample patches, to produce $\mathcal{D}^t_K$, from the training split of the dataset representing the target distribution. Instead, the testing split of the target distribution dataset is used as our remaining, unlabeled portion of the target dataset $\mathcal{D}^t$. Thus, the size of each target training set doesn't affect our approach, although it serves as a reference for the amount of data available to the fully trained and unsupervised methods we compare against.
-
-\subsection{Broad Bioimage Benchmark Collection -- 006}
-We evaluated CellTranspose on the target dataset BBBC006~\cite{Ljosa2012-si}, hosted by the Broad Institute. This dataset is composed of human U2OS cells which are fairly homogeneous and easy to segment in ideal settings. However, the same tissue samples have been imaged with different focus settings, generating different images, which allow us to observe the effect of the associated covariate shift on the generalist model as well as our approach. BBBC006 is actually composed of multiple sets containing images of the same experiment from varying levels of focus. In its entirety, there are 34 separate versions of the data -- $z=00$ through $z=33$. As $z=16$ is considered to be in-focus, we select datasets at two distinct distances from the ideal setting in either direction, resulting in our using the datasets $z=00$, $z=08$, $z=16$, $z=24$, and $z=32$.
-
-BBBC006 contains images from an experiment using a 384-well microplate with two sites per well. Therefore, when both image channels (originally contained as separate files) are combined, this results in 768 2-channel images. Each image is named based on its position within the $16 \times 24$-well microplate - thus, we arbitrarily select the first three columns (01-03) to be test data and use the remaining samples for training. This results in 672 images within the training set and 96 within the test set -- or 87.5\% and 12.5\% of the dataset, respectively.
-
-\setlength{\tabcolsep}{4pt}
 \begin{table}
-\begin{center}
-\caption{\textbf{Numerical results on BBBC006 dataset.} Average Precision is measured at IoU threshold 0.5. Best and second best performance are indicated in \textbf{bold} and \underline{underline}, respectively}
-\label{table:bbbc006_quant}
-%\scalebox{0.75}{
-\begin{tabular}{l|lllll}
-\hline\noalign{\smallskip}
-{\bf BBBC006 Results} & $z=00$ & $z=08$ & $z=16$ & $z=24$ & $z=32$ \\
-\noalign{\smallskip}
-\hline
-\noalign{\smallskip}
-{\bf Cellpose} 					& 0.233 & 0.814 & 0.770 & 0.779 & 0.406\\
-{\bf CellTranspose (1-shot)} 	& 0.320 & 0.790 & 0.854 & 0.829 & 0.459\\
-{\bf CellTranspose (2-shot)} 	& 0.399 & 0.831 & \underline{0.858} & 0.838 & \underline{0.525}\\
-{\bf CellTranspose (3-shot)} 	& 0.509 & \textbf{0.837} & 0.851 & \underline{0.841} & 0.502\\
-{\bf CellTranspose (5-shot)} 	& \underline{0.531} & 0.834 & \textbf{0.862} & \textbf{0.842} & \textbf{0.557}\\
-{\bf CellTranspose (10-shot)} 	& \textbf{0.581} & \underline{0.835} & 0.857 & 0.833 & 0.486\\
-\hline
-\end{tabular}
-%}
-\end{center}
-%\vspace{5mm}
-\end{table}
-
-\begin{figure*}
-\centering
-% \includegraphics[height=5cm]{figures/BBBC006_AP_Graphs.eps}
-\includegraphics[height=8cm]{figures/AP_Graphs/z=00/Results_z=00}
-\caption{\textbf{Results on BBBC006 at z=00.} Average precision of $K$-shot adaptation with $K= 1, 2, 3, 5, 10$ target samples, compared with the original Cellpose pretrained model.}
-\label{fig:bbbc_qual_00}
-\end{figure*}
-
-\begin{figure*}
-\centering
-% \includegraphics[height=5cm]{figures/BBBC006_AP_Graphs.eps}
-\includegraphics[height=8cm]{figures/AP_Graphs/z=08/Results_z=08}
-\caption{\textbf{Results on BBBC006 at z=08.} Average precision of $K$-shot adaptation with $K= 1, 2, 3, 5, 10$ target samples, compared with the original Cellpose pretrained model.}
-\label{fig:bbbc_qual_08}
-\end{figure*}
-
-\begin{figure*}
-\centering
-% \includegraphics[height=5cm]{figures/BBBC006_AP_Graphs.eps}
-\includegraphics[height=8cm]{figures/AP_Graphs/z=16/Results_z=16}
-\caption{\textbf{Results on BBBC006 at z=16 (in-focus).} Average precision of $K$-shot adaptation with $K= 1, 2, 3, 5, 10$ target samples, compared with the original Cellpose pretrained model.}
-\label{fig:bbbc_qual_16}
-\end{figure*}
-
-\begin{figure*}
-\centering
-% \includegraphics[height=5cm]{figures/BBBC006_AP_Graphs.eps}
-\includegraphics[height=8cm]{figures/AP_Graphs/z=24/Results_z=24}
-\caption{\textbf{Results on BBBC006 at z=24.} Average precision of $K$-shot adaptation with $K= 1, 2, 3, 5, 10$ target samples, compared with the original Cellpose pretrained model.}
-\label{fig:bbbc_qual_24}
-\end{figure*}
-
-\begin{figure*}
-\centering
-% \includegraphics[height=5cm]{figures/BBBC006_AP_Graphs.eps}
-\includegraphics[height=8cm]{figures/AP_Graphs/z=32/Results_z=32}
-\caption{\textbf{Results on BBBC006 at z=32.} Average precision of $K$-shot adaptation with $K= 1, 2, 3, 5, 10$ target samples, compared with the original Cellpose pretrained model.}
-\label{fig:bbbc_qual_32}
-\end{figure*}
-
-Figure~\ref{fig:qualitative_results} shows qualitative segmentation results. As we move away from the optimal focal plane the generalist Cellpose model exposes greater performance deterioration than CellTranspose.
-
-We also test CellTranspose with different numbers $K= 1, 2, 3, 5, 10$, of few-shot adaptation. Figures~\ref{fig:bbbc_qual_00}-\ref{fig:bbbc_qual_32} plot the average precision (AP) against the intersection over union (IoU) for the different focal settings. CellTranspose consistently achieves high performance levels with as few as three annotated shots. Beyond this, results begin to exhibit diminished returns. Therefore, unless otherwise specified, other results have been obtained with a 3-shot adaptation, given the balance it gives between performance and annotation requirement.
-
-We additionally share the precise values obtained for BBBC006 for an average precision at intersection-over-union (IoU) threshold 0.5, shown in Table~\ref{table:bbbc006_quant}.
+	\caption{Comparative study on VOT2020 Benchmark \cite{kristan2020eighth}. Red, blue, and green colors describe the best three CPU real-time trackers whereas bold suggests the best CPU non-real-time tracker.}
+	
+	\label{tab:vot2020_res}
+	\centering
+	\scalebox{0.6}{
+	
+	\begin{tabular}{c|c c c |c c c c c  >{\columncolor{lightgray!20}}c}
+	  \hline
+	  & \multicolumn{3}{c|}{CPU non-real-time Methods}   & \multicolumn{6}{c}{CPU real-time Methods} \\
+	  % \hline
+	
+	  Trackers  & STARK-ST50 \cite{yan2021learning} & STARK-S50 \cite{yan2021learning}  & DiMP \cite{bhat2019learning} &  HCAT \cite{chen2022efficient}  &  E.T.Track \cite{blatter2023efficient}  & LightTrack \cite{yan2021lighttrack} & ATOM \cite{danelljan2019atom} & MixFormerV2-S \cite{cui2024mixformerv2}& \bf{S-Tiny} \\
+	  \hline
+	  EAO         & \bf{0.308} & 0.280 & 0.274 & \color{RoyalBlue} \bf{0.276} & 0.267 & 0.242 & \color{ForestGreen} \bf{0.271} & 0.258 & \color{Mahogany} \bf{0.291} \\
+	  Accuracy    & \bf{0.478} & 0.477 & 0.457 & \color{ForestGreen} \bf{0.455} & 0.432 & 0.422 & \color{RoyalBlue} \bf{0.462} & - & \color{Mahogany} \bf{0.491}\\
+	  Robustness  & \bf{0.799} & 0.728 & 0.740 & \color{Mahogany} \bf{0.747} & \color{RoyalBlue} \bf{0.741} & 0.689 & \color{ForestGreen} \bf{0.734} & - & \color{RoyalBlue} \bf{0.741}\\
+	  \hline
+	  FPS (CPU)   & 6 & 7 & \bf{14} & \color{ForestGreen} \bf{60} & 35 & \color{RoyalBlue} \bf{67} & 30 & 37 & \color{Mahogany} \bf{100} \\
+	  FPS (GPU)   & 66 & 66 & \bf{127} & \color{ForestGreen} \bf{300} & 108 & 170 & 240 & \color{RoyalBlue} \bf{420} & \color{Mahogany} \bf{425} \\
+	  FPS (Nano)   & 10 & \bf{12} & 10 & \color{RoyalBlue} \bf{24} & 10 & \color{ForestGreen} \bf{17} & 13 & \color{Mahogany} \bf{40} & \color{Mahogany} \bf{40} \\
+	  \hline
+	
+	\end{tabular}
+	}
+	\end{table}
 
 
+\begin{table*}[th!]
+	\caption{Comparative Study with other SOTA approaches on various benchmarks including AVisT\cite{noman2022avist}, NFS30\cite{kiani2017need}, UAV123\cite{mueller2016benchmark}, TrackingNet\cite{muller2018trackingnet}, GOT-10k\cite{Huang2021}, and LaSOT\cite{fan2021lasot}. Red, blue, and green colors describe the best three CPU real-time trackers whereas bold suggests the best CPU non-real-time tracker.
+	}
+	\vspace{-3mm}
+	\label{tab:main_res}
+	\centering
+	\scalebox{0.65}{
+	  \setlength{\tabcolsep}{0.45em}
+	\begin{tabular}{c |c c  c  |c c  |c c |c c  c |c c |c c |c c c}
+	
+	\hline
+	& \multicolumn{7}{c|}{Out-of-Distribution (OOD) test sets} & \multicolumn{7}{c|}{In-Distribution (ID) test sets} & & \\
+	\multirow{2}{*}{Methods}  & \multicolumn{3}{c|}{AVisT\cite{noman2022avist}} & \multicolumn{2}{c|}{NFS30\cite{kiani2017need}} & \multicolumn{2}{c|}{UAV123\cite{mueller2016benchmark}} & \multicolumn{3}{c|}{TrackingNet\cite{muller2018trackingnet}} & \multicolumn{2}{c|}{GOT-10k\cite{Huang2021}} & \multicolumn{2}{c|}{LaSOT\cite{fan2021lasot}}  & \multicolumn{3}{c}{ FPS ($\uparrow$)}  \\
+	 & AUC & OP50 & OP75    & AUC & Prec. & AUC & Prec. & AUC & P$_{norm}$ & Prec. & AO & SR$_{0.50}$ & AUC & Prec. & CPU & GPU & Nano\\
+	 
+	\hline
+	\multicolumn{18}{c}{CPU non-real-time Methods} \\
+	\hline
+  
+	STARK-ST50 \cite{yan2021learning}         & 0.511 & 0.592 & \bf{0.391}       & 0.652  & - & 0.691  & - & 0.813  & 0.861  & - & 0.680  & 0.777 & 0.666  & -  & \bf{7} & 66 & 10\\
+	Ocean \cite{zhang2020ocean}               & 0.389 & 0.436 & 0.205       & 0.573  & 0.706 & 0.574  & - & -  & -  & - & 0.611  & 0.634  & 0.505  & 0.517 & 2  & 70 & 18\\
+	SiamRPN++ \cite{li2019siamrpn++}          & 0.390 & 0.435 & 0.212       & 0.596  & \bf{0.720} & 0.593  & - & 0.733  & 0.800  & - & -  &  - & 0.503  & 0.496  & 1.4 & 145 & 10 \\
+	SiamMask \cite{wang2019fast}              & 0.358 & 0.401 & 0.185       & - & -  & - & -  & -  & - & -  & -  & - & - & -  & 4 & \bf{308} & 20 \\
+	SiamBAN \cite{chen2020siamese}            & 0.376 & 0.432 & 0.217       & 0.594  & - & 0.631  & 0.833  & -  & -  & - & -  & - & 0.514  & 0.598 & 4 & 300 & \bf{24} \\
+	SeqTrack-L384 \cite{chen2023seqtrack}     & - & - & -                   & 0.662  & - & 0.685  & - & \bf{0.855}  & \bf{0.895}  & \bf{0.858} & 0.748  & 0.819  & \bf{0.725}  & 0.793  & 0.4 & 15 & -\\
+	MixFormerV2-B \cite{cui2024mixformerv2}   & - & - & -                   & -  & - & \bf{0.699}  & \bf{0.921} & 0.834  & 0.881  & 0.816 & 0.739  & -  & 0.706  & \bf{0.808}  & \bf{7} & 130 & 15 \\
+	DropMAE \cite{wu2023dropmae}              & - & - & -                   & -  & - & -  & - & 0.841  & 0.889  & - & \bf{0.759}  & \bf{0.868}  & 0.718  & 0.780  & 4 & 98 & 10 \\
+	TransT \cite{chen2021transformer}         & 0.490 & 0.564 & 0.372       & 0.657  & - & 0.691  & - & 0.814  & 0.867  & 0.803 & 0.723  & 0.824   & 0.649  & 0.690  & \bf{7} & 85 & 8 \\
+	OSTrack-256 \cite{ye2022joint}            & - & - & -                   & 0.647  & - & 0.683  & - & 0.831  & 0.878  & 0.820 & 0.710  & 0.804  & 0.691  & 0.752 & 4 & 98 & 18 \\
+	ToMP-50 \cite{mayer2022transforming}      & \bf{0.516} & \bf{0.595} & 0.389      & \bf{0.669}  & - & 0.690  & - & 0.786  & 0.862  & 0.812 & -  & - & 0.676  & 0.722  & \bf{7} & 83 & 6 \\
+	
+	\hline
+	\multicolumn{18}{c}{CPU real-time Methods} \\
+	\hline  
+	
+	HiT-Small~\cite{kang2023exploring} %\footnotemark{} 
+	 & - & - & - &  0.618 & - & 0.633 & - & \color{ForestGreen} \bf{0.777} & 0.819 & \color{ForestGreen} \bf{0.731} & 0.626 & 0.712 & 0.605 & \color{ForestGreen} \bf{0.615} & - & - & -\\
+	SMAT \cite{gopal2024separable} & \color{ForestGreen} \bf{0.447} & \color{ForestGreen} \bf{0.507} & \color{ForestGreen} \bf{0.313}  &  \color{RoyalBlue} \bf{0.620}  &  \color{RoyalBlue} \bf{0.746} & \color{ForestGreen} \bf{0.643}  & \color{ForestGreen} \bf{0.839}  &  \color{Mahogany} \bf{0.786} &  \color{Mahogany} \bf{0.842}  &  \color{Mahogany} \bf{0.756} &  \color{RoyalBlue} \bf{0.645}  &  \color{RoyalBlue} \bf{0.747} &  \color{Mahogany} \bf{0.617}  &  \color{Mahogany} \bf{0.646}  & 34 & 158 & 20 \\
+	E.T.Track \cite{blatter2023efficient} & 0.390 & 0.412 & 0.227               & 0.570  & 0.694 & 0.623  & 0.806 & 0.745  & 0.798  & 0.698 & 0.566  & 0.646 & 0.589  & 0.603 & 35 & 108 & 10 \\
+	MixFormerV2-S \cite{cui2024mixformerv2} & 0.396 & 0.425 & 0.227             & 0.610  & 0.722 & 0.634  & 0.837 & 0.758  & 0.811  & 0.704 & 0.587  & 0.672 & \color{ForestGreen} \bf{0.606}  & 0.604  & 37 & \color{ForestGreen} \bf{420} & \color{Mahogany} \bf{40} \\
+	HCAT \cite{chen2022efficient} & 0.418 & 0.481 & 0.263                       & \color{ForestGreen} \bf{0.619}  & 0.741 & 0.636  & 0.805 & 0.766  & \color{ForestGreen} \bf{0.826}  & 0.729 & \color{ForestGreen} \bf{0.634}  & \color{ForestGreen} \bf{0.743} & 0.590  & 0.605 & \color{ForestGreen} \bf{60} & 300 & \color{ForestGreen} \bf{24} \\
+	LightTrack \cite{yan2021lighttrack} & 0.404 & 0.437 & 0.242                 & 0.565  & 0.692 & 0.617  & 0.799 & 0.729  & 0.793  & 0.699 & 0.582  & 0.660  & 0.522  & 0.517 & \color{RoyalBlue} \bf{67} & 170 & 17 \\
+	FEAR-XS \cite{borsuk2022fear} & 0.387 & 0.421 & 0.220                       & 0.486  & 0.563 & 0.610  & 0.816 & 0.715  & 0.805 & 0.699 & 0.573  & 0.681  & 0.535  & 0.545 &  \color{Mahogany} \bf{100} & \color{Mahogany} \bf{450} & \color{Mahogany} \bf{40}\\
+  
+	
+	\rowcolor{lightgray!20} \bf{S-Tiny}  &  \color{RoyalBlue} \bf{0.472} &  \color{RoyalBlue} \bf{0.543} &  \color{RoyalBlue} \bf{0.353}  &  \color{RoyalBlue} \bf{0.620}  &  \color{Mahogany} \bf{0.747} &  \color{RoyalBlue} \bf{0.662} &  \color{RoyalBlue} \bf{0.856} & 0.741  & 0.819  & 0.720 & 0.614  & 0.728 & 0.590  &  0.607  &  \color{Mahogany} \bf{100} & \color{RoyalBlue} \bf{425} & \color{Mahogany} \bf{40}\\
+	\rowcolor{lightgray!20} \bf{S-Small} &  \color{Mahogany} \bf{0.479} &  \color{Mahogany} \bf{0.557} &  \color{Mahogany} \bf{0.372}  &  \color{Mahogany} \bf{0.624}  & \color{ForestGreen} \bf{0.744} &  \color{Mahogany} \bf{0.681}  &  \color{Mahogany} \bf{0.858} & \color{RoyalBlue} \bf{0.784}  & \color{RoyalBlue} \bf{0.835}  & \color{RoyalBlue} \bf{0.746} & \color{Mahogany} \bf{0.646}  &  \color{Mahogany} \bf{0.751}  & \color{RoyalBlue} \bf{0.607}  & \color{RoyalBlue} \bf{0.622}  &  45 & 400 & \color{RoyalBlue} \bf{30}\\
+	\hline
+	\end{tabular}
+	}
+	\vspace{-4mm}
+  \end{table*}
+  
+  
+  
+  
+  
+  \begin{table*}[h]
+	\caption{Comparative study on ITB \cite{li2021informative}, OTB \cite{7001050}, TC128 \cite{liang2015encoding}, and  DTB70 \cite{drone-tracking} benchmarks in terms of their AUC score. Red, blue, and green colors describe the best three CPU real-time trackers whereas bold suggests the best CPU non-real-time tracker.}
+	\vspace{-3mm}
+	\label{tab:itb_otb_tc_dtb_res}
+	\centering
+	\scalebox{0.65}{
+	
+	\begin{tabular}{c|c c c c c c |c c c >{\columncolor{lightgray!20}}c >{\columncolor{lightgray!20}}c}
+	  \hline
+	  & \multicolumn{6}{c|}{CPU non-real-time Methods}   & \multicolumn{5}{c}{CPU real-time Methods} \\
+	  % \hline
+  
+	   & DropMAE \cite{wu2023dropmae}  & TransT  \cite{chen2021transformer} & STARK \cite{yan2021learning}  & DiMP \cite{bhat2019learning}  & SiamRPN++ \cite{li2019siamrpn++} & Ocean \cite{zhang2020ocean} &   E.T.Track \cite{blatter2023efficient}  & LightTrack \cite{yan2021lighttrack} & ATOM \cite{danelljan2019atom} & \bf{S-Tiny} & \bf{S-Small}  \\
+	  \hline
+	  ITB \cite{li2021informative} & \bf{0.650} & 0.547 & 0.576 & 0.537 & 0.441 & 0.477 & - & - & \color{ForestGreen} \bf{0.472} & \color{RoyalBlue} \bf{0.548} & \color{Mahogany} \bf{0.555} \\
+	  OTB \cite{7001050} & \bf{0.696} & 0.695 & 0.681 & 0.684 & 0.687 & 0.684 & \color{ForestGreen} \bf{0.678} & 0.662 & 0.669 & \color{RoyalBlue} \bf{0.709} & \color{Mahogany} \bf{0.713} \\
+	  TC128 \cite{liang2015encoding} & - & 0.596 & \bf{0.626} & 0.612 & 0.577 & 0.557 & - & 0.550 & \color{ForestGreen} \bf{0.599} & \color{RoyalBlue} \bf{0.617} & \color{Mahogany} \bf{0.630} \\
+	  DTB70 \cite{drone-tracking} & - & \bf{0.667} & 0.638 & - & 0.569 & 0.455 & - & \color{ForestGreen} \bf{0.491} & - & \color{RoyalBlue} \bf{0.656} & \color{Mahogany} \bf{0.662} \\
+	  \hline
+	  FPS (CPU) & 4 & 8 & 7 & \bf{14} & 1.4 & 2 & 35 & \color{RoyalBlue} \bf{67} & 30 & \color{Mahogany} \bf{100} & \color{ForestGreen} \bf{45} \\
+	  FPS (GPU) & 85 & 66 & 66 & 127 & \bf{145} & 70 & 108 & 170 & \color{ForestGreen} \bf{240} & \color{Mahogany} \bf{425} & \color{RoyalBlue} \bf{400} \\
+	  FPS (Nano) & 10 & 8 & 12 & 10 & 10 & \bf{18} & 10 & \color{ForestGreen} \bf{17} & 13 & \color{Mahogany} \bf{40} & \color{RoyalBlue} \bf{30} \\
+	  \hline
+  
+	\end{tabular}
+  }
+  \end{table*}
+  
+  
+	\begin{table*}[h]
+	  \caption{Comparative study on test-time adaptation (TTA) approaches on AVisT\cite{noman2022avist} as it involves various extreme distribution shifts with real-world corruptions and ITB \cite{li2021informative} as the next most challenging benchmark. The best results are in bold.
+	  }
+	  \label{tab:tta_res}
+	  \vspace{-3mm}
+	  \centering
+	  \scalebox{0.65}{
+	  \begin{tabular}{c|c c  c c |c c  c c |c c c}
+	  
+	  \hline
+	  
+	  \multirow{2}{*}{Methods}  & \multicolumn{4}{c|}{AVisT\cite{noman2022avist}}  & \multicolumn{4}{c|}{ITB\cite{li2021informative}} &  \multicolumn{3}{c}{Latency (ms) $\downarrow$ }  \\
+	   & AUC & OP50 & OP75 & Prec.    & AUC & OP50 & OP75 & Prec. & CPU & GPU & Nano\\
+	
+	  \hline 
+	  No TTA & 0.458 & 0.529 & 0.340 & 0.413 & 0.539 & 0.659 & 0.483 & 0.631 & \bf{3.6} & \bf{0.6} & \bf{9.8}\\
+	  \hline
+	  \multicolumn{12}{c}{Backward-Based Methods} \\
+	  \hline
+	  TENT \cite{wang2020tent} & 0.460 & 0.518 & 0.356 & 0.417 & 0.530 & 0.635 & 0.472 & 0.610 & 9.9 & 2.9 & 30.4 \\
+	  ETA \cite{niu2022efficient} & 0.459 & 0.516 & \bf{0.360} & 0.416 & 0.525 & 0.630 & 0.470 & 0.606 & 9.9 & 2.8 & 35.6 \\
+	  \hline
+	  \multicolumn{12}{c}{Backward-Free Methods} \\
+	  \hline
+	  Momentum \cite{schneider2020improving} & 0.452 & 0.513 & 0.341 & 0.411 & 0.540 & 0.656 & 0.484 & 0.632 & 3.7 & 0.7 & 15.1 \\
+	  DUA \cite{mirza2022norm} & 0.427 & 0.484 & 0.307 & 0.394 & 0.516 & 0.628 & 0.467 & 0.591 & 3.7 & 0.7 & 15.1 \\
+	  IN \cite{pan2018two} & 0.454 & 0.515 & 0.342 & 0.417 & 0.519 & 0.628 & 0.455 & 0.604 & 6.6 & 1.9 & 23.1 \\
+	  AdaBN \cite{li2016revisiting} & 0.456 & 0.517 & 0.345 & 0.414 & 0.522 & 0.632 & 0.461 & 0.608 & 3.7 & 0.7 & 15.1 \\
+	  \rowcolor{lightgray!20} DTTA (ours) & \bf{0.472} & \bf{0.543} & 0.353 & \bf{0.440} & \bf{0.548} & \bf{0.667} & \bf{0.494} & \bf{0.634} & 3.7 & 0.7 & 15.1 \\
+	  \hline
+	  \end{tabular}
+	  }
+	  \vspace{-5mm}
+	\end{table*}
+  
+  \label{sec:implementation}
+  
+  \section{Implementation Details}
+  \subsection{Model Details}
+  With the Tiny backbone, SiamABC consists of 2.03M parameters and uses 0.628 GigaFLOPs. We refer to this tracker as SiamABC-Tiny or S-Tiny. With the Small backbone, SiamABC consists of 9.82M parameters and uses 6.81 GigaFLOPs. We refer to it as SiamABC-Small or S-Small. S-Tiny runs at 100 FPS on a CPU, 425 FPS on a GPU, and 40 FPS on our edge device Jetson Orin Nano, while S-Small runs at 45 FPS (CPU), 400 FPS (GPU), and 30 FPS (Nano). 
+  
+  
+  \subsection{Training}
+  All the code is written in PyTorch \cite{paszke2019pytorch}. Both models were trained on a single Nvidia RTX A6000 GPU for 20 epochs. We use a batch size of 32 and ADAM optimizer \cite{kingma2014adam} with a learning rate of $10^{-4}$. We allow close to $10^6$ samples every epoch by randomly sampling sequences and then images from GOT-10k \cite{Huang2021}, LaSOT \cite{fan2021lasot}, COCO2017 \cite{lin2014microsoft}, and TrackingNet \cite{muller2018trackingnet}. We randomly sample a template from a sampled sequence. Further, we randomly choose a search sample from the same sequence with an offset of $\Delta$. The dynamic frames are sampled from the interval between the template and the search samples. We set $\Delta=150$ arbitrarily to facilitate dynamic updates at longer intervals during testing. The input size of the template is $128\times128$, and $256\times256$ for the search frames. For standard augmentations, we crop a template with a size increase offset of 0.2 and a search region with an offset of 2.0. We also apply to the search region crops a random scale and shift factor by uniformly drawing samples from (0.65, 1.35) and (0.92,1.08), respectively. We also apply the color augmentation and use the same post-processing as in~\cite{bertinetto2016fully}.
+  
+  \begin{algorithm}
+	\centering
+	\caption{Sampling Strategy}\label{alg:sampling}
+	\begin{algorithmic}
+	\State $X \gets rand(X^n) | X \in X^n$ \Comment{sequence}
+	\State $I_T \gets x_i |  x_i \in X$ \Comment{static template}
+	\State $I_t \gets x_j | x_j \in X[i, i+\Delta]$ \Comment{search-region} 
+	\State $I_S \gets x_k, x_k \in X[i, j]$ \Comment{dynamic-search-region}
+	\State $I_D \gets crop(I_S)$ \Comment{dynamic template}
+	\end{algorithmic}
+  \end{algorithm}
+  
+  \subsection{Training Sampling Strategy} \label{sec:methods_sampling}
+  
+  We sample a random sequence from a database as shown in \ref{alg:sampling}. We choose a random frame for the template, $I_T$. Then, we choose another frame randomly for the search-region, $I_t$, from an interval of size $\Delta=150$ right after the frame that contains the template. The dynamic-search-region $I_S$, and $I_D$, are randomly sampled from the interval with the lower bound of the template frame and the upper bound of the search-region frame. Here, we should note that $I_S$ contains $I_D$. We randomly choose 300,000 samples from GOT-10k \cite{Huang2021}, 100,000 from LaSOT \cite{fan2021lasot}, 200,000 from COCO2017 \cite{lin2014microsoft}, and 400,000 from TrackingNet \cite{muller2018trackingnet} datasets to collect a total of $10^6$ samples every epoch.
+
+  \subsection{Inference}
+  We evaluate all the trackers on two hardware platforms. One is based on an Nvidia RTX 3090 GPU and 12th Gen Intel i9-12900F CPU. The other is an entry-level GPU-based edge device, Nvidia Jetson Orin Nano, which here we abbreviate to `Nano'. All the FPS numbers were reproduced using these two platforms. 
+  
+  \section{Comparison with other Trackers} \label{sec:benchmarks}
+  We evaluate our SiamABC trackers on 11 challenging benchmarks: AVisT\cite{noman2022avist}, VOT2020\cite{kristan2020eighth}, LaSOT\cite{fan2021lasot}, TrackingNet\cite{muller2018trackingnet}, GOT-10k\cite{Huang2021}, OTB-2015\cite{7001050}, TC128\cite{liang2015encoding}, UAV123\cite{mueller2016benchmark}, NFS30\cite{kiani2017need}, ITB\cite{li2021informative}, and DTB70\cite{drone-tracking}. 
+  
+  
+  \subsection{VOT2020}  
+  VOT2020~\cite{kristan2020eighth} contains 60 challenging videos and employs EAO (expected average overlap) as its metric alongside the accuracy and robustness. In \ref{tab:vot2020_res}, our tracker, S-Tiny, shows remarkable resilience against difficult scenarios in this benchmark, outperforming HCAT\cite{chen2022efficient} (best real-time method) and STARK-S50\cite{yan2021learning} by 1.05\% and 1.04\% EAO respectively while being more than 14x faster than STARK-S50 on a CPU.
+  
+  
+  \subsection{AVisT} 
+  AVisT~\cite{noman2022avist} consists of 120 extremely challenging real-world sequences in adverse visibility.
+  % (see Figure 2 in the supplementary material).
+  In addition to simple occlusion and fast motion, it involves objects under heavy rain, heavy snow, dense fog, sandstorms, hurricanes, etc. In \ref{tab:main_res}, we note that this out-of-distribution benchmark highlights a significant performance degradation of SOTA trackers compared to the widely used in-distribution test sets. On the other hand, our trackers, S-Tiny and S-Small, are outperforming HCAT by 5.4\% and 6.1\% respectively and MixFormerV2-S\cite{cui2024mixformerv2} by 7.6\% and 8.3\% respectively, showing our approach's improved ability to track in sequences with adverse conditions. Additionally, S-Tiny outperforms SMAT\cite{gopal2024separable} by 2.5\% while being almost 3x faster on a CPU.
+  
+  \subsection{UAV123}
+  UAV123~\cite{mueller2016benchmark}  is a benchmark for tracking from an aerial viewpoint involving 123 long video sequences. We outperform HCAT by 2.6\% and 4.5\% respectively, and SMAT by 1.9\% and 3.8\% respectively, confirming the OOD generalization ability of our approach.
 
 
-%\setlength{\tabcolsep}{4pt}
-%\begin{table}
-%\begin{center}
-%\caption{Average Precision of few-shot adaptation with different numbers of target samples. Experiments were completed using five BBBC006 datasets. AP is calculated for an IoU threshold of 0.5}
-%\label{table:bbbc006_gen}
-%\begin{tabular}{l|lllll}
-%\hline\noalign{\smallskip}
-%{\bf Few-shot Results} & z=00 & z=08 & z=16 & z=24 & z=32\\
-%\noalign{\smallskip}
-%\hline
-%\noalign{\smallskip}
-%%Cellpose (cyto model) & 0.0318 & 0.501 & \textbf{0.862} & 0.767 & 0.079\\
-%Cellpose (nuclei model)  & 0.228 & 0.810 & 0.765 & 0.773 & 0.393\\
-%CellTranspose (1-shot)  & 0.068 		 & 0.796 & 0.832 & 0.815 & 0.463\\
-%CellTranspose (2-shot)  & 0.206 		 & \textbf{0.840} & 0.828 & \underline{0.831} & 0.607\\
-%CellTranspose (3-shot)  & 0.494 		 & \underline{0.837} & 0.849 & \underline{0.831} & 0.643\\
-%CellTranspose (5-shot)  & \underline{0.519} 		 & 0.831 & \textbf{0.852} & 0.818 & \textbf{0.715}\\
-%CellTranspose (10-shot) & \textbf{0.557} & 0.830 & \underline{0.851} & \textbf{0.832} & \underline{0.705}\\
-%\hline
-%\end{tabular}
-%\end{center}
-%\end{table}
-%\setlength{\tabcolsep}{1.4pt}
+  \subsection{NFS30}
+  NFS30~\cite{kiani2017need}  is a benchmark collected with extremely high frame rate of 240 FPS for fast tracking. Similar to other approaches, we use the 30 FPS version of the benchmark for evaluation. Our trackers outperform others also in this OOD test. Please refer to \ref{tab:main_res}.
+  
+
+  \subsection{LaSOT, TrackingNet, \& GOT-10k}
+  The LaSOT~\cite{fan2021lasot} benchmark involves 280 long test sequences with 2500 frames per sequence on average.
+  GOT-10k~\cite{Huang2021} is a challenging short term benchmark consisting of 180 test sequences which are evaluated on their server. Most approaches are trained on the large training sets of LaSOT, TrackingNet, and GOT-10k; thus, the test distributions of such benchmarks remain quite similar. 
+  Nevertheless, S-Small outperforms most SOTA CPU real-time trackers in these benchmarks while remaining efficient as shown in \ref{tab:main_res}. Our approach slightly underperforms SMAT
+  in two ID sets, LaSOT and TrackingNet; however, we note that the trade-off with speed is significant as SMAT runs at 34 FPS (CPU), 158 FPS (GPU), and 20 FPS (Nano), while S-tiny runs at 100 FPS (CPU), 425 FPS (GPU), and 40 FPS (Nano), and S-Small runs at 45 FPS (CPU), 400 FPS (GPU), and 30 FPS (Nano). 
+  
+  \subsection{OTB-2015, TC128, DTB70, \& ITB}
+  As shown in \ref{tab:itb_otb_tc_dtb_res}, we outperform other CPU-based trackers on the \textbf{OTB-2015}\cite{7001050} benchmark with 100 sequences, even surpassing the CPU non-real-time approaches. 
+  Another similar benchmark is \textbf{TC128}\cite{liang2015encoding} with 128 challenging color sequences, where we outperform other SOTA approaches as well. \textbf{DTB70}\cite{drone-tracking} is another small-scale UAV benchmark involving 70 long sequences. We consistently show improvement here as well. \textbf{ITB}\cite{li2021informative} is a benchmark with 180 various challenging sequences from many other benchmarks giving an informative evaluation of trackers. ITB is second to AVisT in terms of challenging sequences, and \ref{tab:itb_otb_tc_dtb_res} confirms a remarkable generalization ability of our approach. We note that DropMAE \cite{wu2023dropmae} was pre-tained on additional diverse training data.
+  
+  
+  
+	
+  \section{Comparision with Adaptation Approaches}\label{sec:tta_res}
+  
+  In our S-Tiny model we incorporate TENT\cite{wang2020tent} and ETA\cite{niu2022efficient} as our TTA baselines with backward-passes,
+  where we use our classification output as self-entropy. Additionally, we also evaluated Momentum\cite{schneider2020improving}, DUA\cite{mirza2022norm}, IN\cite{pan2018two}, and AdaBN\cite{li2016revisiting} as our backward-free TTA baselines. We set the batch size to 1. The comparison is shown in \ref{tab:tta_res} with two of the most challenging benchmarks, AVisT as it involves multiple adverse scenarios with natural corruptions and ITB as the next most challenging benchmark.
+  TENT and ETA have almost 3x the latency because of the backward passes, and do improve with AVisT. However, we do not observe the same with ITB. Momentum shows negligible improvement, whereas IN, AdaBN, and DUA show performance degradation in both scenarios. When DTTA, our efficient adaptation strategy, is turned on, we notice significant improvement with both benchmarks while having minimal latency.
+  \begin{table}[t]
+	\caption{Case study on parameter-free dynamic updates. }
+	\vspace{-3mm}
+	\label{tab:component_ablation_updates}
+	\centering
+	\scalebox{0.65}{
+	\begin{tabular}{c|c c | c c | c c c}
+	\hline
+	\multirow{2}{*}{{\shortstack{ Dynamic Updates \\ (No DTTA)} } }  & \multicolumn{2}{c|}{AVisT}   & \multicolumn{2}{c|}{LaSOT} & \multicolumn{3}{c}{FPS($\uparrow$)} \\
+	  & AUC & OP50 & AUC & Prec.  & CPU & GPU & Nano \\
+	
+	\hline
+	No Updates & 0.448 & 0.511  & 0.556 & 0.572 & 102 & 430 & 40 \\
+	Fixed interval ($N=60$) & 0.445 & 0.514  & 0.519 & 0.533 & 100 & 425 & 40 \\
+	FEAR-based \cite{borsuk2022fear} & 0.454 & 0.517  & 0.524 & 0.234 & 96 & 405 & 38 \\
+	TATrack-based \cite{he2023target} & 0.361 & 0.377  & 0.414 & 0.430 & 60 & 250 & 22 \\
+	\rowcolor{lightgray!20} Ours  & 0.458 & 0.529 & 0.572 & 0.592 & 100 & 425 & 40\\
+	\hline
+	\end{tabular}
+	}
+	\vspace{-5mm}
+  \end{table}
+  
+  \section{Ablation Study}\label{sec:ablation}
+  
+  
+  
+  We perform ablation studies on each of the components of S-Tiny used on AVisT as an OOD benchmark and on LaSOT as an ID benchmark. In \ref{fig:all_ablation}(top), the baseline is obtained by removing the FMF block and the TRL losses, $\mathcal{L}_{TR}$ and $\mathcal{L}_{Reg}$. Next, we add the intermediate dynamic frames to obtain the mix configuration, without FMF, and lastly, we add our FMF block. We clearly observe the impact of the FMF block, especially on the OOD benchmark, where the AUC increases from 41.8\% to 43.7\%.
+  Next, \ref{fig:all_ablation}(middle) shows the ablation on the TRL losses, $\mathcal{L}_{TR}$ and $\mathcal{L}_{Reg}$. The addition of either of them improves performance; however, the improvement is more significant when used together.
+  Further, in \ref{tab:att_comp} we test the impact of FMF on accuracy compared to PSA\cite{liu2021polarized}, observing no noticeable fluctuations in performance.
+  We further evaluate the squeeze rate of our FMF block in \ref{fig:all_ablation}(bottom). There we notice performance degradation on the OOD benchmark when we do not squeeze the FMF module, but not as much in the ID benchmark, suggesting that squeeze is more important for accurate filtration of OOD sequences.
+  In \ref{tab:component_ablation_updates}, we show a case-study on parameter-free dynamic update strategies, where ours consistently improves over the others.
+  
+  \begin{figure}[t]
+	\centering
+	 \includegraphics[width=6cm]{figures/abl_fmf_avist.pdf}
+	 \includegraphics[width=6cm]{figures/abl_fmf_lasot.pdf}
+	 \includegraphics[width=6cm]{figures/abl_losses_avist.pdf}
+	 \includegraphics[width=6cm]{figures/abl_losses_lasot.pdf}
+	 \includegraphics[width=6cm]{figures/abl_sr_avist.pdf}
+	 \includegraphics[width=6cm]{figures/abl_sr_lasot.pdf}
+	 \vspace{-4mm}
+	 \caption{Ablation study on the components of SiamABC-Tiny. Top-row: Ablation on the FMF block. Middle-row: Ablation on TRL losses. Bottom-row: Ablation on squeeze rate.}
+	 \label{fig:all_ablation}
+	 \vspace{-5mm}
+   \end{figure}
 
 
-\subsection{TissueNet}
-We evaluated CellTranspose on TissueNet~\cite{Greenwald2021-uj}, a dataset developed alongside a generalist method called Mesmer. TissueNet is comprised of samples from various imaging platforms and tissue types, providing a wide-spanning array of cellular images. In~\cite{Greenwald2021-uj} one set of experiments split TissueNet into subsets of the four most common imaging types, each of which was further divided into different tissue types. Similarly, four other subsets were composed of the four most common tissue types, each being further split into the imaging types that make up the samples for that tissue type.
-
-Each experiment contained within the dataset was split in a manner that resulted in 80\% of the data being used for training and 10\% for both validation and testing. TissueNet contains both nuclei and whole-cell segmentation labels: for the purposes of our work, we train using the nuclei segmentations.
-Table~\ref{table:tissuenet} shows the $F_1$-scores on these eight data splits, computed for the generalist Cellpose, Mesmer trained on each of the splits, and CellTranspose 3-shot adapted to each of the splits. Again, CellTranspose consistently shows improved performance. 
-
-For each of the experiments completed in this work, the performance of our approach is compared to that of the generalized Cellpose model, which operates as a lower bound as it represents pre-adaptation. As~\cite{Greenwald2021-uj} reports that the fully-trained Cellpose model achieves a level of performance rivaling that of their in-house segmentation technique on TissueNet, the results of Mesmer may appear to serve as an upper bound in this scenario. However, as briefly described in \textbf{Section 5.1}, the ``specialist'' models they use are trained for each of the eight subsets selected from TissueNet. In our case, we train on \emph{subsets of each subset}. For example, the samples of breast tissue were obtained using three distinct imaging platforms: IMC, MIBI-TOF, and Vectra. In regards to the intended use of CellTranspose, each of these three platforms would correspond to individual experiments. Because of this, we train on each of these subsets of the breast tissue subset and combine the results at the end to obtain the corresponding $F_1$-score that we report. It should be noted that~\cite{Greenwald2021-uj} describes that their primary generalized model performs approximately as well as each specialist model for the given subsets. However, we believe it to be the case that only when exposed to a singular domain, as opposed to the two to five domains each specialist model is trained on, does specialization truly yield an increase in performance -- our results support this claim.
-
-In contrast to the AP results used in the other experiments, we report our performance in terms of $F_1$-score and compute it in the same manner as is done in~\cite{Greenwald2021-uj}. In particular, \cite{Greenwald2021-uj} considers true positives to be any predicted segmentation that intersects with a ground truth segmentation; cases where multiple overlaps occur are settled by selecting the ground truth-prediction pair that contains the greatest IoU, repeating the process until no such pairs remain. The authors further distinguish between false positive and false negative cases including the categories ``merge,'' ``split,'' and ``other,'' but these definitions are not required for the purposes of this calculation.
-
-We report a sampling of qualitative results on TissueNet in Figure~\ref{fig:qualitative_TissueNet}.
-
-\begin{figure*}
-\centering
-\includegraphics[width=\textwidth]{figures/Qualitative_TissueNet}
-\caption{\textbf{Qualitative results on images from the \emph{TissueNet} dataset.} Samples were selected such that all four most common tissue types as well as all four most common imaging types were represented. Segmentations in each sample are shown in gray with cell borders shown in blue}
-\label{fig:qualitative_TissueNet}
-\end{figure*}
-
-%\setlength{\tabcolsep}{4pt}
-\begin{table}
-\begin{center}
-\caption{\textbf{TissueNet dataset.} $F_1$-score from state-of-the-art ``generalist'' approaches and CellTranspose.}
-\label{table:tissuenet}
-\begin{adjustbox}{width=\columnwidth}
-\begin{tabular}{l|llll|llll}
-\hline\noalign{\smallskip}
-{\bf TissueNet} & \multicolumn{4}{c|}{\textbf{Platform-specific}} & \multicolumn{4}{c}{\textbf{Tissue-specific}} \\
-{\bf Results} & CODEX & CyCIF & MIBI & Vectra & Breast & GI & Imm. & Panc.\\
-\noalign{\smallskip}
-\hline
-\noalign{\smallskip}
-Cellpose (Gen.)	& 0.785	& 0.548 & 0.479 & 0.609 & 0.670 & 0.523 & 0.350 & 0.797\\
-Mesmer					& 0.88 	& 0.80	& 0.76	& 0.72	& 0.74	& 0.82	& 0.82	& 0.92\\
-CellTranspose           & \textbf{0.940} & \textbf{0.940} & \textbf{0.932} & \textbf{0.918} & \textbf{0.911} & \textbf{0.906} & \textbf{0.934} & \textbf{0.955}\\
-\hline
-\end{tabular}
-\end{adjustbox}
-\end{center}
-\vspace{-5mm}
-\end{table}
-%\setlength{\tabcolsep}{1.4pt}
-
-% Although numerical results were not provided in the original paper, Cellpose and StarDist were reported to achieve equivalent performance to that of Mesmer when trained directly on TissueNet data, all three of which rivaled the accuracy of expert human annotators. Thus, the results of Mesmer provide a solid comparison. See Table~\ref{table:tissuenet}.
-%while also suggesting that if trained on a different dataset, Mesmer would likely perform at the same levels as the "generalist" Cellpose and StarDist models.
+   \section{Additional Experiments}
 
 
-\subsection{Triple Negative Breast Cancer}
-Among the most challenging types of cellular data to segment is that of hematoxylin and eosin-stained (H\&E) images. This is in part due to the fact that multiple cell types often appear within an individual sample, in addition to the high variability of the background. The Triple Negative Breast Cancer (TNBC) dataset~\cite{Naylor2019-ak}, gathered by the Curie Institute, is comprised of 50 images obtained from 11 distinct tissue types, furthering the inherent difficulty of the dataset.
+\subsection{Evaluating Benchmarks}
+We explain the strategies to evaluate our approach against other trackers. The FPS numbers were reproduced using the codebase provided by LightTrack \cite{yan2021lighttrack}. We follow GOT-10k\cite{Huang2021} guidelines and use their toolkit \cite{githubGitHubGot10ktoolkit} to evaluate the generic benchmarks. For VOT2020 \cite{kristan2020eighth}, we use their provided toolkit for the challenge. For GOT-10k\cite{Huang2021} and TrackingNet \cite{muller2018trackingnet}, we send the raw results to their servers for a fair evaluation. 
 
-We compare CellTranspose with the top-performing unsupervised cellular instance segmentation approach, CyC-PDAM~\cite{Liu2020-qh}. Following the lead of the authors of this work, the dataset is split into 40 images for training, using 8 of the tissue types. We adapt our models using 3, 5, and 10 sample patches selected from the training dataset. Each model is then tested on the 10 images from the remaining 3 tissue types. From this description of the dataset split, this leaves some ambiguity as to which tissue types should belong to training and which should belong to testing. Thus, we select the test tissue types in a random manner, ensuring that the above conditions of image and tissue count per split are met. Results, using the same metrics as CyC-PDAM, are shown in Table~\ref{table:tnbc}, where it can be noted that a 5-shot adaptation leads to performance metrics comparable with those of CyC-PDAM, which has used all the training source data available to adapt the model in an unsupervised manner.
+\subsection{Test-Time Adaptation Baselines}
+There are no specific Test-Time Adaptation (TTA) approaches available for single-object tracking. Therefore, to compare our Dynamic TTA strategy mentioned in \ref{sec:methods_tta}, we implement relevant backward-free and backward-based baselines according to the codebase provided by \cite{alfarra2023revisiting}. We carefully follow the instructions provided by the respective approaches and use them under our online setting. Here, our approach continually adapts to the new domains without forgetting as the BN-statistics stay anchored to the source statistics and model parameters remain frozen. Additionally, our approach continually adapts to each new instance with negligible difference in latency.
 
-It should be noted that using the TNBC dataset in this manner is outside of the intended use case of our approach. Generally, \emph{CellTranspose} is expected to be used for adapting to each new ``experiment,'' which in practice consists of a singular tissue type gathered by the biologist. In this way, our approach provides a model finely tuned to the given experiment while requiring minimal annotation. However, in order to compare our method directly to CyC-PDAM, we construct this test as closely to their procedure as possible at a consequent disadvantage for CellTranspose.
-
-\setlength{\tabcolsep}{4pt}
-\begin{table}
-\begin{center}
-\caption{\textbf{TNBC dataset.} Comparison between the top unsupervised approach and CellTranspose. Best results are in bold, and second best results are underlined.}
-\label{table:tnbc}
-\begin{adjustbox}{width=\columnwidth}
-\begin{tabular}{l|l|l|l}
-\hline\noalign{\smallskip}
-{\textbf{BBBC039 $\rightarrow$ TNBC}} & AJI & Pixel-$F_1$ & Object-$F_1$ \\
-\noalign{\smallskip}
-\hline
-\noalign{\smallskip}
-CyC-PDAM~\cite{Liu2020-qh}						& 0.5672 $\pm$ 0.0646
-												& \textbf{0.7593 $\pm$ 0.0566}
-												& 0.7478 $\pm$ 0.0417 \\
-CellTranspose 3-shot 						& 0.4916 $\pm$ 0.0771
-												& 0.6702 $\pm$ 0.0710
-												& 0.7092 $\pm$ 0.0818 \\
-CellTranspose 5-shot 						& \underline{0.5693 $\pm$ 0.0576} 
-												& 0.7377 $\pm$ 0.0431
-												& \underline{0.7825 $\pm$ 0.0625} \\
-CellTranspose 10-shot						& \textbf{0.5906 $\pm$ 0.0617}
-												& \underline{0.7568 $\pm$ 0.0493} 
-												& \textbf{0.7879 $\pm$ 0.0687} \\
-\hline
-\end{tabular}
-\end{adjustbox}
-\end{center}
-\vspace{-5mm}
-\end{table}
-\setlength{\tabcolsep}{1.4pt}
-
-
-
-
-
-\section{3-D Segmentation} \label{3D_results}
-
-%%% Fill this out
-
-As biological applications often produce and require the analysis of 3-D data, having a segmentation technique that can operate on volumetric data is desirable. Following the approach in~\cite{Stringer2021-yw}, we extend CellTranspose to operate in 3-D using the same initial pretrained 2-D model and the same source dataset for training and adaptation. During adaptation, 2-D slices of the data, taken from multiple positions of a volumetric patch in order to provide a greater invariance to cell cross-sectional area, are gathered and used as the few-shot target dataset. The model then makes predictions on each 2-D slice within the test dataset. The predictions are made along the $xy$, $yz$, and $zx$ planes, producing three distinct predictions each consisting of the foreground-background mask and two gradient flows along the directions of the given plane. These predictions are subsequently averaged together to generate the final output prediction such that it contains \emph{three}-dimensional gradient flows. For instance, a pixel $i$'s final output representation would consist of a foreground-background prediction averaged from the corresponding foreground-background prediction of $i$ in the $xy$, $yz$, and $zx$ planes, an $x$-flow averaged from the $xy$ and $zx$ plane, a $y$-flow averaged from the $xy$ and $yz$ plane, and a $z$-flow averaged from the $yz$ and $zx$ plane.
-
-We test our approach on two 3-D datasets. \textbf{BBBC024} is composed of synthetic annotated human U2OS cells, similar to those within BBBC006, from the Broad Institute. BBBC024 contains even amounts of images across clustering probabilities of 0\%, 25\%, 50\%, and 75\%, as well as low and high signal-to-noise ratio (SNR). Images were split such that there would be a balanced contribution to training, validation, and testing both within each clustering/SNR scenario as well as across the entire dataset. Training and validation splits together comprised 80\% of the data, which was further split into 80\% training and 20\% validation. In all, training contained approximately 64\% of the images, validation 16\%, and testing 20\%, or 154, 38, and 48 images each.
-
-The \textbf{Worm} dataset is a series of nuclei images from larval stage C. elegans. We follow the same protocol for the Worm dataset as is used in StarDist-3D~\cite{Weigert_2020_WACV}. We randomly split the 28 volumes into 18, 3, and 7 for training, validation, and testing, respectively.
-Unlike other pretrained approaches, StarDist-3D~\cite{Weigert_2020_WACV} has been trained directly on the dataset in question, and serves here as an upper bound. Table~\ref{table:3D_results} shows the average precision results, highlighting the improvement of CellTranspose over the generalist Cellpose3D. Figures~\ref{fig:BBBC024_segmentation} and~\ref{fig:Worm_segmentation} provide a qualitative comparison between 3D segmentations of the BBBC024 and Worm datasets, respectively.
-
+\subsection{Qualitative Assessment}
+We show qualitative results on the AviST~\cite{noman2022avist} benchmark, comparing S-Tiny with other trackers in \ref{fig:qual_compare_bbox}. S-Tiny shows remarkable resilience against adverse visibility conditions. We also show qualitative results regarding the ablation assessment of the FMF layer compared to the baseline and the naive concatenation of features in \ref{fig:qual_compare_bbox_abl}, visually showing the significance of our FMF layer.
 
 \begin{figure}
-\centering
-\includegraphics[width=\textwidth]{figures/Qualitative_BBBC024_2_fast}
-\caption{\textbf{3D Segmentation.} Qualitative segmentation results on samples from the BBBC024 dataset. Note that Cellpose3D tends to oversample; this is likely due to the fact that the particular characteristics of the data Cellpose3D was trained on necessitated pixels of even lower intensities to be segmented. More importantly, on the bottom right of the results obtained with Cellpose3D, it is possible to observe some over-segmentation effects, which are not present in the results obtained with the proposed CellTranspose. Segmentation visualizations were produced using the napari library~\cite{Sofroniew2022-kk}.}
-\label{fig:BBBC024_segmentation}
+  \hspace*{-35pt}
+    \centering
+     \includegraphics[width=18cm]{figures/qaual_compare_bbox.pdf}
+     \caption{Qualitative comparison on the AVisT \cite{noman2022avist} dataset with other efficient trackers, and with the further inclusion of Ocean. Under adverse visibility conditions, our tracker, S-Tiny, is relatively stable compared to the others while running at 100 FPS on a CPU.}
+     \label{fig:qual_compare_bbox}
 \end{figure}
 
 \begin{figure}
-\centering
-\includegraphics[width=\textwidth]{figures/Qualitative_Worm_fast}
-\caption{\textbf{3D Segmentation on Worm dataset.} Similar to Figure~\ref{fig:BBBC024_segmentation}, qualitative results, this time on the Worm dataset, are shown. Instead of Cellpose, we compare our results to StarDist-3D. Segmentations appear relatively similar, although segmentation accuracy (shown in Table~\ref{table:3D_results}) is better for StarDist-3D, which was directly trained using training images from the Worm dataset. With the knowledge that average precision is improved for the approach fully trained using data from the domain evaluated, it should be noted that StarDist-3D's approach results in more spherical shapes; some of the detail of the cell shape is lost, and StarDist would likely experience a loss in performance on cells with more complex morphologies.}
-\label{fig:Worm_segmentation}
+	\hspace*{-35pt}
+    \centering
+     \includegraphics[width=18cm]{figures/qaual_compare_bbox_abl.pdf}
+     \caption{ Qualitative results on the ablation study of the FMF layer on the AVisT \cite{noman2022avist} dataset. We notice the higher stability of our tracker when using FMF in terms of overalps with the ground truth (green), in comparison to the baseline and the naive concatenation.}
+     \label{fig:qual_compare_bbox_abl}
 \end{figure}
-
-%\setlength{\tabcolsep}{4pt}
-\begin{table}
-\begin{center}
-\caption{\textbf{3D datasets.} Average Precision at IoU threshold 0.5.}
-\label{table:3D_results}
-%\begin{adjustbox}{width=0.5\columnwidth}
-\begin{tabular}{l|l|l}
-\hline\noalign{\smallskip}
-{\bf 3-D Results} & {\bf Worm} & {\bf BBBC024}\\
-\noalign{\smallskip}
-\hline
-\noalign{\smallskip}
-StarDist-3D				& 0.765 	& --- \\
-Cellpose3D			    & 0.575 	& 0.822 \\
-CellTranspose  			& 0.648 	& 0.994 \\
-\hline
-\end{tabular}
-%\end{adjustbox}
-\end{center}
-\vspace{-5mm}
-\end{table}
-%\setlength{\tabcolsep}{1.4pt}
-
-
-
-
-
-\section{Ablation Study} \label{ablation_results}
-
-% The results of our ablation study are shown below. As our primary contributions are the development of two contrastive loss functions and an improved cell dimension calculation mechanism, we focus on these here.
-
-Table~\ref{table:ablation} shows ablation results computed on the BBBC006 dataset with $z$=00 and 3-shot adaptation. The addition of both contrastive losses improves the overall AP by more than 6\%. Interestingly, however, the removal of only one adaptation loss tends to decrease the performance to below that of the direct training approach, which follows the same training scheme but without either adaptation loss. This indicates that the flow and mask losses are intrinsically tied to one another, which is consistent with the fact that weights are shared between both outputs until the final layer.
-
-Additionally, the cell diameter calculation method seems to play an important role in accurate segmentation. As the original Cellpose approach computes the cell diameter based upon the number of pixels corresponding to a particular cell, non-spherical cells have the potential to provide a similar diameter while spanning a much larger area. Thus, it is coherent that computing the total rectangular area enclosing a cell yields a more appropriate resizing approach, which is how it is done in CellTranspose.
-%We additionally detail the results regarding experiments with the temperature hyperparameter used in the Contrastive Flow Loss. This parameter represents a tradeoff between embedding distribution uniformity as well as the tolerance toward semantically similar samples, which in turn describes the need for balance between training time and performance. The given setting provides unique characteristics regarding the negative sample distribution and the application of the loss function directly onto the output, making this is particularly interesting to study. *Possibly others? Possibly not even this one?*
-
-% \setlength{\tabcolsep}{4pt}
-\begin{table}
-\begin{center}
-\caption{\textbf{Ablation results on BBBC006.} AP is calculated for an IoU threshold of 0.5.}
-\label{table:ablation}
-%\begin{adjustbox}{width=0.7\columnwidth}
-\begin{tabular}{l|l}
-\hline\noalign{\smallskip}
-{\bf Ablation Results} & $AP_{50}$\\
-\noalign{\smallskip}
-\hline
-\noalign{\smallskip}
-CellTranspose & \textbf{0.509}\\
-Without Flow Adaptation & 0.414\\
-Direct Training (no Adaptation Losses) & 0.441\\
-Using Cellpose cell diameter calculation & 0.390\\
-%CellTranspose & 0.4935155212879181\\
-%Without Flow Adaptation & 0.4137983024120331\\
-%Direct Training (no Adaptation) & 0.4405716359615326\\
-%CellTranspose with cell diameter calculation & 0.39014795422554016\\
-\hline
-\end{tabular}
-%\end{adjustbox}
-\end{center}
-\vspace{-5mm}
-\end{table}
-% \setlength{\tabcolsep}{1.4pt}
-
-%%% Local Variables:
-%%% mode: latex
-%%% TeX-master: "main"
-%%% End:
+  %%% Local Variables:
+  %%% mode: latex
+  %%% TeX-master: "../main"
+  %%% End:
+  

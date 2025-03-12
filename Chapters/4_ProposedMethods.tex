@@ -51,7 +51,11 @@ where the notation means the following: $\sigma :=$ sigmoid, $\phi :=$ softmax, 
 
 Differently than PSA, the improved efficiency of FMF stems from reducing the computation overhead in \ref{eq:fast_pol_attention} by limiting the matrix operations to be broadcasted element-wise multiplications and element-wise summations across the vectors, and by setting $W^V_{sp}=W^V_{ch}=W^V$ for both $A_{ch}$ and $A_{sp}$, which further reduces the number of parameters. Similar to CBAM and PSA, we utilize a squeeze-and-excite framework~\cite{iandola2016squeezenet} to excite the relevant features within this block. As shown in \ref{tab:att_comp}, the latency of FMF is 0.4ms on a CPU, which has decreased from the 0.8ms of PSA, while not experiencing any performance loss.
 
+We provide more details regarding the operations performed this block. Please refer to \ref{fig:attention2} for a schematic representation of FMT. When fusing the pair of feature maps coming either from the dual-template or the dual-search-region, we first concatenate the two feature maps resulting in a representation with $C+C=2C$ channels dimension. Here, we aim to enhance the most relevant features through this filtration process. We further want to compress the feature space from $2C \times H \times W \rightarrow C \times H \times W$; therefore, we choose a squeeze rate of $S = 2$. Here, $W^V$ and $W^Q_{sp}$ perform the squeeze for $V$ and $Q_{sp}$, respectively, for the channel and spatial filters, where an average pooling operation is applied to $W^Q_{sp}$ to decrease the spatial dimensions of $W^Q_{sp}$ from $C \times H \times W \rightarrow C \times 1 \times 1$.  Moreover, $W^Q_{ch}$ decreases the channel dimensions of $Q_{ch}$ from $2C \times H \times W \rightarrow 1 \times H \times W$. A softmax function, $\phi$, is applied to $W^Q_{ch}$ and $W^Q_{sp}$ to produce the channel and spatial filter masks, respectively. Also, broadcast element-wise multiplications, $\star$, and element-wise summation, $\sum$, are then performed between $W^V$ and $\phi(W^Q_{ch})$ and between $\phi (W^Q_{sp})$ and $W^V$ to produce channel and spatial filters of size $C \times 1 \times 1$ and $1 \times H \times W$, respectively. Since there was a squeeze operation on the channel filter, $W_{ch}$ is applied to the channel filter to unsqueeze the channel dimensions from $C \times 1 \times 1 \rightarrow 2C \times 1 \times 1$, followed by a Layer Normalization layer to normalize the feature distributions. Furthermore, a sigmoid operation, $\sigma$, is performed on these filters, and then a broadcast element-wise summation, $\oplus$, is performed to form a total filter map of size $2C \times H \times W$. An element-wise multiplication operation is performed between the full filter map and $x$ to enhance the most important features from $x$ to form the final output $\bold{x}$. After this mixed-filtration of $x$, we further readjust the number of channels from  $2C \times H \times W \rightarrow C \times H \times W$, giving us $\bold{\check{x} }$, to perform future correlations.
+
 We use FMF with a squeeze rate $S=2$ (see \ref{fig:attention2}). In this way, if $x$ is the concatenated representation of the dual-template (i.e., $x_T \doteq F_D \cup F_T$) or of the dual-search-region (i.e., $x_t \doteq F_t \cup F_S$), then $\boldsymbol{x}$ is the filtered representation with channel dimension $2C$, to which we apply a channel dimension reduction from $2C$ to $C$, giving us $\boldsymbol{\check{x}}$ (i.e., $\boldsymbol{\check{x}}_T$ or $\boldsymbol{\check{x}}_t$).
+
+
 
 \subsubsection{Pixel-wise Cross-Correlation.}
 We combine the filtered dual representations $\boldsymbol{\check{x}}_T$ and $\boldsymbol{\check{x}}_t$ with the block $CC(\cdot)$, which is a pixel-wise cross-correlation. The output is then concatenated with $F_t$ and fed to a one-layer convolution to reduce the number of channels processed by the heads block.
@@ -116,7 +120,36 @@ Different strategies can be implemented for when to update the dynamic image tem
   \label{eq:sample_update}
           \overline{\rho }_t = (1-{\lambda}_{D}) \overline{\rho}_{t-1} +  {\lambda}_{D} {\rho}_t \; ,
 \end{equation}
-where, ${\rho}_t$ is the score at time $t$, and ${\lambda}_{D}$ is a momentum parameter, which we set to 0.25. We also start a counter, $C$, that when it reaches, let us say $N=60$ frames ($\approx$ 2 seconds), we compare the current classification score with the running average, and if ${\rho}_t > \overline{\rho }_{t-1}$, then we update the dynamic image components and reset the counter, otherwise we repeat the test at the next iteration. This strategy is effective, parameterless, and uses limited computational resources.
+where, ${\rho}_t$ is the score at time $t$, and ${\lambda}_{D}$ is a momentum parameter, which we set to 0.25. We also start a counter, $C$, that when it reaches, let us say $N=60$ frames ($\approx$ 2 seconds), we compare the current classification score with the running average, and if ${\rho}_t > \overline{\rho }_{t-1}$, then we update the dynamic image components and reset the counter, otherwise we repeat the test at the next iteration. This strategy is effective, parameterless, and uses limited computational resources. \ref{alg:dynamic_update} describes the details of our dynamic sample update strategy with $N=60$ and ${\lambda}_{D} = 0.25$. This strategy is parameter-less and lightweight.
+
+\begin{algorithm}
+  \centering
+  \caption{Dynamic Sample Update}\label{alg:dynamic_update}
+  \begin{algorithmic}
+    \State $t \gets 0$
+    \State $x_t \gets $ sequence frame at time $t$
+    \State $I_T \gets x_t$, $I_S \gets x_t$, $I_D \gets x_t$
+    \State $init\_tracker(I_T)$ \Comment{initialize the tracker}
+    \State $set\_dyn(I_S, I_D)$ \Comment{set the dynmaic samples}
+    \State $C \gets 0$ \Comment{counter}
+    \State $\overline{\rho}_t \gets 1$ \Comment{initialize average classification score}
+  
+    \While{$x_{t+1}$ is available}
+      \State $C \gets C+1$ \Comment{increase the counter}
+      \State $I_t \gets x_{t+1}$ \Comment{search-region} 
+      \State ${\beta}_t, {\rho}_t \gets tracker(I_t)$ \Comment{ $\beta \gets$ bounding box}
+      % \State \Comment{$\beta \gets$ bounding box}
+      \State \Comment{$\rho \gets$ classification score}
+      \If{$C \geq N$ \& ${\rho}_t > \overline{\rho }_{t}$}  \\ \Comment{$N \gets$ hyperparameter}
+            \State $I_S, I_D \gets update(x_{t+1}, {\beta}_t)$ %
+            \State $reset\_dyn(I_S, I_D)$ \\ \Comment{reset the dynmaic samples}
+            \State $C \gets 0$
+      \EndIf 
+      \State $\overline{\rho }_t = (1-{\lambda}_{D}) \overline{\rho}_{t} +  {\lambda}_{D} {\rho}_t$ \\ \Comment{${\lambda}_{D} \gets$ hyperparameter}
+      \EndWhile
+  \end{algorithmic}
+\end{algorithm}
+
 
 \section{Dynamic Test-Time Adaptation} \label{sec:methods_tta}
 
@@ -143,43 +176,16 @@ To increase tracking performance, especially at OOD test-time, we introduce a dy
 where $x$ is the input feature, $E(x)$ and $Var(x)$ are the expected value and variance of $x$. $\gamma$ and $\beta$ are learnable parameters for scaling and shifting. The BN layers keep track of the running mean and variance through \ref{eq:bn_running}, where ${\mu}_t$ and ${\sigma}_{t}$ are current expected value and variance respectively, and $\overline{\mu}_t$ and $\overline{\sigma}_{t}$ are used for $E(x)$ and $Var(x)$, respectively. $\alpha$ is the momentum parameter. 
 Estimating learnable parameters $\gamma$ and $\beta$ during testing would require a backward pass, with great detriment to the speed. Therefore, we propose a method that dynamically updates the BN statistics $E(x)$ and $Var(x)$ during testing, which has negligible computational overhead for maintaining speed.
 
-% \begin{table}
-% \caption{Comparative study on VOT2020 Benchmark \cite{kristan2020eighth}. Red, blue, and green colors describe the best three CPU real-time trackers whereas bold suggests the best CPU non-real-time tracker.}
-
-% \label{tab:vot2020_res}
-% \centering
-% \scalebox{0.6}{
-
-% \begin{tabular}{c|c c c |c c c c c  >{\columncolor{lightgray!20}}c}
-%   \hline
-%   & \multicolumn{3}{c|}{CPU non-real-time Methods}   & \multicolumn{6}{c}{CPU real-time Methods} \\
-%   % \hline
-
-%   Trackers  & STARK-ST50 \cite{yan2021learning} & STARK-S50 \cite{yan2021learning}  & DiMP \cite{bhat2019learning} &  HCAT \cite{chen2022efficient}  &  E.T.Track \cite{blatter2023efficient}  & LightTrack \cite{yan2021lighttrack} & ATOM \cite{danelljan2019atom} & MixFormerV2-S \cite{cui2024mixformerv2}& \bf{S-Tiny} \\
-%   \hline
-%   EAO         & \bf{0.308} & 0.280 & 0.274 & \color{RoyalBlue} \bf{0.276} & 0.267 & 0.242 & \color{ForestGreen} \bf{0.271} & 0.258 & \color{Mahogany} \bf{0.291} \\
-%   Accuracy    & \bf{0.478} & 0.477 & 0.457 & \color{ForestGreen} \bf{0.455} & 0.432 & 0.422 & \color{RoyalBlue} \bf{0.462} & - & \color{Mahogany} \bf{0.491}\\
-%   Robustness  & \bf{0.799} & 0.728 & 0.740 & \color{Mahogany} \bf{0.747} & \color{RoyalBlue} \bf{0.741} & 0.689 & \color{ForestGreen} \bf{0.734} & - & \color{RoyalBlue} \bf{0.741}\\
-%   \hline
-%   FPS (CPU)   & 6 & 7 & \bf{14} & \color{ForestGreen} \bf{60} & 35 & \color{RoyalBlue} \bf{67} & 30 & 37 & \color{Mahogany} \bf{100} \\
-%   FPS (GPU)   & 66 & 66 & \bf{127} & \color{ForestGreen} \bf{300} & 108 & 170 & 240 & \color{RoyalBlue} \bf{420} & \color{Mahogany} \bf{425} \\
-%   FPS (Nano)   & 10 & \bf{12} & 10 & \color{RoyalBlue} \bf{24} & 10 & \color{ForestGreen} \bf{17} & 13 & \color{Mahogany} \bf{40} & \color{Mahogany} \bf{40} \\
-%   \hline
-
-% \end{tabular}
-% }
-% \end{table}
-
-% Prior works have explored BN adaptation for classification purposes, with some using a backward pass for adaptation \cite{niu2022efficient, wang2020tent}, while others introduced backward-free adaptation \cite{pan2018two, schneider2020improving, mirza2022norm, li2016revisiting}. However, none are directly applicable for tracking. As we show in \ref{tab:tta_res}, applying a new Instance-Norm (IN) layer \cite{pan2018two} is expensive, and slows down the speed twofold without noticeable improvement. Additionally, the batch size for tracking remains 1, which is too small to make any significant improvement with \cite{schneider2020improving} that applies weighted momentum based on the target batch-size. Given the scale of our architecture and limited number of parameters, by replacing batch statistics with instance statistics, AdaBN \cite{li2016revisiting} does not improve the performance either. DUA \cite{mirza2022norm} uses source statistics as a prior for the incoming task but does not stay anchored to the source statistics, resulting in target statistics drifting away from the original distribution, causing performance drop. Therefore, we propose that BN statistics should be updated with weighted instance statistics while remaining anchored to the source statistics. This results in the following strategy
-% \begin{equation}
-%   \centering
-%   \label{eq:bn_update}
-%       \begin{aligned}  
-%           \overline{\mu}_{I,t} &= (1-\lambda{_{BN}}) \overline{\mu} +  \lambda{_{BN}} \mu_{I,t} \; ,\\
-%           \overline{\sigma}_{I,t}^2 &= (1-\lambda{_{BN}}) \overline{\sigma}^2 +  \lambda{_{BN}} \sigma_{I,t}^2 \; ,
-%       \end{aligned}
-% \end{equation}
-% where $\overline{\mu}$ and $\overline{\sigma}^2$ are the final running mean and variance of the model trained on the source data, respectively, and $\mu_{I,t}$, and $\sigma_{I,t}^2$ are mean and variance calculated from the instance at time $t$, respectively. $\overline{\mu}_{I,t}$ and $\overline{\sigma}_{I,t}^2$ are updated based on the current instance and used for feature normalization at time $t$. $ \lambda{_{BN}}$ is set to 0.1. This backward-free \emph{dynamic test-time adaptation (DTTA)} strategy is efficient with negligible difference in latency as shown in \ref{tab:tta_res}.
+Prior works have explored BN adaptation for classification purposes, with some using a backward pass for adaptation \cite{niu2022efficient, wang2020tent}, while others introduced backward-free adaptation \cite{pan2018two, schneider2020improving, mirza2022norm, li2016revisiting}. However, none are directly applicable for tracking. As we show in \ref{tab:tta_res}, applying a new Instance-Norm (IN) layer \cite{pan2018two} is expensive, and slows down the speed twofold without noticeable improvement. Additionally, the batch size for tracking remains 1, which is too small to make any significant improvement with \cite{schneider2020improving} that applies weighted momentum based on the target batch-size. Given the scale of our architecture and limited number of parameters, by replacing batch statistics with instance statistics, AdaBN \cite{li2016revisiting} does not improve the performance either. DUA \cite{mirza2022norm} uses source statistics as a prior for the incoming task but does not stay anchored to the source statistics, resulting in target statistics drifting away from the original distribution, causing performance drop. Therefore, we propose that BN statistics should be updated with weighted instance statistics while remaining anchored to the source statistics. This results in the following strategy
+\begin{equation}
+  \centering
+  \label{eq:bn_update}
+      \begin{aligned}  
+          \overline{\mu}_{I,t} &= (1-\lambda{_{BN}}) \overline{\mu} +  \lambda{_{BN}} \mu_{I,t} \; ,\\
+          \overline{\sigma}_{I,t}^2 &= (1-\lambda{_{BN}}) \overline{\sigma}^2 +  \lambda{_{BN}} \sigma_{I,t}^2 \; ,
+      \end{aligned}
+\end{equation}
+where $\overline{\mu}$ and $\overline{\sigma}^2$ are the final running mean and variance of the model trained on the source data, respectively, and $\mu_{I,t}$, and $\sigma_{I,t}^2$ are mean and variance calculated from the instance at time $t$, respectively. $\overline{\mu}_{I,t}$ and $\overline{\sigma}_{I,t}^2$ are updated based on the current instance and used for feature normalization at time $t$. $ \lambda{_{BN}}$ is set to 0.1. This backward-free \emph{dynamic test-time adaptation (DTTA)} strategy is efficient with negligible difference in latency as shown in \ref{tab:tta_res}.
 
 
 
