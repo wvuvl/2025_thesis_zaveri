@@ -5,7 +5,7 @@
 \label{Chapter1} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 
 
-\section{Background and Current Challenges}
+\section{Background and Challenges}
 
 Tracking a single object, given the location at the first frame, has been an ongoing challenge in the vision community for decades. Most recent approaches provide reasonably good performance~\cite{gao2022aiatrack,he2023target,yan2021learning,wei2023autoregressive,chen2023seqtrack}, especially when benchmarked on \emph{in-distribution (ID)} datasets, i.e., on the testing portion of the same datasets used for training. However, they incur high computational costs and hardware constraints, making their deployment ``in-the-wild'' in mobile, autonomous, and IoT applications still challenging. Therefore, there is a need to continue to develop efficient tracking tools that can operate on any device, even on regular CPUs, using limited computational resources, while providing reliable performance.  \\
 
@@ -18,12 +18,6 @@ Despite the significant progress on efficient trackers, they still need to catch
 
 \section{Thesis Contribution}
 
-\begin{figure}
-    \centering
-        \includegraphics[width=1.0\textwidth]{figures/avist_comparison_fig_new.pdf}
-    \caption{Comparison of our trackers with others on the AVisT~\cite{noman2022avist} dataset on a CPU. We show the success score (AUC) (vertical axis), speed (horizontal axis), and relative number of FLOPs (circles) of the trackers. Our trackers outperform other efficient trackers in terms of both speed and accuracy.}
-    \label{fig:avist_comparision_fig}
-\end{figure}
 
 In this work we aim at significantly improving the trade-off mentioned above. We design a new Siamese tacker that preserves the high speed, reduced memory and computing requirements of the Siamese family while improving OOD generalization to near SOTA-level performance. From the architectural point of view, we make two key contributions. First, we better facilitate the visuo-temporal bridge between the static image template representing the target, and the search region image at current time. While~\cite{borsuk2022fear} popularized the use of a dual-template, which we also adopt, we introduce the use of a \emph{dual-search-region}. This will allow the tracker to stay anchored to the initial target representation while better latching onto its dynamic appearance variations. Second, we design a new learnable layer, the \emph{Fast Mixed Filtration}, that acts as an efficient filtration method for enhancing the relevant components of the combination of the representations forming the dual-template, as well as the dual-search-region. This is important because, given also the reduced representational capacity of smaller backbones used by efficient trackers, directly fusing the representations of the dual-template does not necessarily improve performance~\cite{borsuk2022fear}.\\
 
@@ -32,3 +26,10 @@ From the learning point of view we make two additional contributions. First, we 
 
 
 Combining the contributions above lead even our smallest and most efficient tracker, S-Tiny, to surpass relevant SOTA approaches on numerous benchmarks. Most notably, on the AVisT benchmark, S-Tiny achieves the AUC of 47.2\% while running at 100 FPS on a CPU, outperforming MixFormerV2-S by 7.6\% while being almost 3x faster. See \ref{fig:avist_comparision_fig}. An extensive set of experiments with multiple datasets and other approaches shows additional compelling results in support of our method.
+
+\begin{figure}
+    \centering
+        \includegraphics[width=0.8\textwidth]{figures/avist_comparison_fig_new.pdf}
+    \caption{Comparison of our trackers with others on the AVisT~\cite{noman2022avist} dataset on a CPU. We show the success score (AUC) (vertical axis), speed (horizontal axis), and relative number of FLOPs (circles) of the trackers. Our trackers outperform other efficient trackers in terms of both speed and accuracy.}
+    \label{fig:avist_comparision_fig}
+\end{figure}
