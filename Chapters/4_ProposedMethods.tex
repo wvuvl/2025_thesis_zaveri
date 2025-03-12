@@ -102,7 +102,25 @@ where $||\cdot||_2$ is the $\ell_2$-norm,  $h_1$ and $h_2$ are MLP projection he
 
 
 \subsection{Total Tracking Loss} 
-We use standard losses for the regression and classification heads. We use the $IoU$ loss~\cite{rezatofighi2019generalized}, $\mathcal{L}_{IoU}$, for the bounding box regression, $BH(\cdot)$, and the focal loss~\cite{lin2017focal}, $\mathcal{L}_{FL}$, for the classification head, $CH(\cdot)$. We refer to \cite{rezatofighi2019generalized,lin2017focal} for their definition.
+We use standard losses for the regression and classification heads. We use the $IoU$ loss~\cite{rezatofighi2019generalized}, $\mathcal{L}_{IoU}$, for the bounding box regression, $BH(\cdot)$, and the focal loss~\cite{lin2017focal}, $\mathcal{L}_{FL}$, for the classification head, $CH(\cdot)$.
+They are defined as:
+\begin{equation}
+  \centering
+  \label{eq:iou}
+      \begin{aligned} 
+          \mathcal{L}_{IoU} = 1 -  \frac{1}{n} \sum^{n}_{i=1} IoU(gt,pred),
+      \end{aligned}
+\end{equation}
+where, $gt$ is the ground truth and $pred$ is the prediction of the bounding box regression head.
+\begin{equation}
+  \centering
+  \label{eq:focal}
+      \begin{aligned}
+          \mathcal{L}_{FL} =  -(1-p_t)^\gamma \log(p_t),  p_t= \begin{cases} p & if \text{\break } pred=gt\\ 1-p & otherwise \end{cases}  ,
+      \end{aligned}
+\end{equation}
+where, $p$ is the predicted class probability.
+
 The offline training of the tracker is therefore based on the \emph{total tracking loss}
 \begin{equation} \small
   \centering
