@@ -130,43 +130,6 @@ The offline training of the tracker is therefore based on the \emph{total tracki
 \end{equation}
 where we set $\lambda_{FL}$, $\lambda_{TR}$, and $\lambda_{Reg}$ to 1, 1/3, and 1/3, respectively.
 
-\section{Dynamic Update} \label{sec:methods_update} 
-Different strategies can be implemented for when to update the dynamic image template and dynamic search region image. \ref{tab:component_ablation_updates} reports our case-study focussing on parameter-free strategies, which suggests that different strategies are specific to their approaches and are not generally applicable. A simple yet effective strategy that gave us reliable performance is based on maintaining a running average of the classification scores $\overline{\rho }_t$
-\begin{equation}
-  \label{eq:sample_update}
-          \overline{\rho }_t = (1-{\lambda}_{D}) \overline{\rho}_{t-1} +  {\lambda}_{D} {\rho}_t \; ,
-\end{equation}
-where, ${\rho}_t$ is the score at time $t$, and ${\lambda}_{D}$ is a momentum parameter, which we set to 0.25. We also start a counter, $C$, that when it reaches, let us say $N=60$ frames ($\approx$ 2 seconds), we compare the current classification score with the running average, and if ${\rho}_t > \overline{\rho }_{t-1}$, then we update the dynamic image components and reset the counter, otherwise we repeat the test at the next iteration. This strategy is effective, parameterless, and uses limited computational resources. \ref{alg:dynamic_update} describes the details of our dynamic sample update strategy with $N=60$ and ${\lambda}_{D} = 0.25$. This strategy is parameter-less and lightweight.
-
-\begin{algorithm}
-  \centering
-  \caption{Dynamic Sample Update}\label{alg:dynamic_update}
-  \begin{algorithmic}
-    \State $t \gets 0$
-    \State $x_t \gets $ sequence frame at time $t$
-    \State $I_T \gets x_t$, $I_S \gets x_t$, $I_D \gets x_t$
-    \State $init\_tracker(I_T)$ \Comment{initialize the tracker}
-    \State $set\_dyn(I_S, I_D)$ \Comment{set the dynmaic samples}
-    \State $C \gets 0$ \Comment{counter}
-    \State $\overline{\rho}_t \gets 1$ \Comment{initialize average classification score}
-  
-    \While{$x_{t+1}$ is available}
-      \State $C \gets C+1$ \Comment{increase the counter}
-      \State $I_t \gets x_{t+1}$ \Comment{search-region} 
-      \State ${\beta}_t, {\rho}_t \gets tracker(I_t)$ \Comment{ $\beta \gets$ bounding box}
-      % \State \Comment{$\beta \gets$ bounding box}
-      \State \Comment{$\rho \gets$ classification score}
-      \If{$C \geq N$ \& ${\rho}_t > \overline{\rho }_{t}$}  \\ \Comment{$N \gets$ hyperparameter}
-            \State $I_S, I_D \gets update(x_{t+1}, {\beta}_t)$ %
-            \State $reset\_dyn(I_S, I_D)$ \\ \Comment{reset the dynmaic samples}
-            \State $C \gets 0$
-      \EndIf 
-      \State $\overline{\rho }_t = (1-{\lambda}_{D}) \overline{\rho}_{t} +  {\lambda}_{D} {\rho}_t$ \\ \Comment{${\lambda}_{D} \gets$ hyperparameter}
-      \EndWhile
-  \end{algorithmic}
-\end{algorithm}
-
-
 \section{Dynamic Test-Time Adaptation} \label{sec:methods_tta}
 
 To increase tracking performance, especially at OOD test-time, we introduce a dynamic test-time adaptation procedure based on a batch normalization (BN) correction tailored specifically to tracking. We applied this strategy to the classification and bounding box regression heads. First, BN layers are generally computed by the following equations:
@@ -204,7 +167,40 @@ Prior works have explored BN adaptation for classification purposes, with some u
 where $\overline{\mu}$ and $\overline{\sigma}^2$ are the final running mean and variance of the model trained on the source data, respectively, and $\mu_{I,t}$, and $\sigma_{I,t}^2$ are mean and variance calculated from the instance at time $t$, respectively. $\overline{\mu}_{I,t}$ and $\overline{\sigma}_{I,t}^2$ are updated based on the current instance and used for feature normalization at time $t$. $ \lambda{_{BN}}$ is set to 0.1. This backward-free \emph{dynamic test-time adaptation (DTTA)} strategy is efficient with negligible difference in latency as shown in \ref{tab:tta_res}.
 
 
-
+\section{Dynamic Sample Update} \label{sec:methods_update} 
+\begin{algorithm}[h]
+  \centering
+  \caption{Dynamic Sample Update}\label{alg:dynamic_update}
+  \begin{algorithmic}
+    \State $t \gets 0$
+    \State $x_t \gets $ sequence frame at time $t$
+    \State $I_T \gets x_t$, $I_S \gets x_t$, $I_D \gets x_t$
+    \State $init\_tracker(I_T)$ \Comment{initialize the tracker}
+    \State $set\_dyn(I_S, I_D)$ \Comment{set the dynmaic samples}
+    \State $C \gets 0$ \Comment{counter}
+    \State $\overline{\rho}_t \gets 1$ \Comment{initialize average classification score}
+  
+    \While{$x_{t+1}$ is available}
+      \State $C \gets C+1$ \Comment{increase the counter}
+      \State $I_t \gets x_{t+1}$ \Comment{search-region} 
+      \State ${\beta}_t, {\rho}_t \gets tracker(I_t)$ \Comment{ $\beta \gets$ bounding box}
+      % \State \Comment{$\beta \gets$ bounding box}
+      \State \Comment{$\rho \gets$ classification score}
+      \If{$C \geq N$ \& ${\rho}_t > \overline{\rho }_{t}$}  \\ \Comment{$N \gets$ hyperparameter}
+            \State $I_S, I_D \gets update(x_{t+1}, {\beta}_t)$ %
+            \State $reset\_dyn(I_S, I_D)$ \\ \Comment{reset the dynmaic samples}
+            \State $C \gets 0$
+      \EndIf 
+      \State $\overline{\rho }_t = (1-{\lambda}_{D}) \overline{\rho}_{t} +  {\lambda}_{D} {\rho}_t$ \\ \Comment{${\lambda}_{D} \gets$ hyperparameter}
+      \EndWhile
+  \end{algorithmic}
+\end{algorithm}
+Different strategies can be implemented for when to update the dynamic image template and dynamic search region image. \ref{tab:component_ablation_updates} reports our case-study focussing on parameter-free strategies, which suggests that different strategies are specific to their approaches and are not generally applicable. A simple yet effective strategy that gave us reliable performance is based on maintaining a running average of the classification scores $\overline{\rho }_t$
+\begin{equation}
+  \label{eq:sample_update}
+          \overline{\rho }_t = (1-{\lambda}_{D}) \overline{\rho}_{t-1} +  {\lambda}_{D} {\rho}_t \; ,
+\end{equation}
+where, ${\rho}_t$ is the score at time $t$, and ${\lambda}_{D}$ is a momentum parameter, which we set to 0.25. We also start a counter, $C$, that when it reaches, let us say $N=60$ frames ($\approx$ 2 seconds), we compare the current classification score with the running average, and if ${\rho}_t > \overline{\rho }_{t-1}$, then we update the dynamic image components and reset the counter, otherwise we repeat the test at the next iteration. This strategy is effective, parameterless, and uses limited computational resources. Algorithm \ref{alg:dynamic_update} describes the details of our dynamic sample update strategy.
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../main"
