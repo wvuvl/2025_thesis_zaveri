@@ -5,7 +5,7 @@
 Recent approaches perform reasonably well when tracking single objects, especially when benchmarked on ID datasets. 
 However, they incur high computational costs and hardware constraints, making their deployment “in the wild” challenging. 
 SeqTrack~\cite{chen2023seqtrack}, a SOTA approach, runs at 0.4 FPS on a CPU and is too big to load on an edge device.
-Efficient trackers tackle this problem; however, their performance deteriorates when tested OOD datasets.
+Efficient trackers tackle this problem; however, their performance deteriorates when tested on OOD datasets.
 We are interested in tackling the problem of tracking single objects under adverse visibility conditions (e.g., fire, smoke, hurricane, fog, etc.) efficiently.
 These conditions are prominent ``in-the-wild"; however, not so much in the training sets of recent trackers.
 MixFormerV2-S~\cite{cui2024mixformerv2}, a recent SOTA efficient tracker, performs relatively well on the ID test sets while experiencing performance deterioration on OOD benchmarks. \\
@@ -13,10 +13,10 @@ MixFormerV2-S~\cite{cui2024mixformerv2}, a recent SOTA efficient tracker, perfor
 
 The above-mentioned challenges require the algorithm to be efficient, effective, robust, and adaptable. 
 We leverage the simplistic design of the Siamese trackers and devise a new tacker that preserves the high speed, reduced memory and computing requirements of the Siamese family while improving OOD generalization to near SOTA-level performance.
-Therefore, we introduce a dual-search-region along with a dual-template framework which allows the tracker to stay anchored to the initial target representation while better latching onto its dynamic appearance variations.
+We introduce a dual-search-region along with a dual-template framework which allows the tracker to stay anchored to the initial target representation while better latching onto its dynamic appearance variations.
 Our new attention framework, namely Fast Mixed Filtration, acts as an efficient filtration method for enhancing the relevant components of the combination of the representations forming the dual-template and the dual-search-region.
-A new transitive relation learning, based on the correspondence learning paradigm, helps bridge the visuo-temporal similarities of the filtered representations of the dual-template and the dual search-region.
-A new backward-free test-time adaptation approach tailored for tracking via dynamically updating only the batch-norm parameters during inference.
+Our new transitive relation learning framework, based on the correspondence learning paradigm, helps bridge the visuo-temporal similarities of the filtered representations of the dual-template and the dual search-region.
+We also introduce a new backward-free test-time adaptation approach tailored for tracking via dynamically updating only the batch-norm parameters during inference.
 
 
 

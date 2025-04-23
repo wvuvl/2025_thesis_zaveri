@@ -97,14 +97,14 @@
 
   \subsection{AVisT} 
   AVisT~\cite{noman2022avist} consists of 120 extremely challenging real-world sequences in adverse visibility.
-  In addition to simple occlusion and fast motion, it involves objects under heavy rain, heavy snow, dense fog, sandstorms, hurricanes, etc. In \ref{tab:main_res_avist_nfs_uav}, we note that this out-of-distribution benchmark highlights a significant performance degradation of SOTA trackers compared to the widely used in-distribution test sets. On the other hand, our trackers, S-Tiny and S-Small, are outperforming HCAT by 5.4\% and 6.1\% respectively and MixFormerV2-S\cite{cui2024mixformerv2} by 7.6\% and 8.3\% respectively, showing our approach's improved ability to track in sequences with adverse conditions. Additionally, S-Tiny outperforms SMAT\cite{gopal2024separable} by 2.5\% while being almost 3x faster on a CPU. We show qualitative results on this benchmark, comparing S-Tiny with other trackers in \ref{fig:qual_compare_bbox}. S-Tiny shows remarkable resilience against adverse visibility conditions. 
+  In addition to simple occlusion and fast motion, it involves objects under heavy rain, heavy snow, dense fog, sandstorms, hurricanes, etc. In Table \ref{tab:main_res_avist_nfs_uav}, we note that this out-of-distribution benchmark highlights a significant performance degradation of SOTA trackers compared to the widely used in-distribution test sets. On the other hand, our trackers, S-Tiny and S-Small, are outperforming HCAT by 5.4\% and 6.1\% respectively and MixFormerV2-S\cite{cui2024mixformerv2} by 7.6\% and 8.3\% respectively, showing our approach's improved ability to track in sequences with adverse conditions. Additionally, S-Tiny outperforms SMAT\cite{gopal2024separable} by 2.5\% while being almost 3x faster on a CPU. We show qualitative results on this benchmark, comparing S-Tiny with other trackers in Figure \ref{fig:qual_compare_bbox}. S-Tiny shows remarkable resilience against adverse visibility conditions. 
   
   \subsection{UAV123}
-  UAV123~\cite{mueller2016benchmark}  is a benchmark for tracking from an aerial viewpoint involving 123 long video sequences. We outperform HCAT by 2.6\% and 4.5\% respectively, and SMAT by 1.9\% and 3.8\% respectively, confirming the OOD generalization ability of our approach illustrated in \ref{tab:main_res_avist_nfs_uav}.
+  UAV123~\cite{mueller2016benchmark}  is a benchmark for tracking from an aerial viewpoint involving 123 long video sequences. We outperform HCAT by 2.6\% and 4.5\% respectively, and SMAT by 1.9\% and 3.8\% respectively, confirming the OOD generalization ability of our approach illustrated in Table \ref{tab:main_res_avist_nfs_uav}.
 
 
   \subsection{NFS30}
-  NFS30~\cite{kiani2017need}  is a benchmark collected with extremely high frame rate of 240 FPS for fast tracking. Similar to other approaches, we use the 30 FPS version of the benchmark for evaluation. Our trackers outperform others also in this OOD test. Please refer to \ref{tab:main_res_avist_nfs_uav}.
+  NFS30~\cite{kiani2017need}  is a benchmark collected with extremely high frame rate of 240 FPS for fast tracking. Similar to other approaches, we use the 30 FPS version of the benchmark for evaluation. Our trackers outperform others also in this OOD test. Please refer to Table \ref{tab:main_res_avist_nfs_uav}.
   
   \subsection{VOT2020}  
   \begin{table}
@@ -138,7 +138,7 @@
 	\end{tabular}
 	}
 	\end{table}
-  VOT2020~\cite{kristan2020eighth} contains 60 challenging videos and employs EAO (expected average overlap) as its metric alongside the accuracy and robustness. In \ref{tab:vot2020_res}, our tracker, S-Tiny, shows remarkable resilience against difficult scenarios in this benchmark, outperforming HCAT\cite{chen2022efficient} (best real-time method) and STARK-S50\cite{yan2021learning} by 1.05\% and 1.04\% EAO respectively while being more than 14x faster than STARK-S50 on a CPU.
+  VOT2020~\cite{kristan2020eighth} contains 60 challenging videos and employs EAO (expected average overlap) as its metric alongside the accuracy and robustness. In Table \ref{tab:vot2020_res}, our tracker, S-Tiny, shows remarkable resilience against difficult scenarios in this benchmark, outperforming HCAT\cite{chen2022efficient} (best real-time method) and STARK-S50\cite{yan2021learning} by 1.05\% and 1.04\% EAO respectively while being more than 14x faster than STARK-S50 on a CPU.
 
   \begin{table}
 	\caption{Comparative Study with other SOTA approaches on various benchmarks including TrackingNet\cite{muller2018trackingnet}, GOT-10k\cite{Huang2021}, and LaSOT\cite{fan2021lasot}. Red, blue, and green colors describe the best three CPU real-time trackers whereas bold suggests the best CPU non-real-time tracker.
@@ -180,7 +180,7 @@
 	MixFormerV2-S \cite{cui2024mixformerv2} & 0.758  & 0.811  & 0.704 & 0.587  & 0.672 & \color{ForestGreen} \bf{0.606}  & 0.604  & 37 & \color{ForestGreen} \bf{420} & \color{Mahogany} \bf{40} \\
 	HCAT \cite{chen2022efficient} & 0.766  & \color{ForestGreen} \bf{0.826}  & 0.729 & \color{ForestGreen} \bf{0.634}  & \color{ForestGreen} \bf{0.743} & 0.590  & 0.605 & \color{ForestGreen} \bf{60} & 300 & \color{ForestGreen} \bf{24} \\
 	LightTrack \cite{yan2021lighttrack} & 0.729  & 0.793  & 0.699 & 0.582  & 0.660  & 0.522  & 0.517 & \color{RoyalBlue} \bf{67} & 170 & 17 \\
-	FEAR-XS \cite{borsuk2022fear} & 0.387 & 0.805 & 0.699 & 0.573  & 0.681  & 0.535  & 0.545 &  \color{Mahogany} \bf{100} & \color{Mahogany} \bf{450} & \color{Mahogany} \bf{40}\\
+	FEAR-XS \cite{borsuk2022fear} & 0.715 & 0.805 & 0.699 & 0.573  & 0.681  & 0.535  & 0.545 &  \color{Mahogany} \bf{100} & \color{Mahogany} \bf{450} & \color{Mahogany} \bf{40}\\
   
 	
 	\rowcolor{lightgray!20} \bf{S-Tiny}  & 0.741  & 0.819  & 0.720 & 0.614  & 0.728 & 0.590  &  0.607  &  \color{Mahogany} \bf{100} & \color{RoyalBlue} \bf{425} & \color{Mahogany} \bf{40}\\
@@ -194,7 +194,7 @@
   
   The LaSOT~\cite{fan2021lasot} benchmark involves 280 long test sequences with 2500 frames per sequence on average.
   GOT-10k~\cite{Huang2021} is a challenging short term benchmark consisting of 180 test sequences which are evaluated on their server. Most approaches are trained on the large training sets of LaSOT, TrackingNet, and GOT-10k; thus, the test distributions of such benchmarks remain quite similar. 
-  Nevertheless, S-Small outperforms most SOTA CPU real-time trackers in these benchmarks while remaining efficient as shown in \ref{tab:main_res_tn_lasot_got}. Our approach slightly underperforms SMAT
+  Nevertheless, S-Small outperforms most SOTA CPU real-time trackers in these benchmarks while remaining efficient as shown in Table \ref{tab:main_res_tn_lasot_got}. Our approach slightly underperforms SMAT
   in two ID sets, LaSOT and TrackingNet; however, we note that the trade-off with speed is significant as SMAT runs at 34 FPS (CPU), 158 FPS (GPU), and 20 FPS (Nano), while S-tiny runs at 100 FPS (CPU), 425 FPS (GPU), and 40 FPS (Nano), and S-Small runs at 45 FPS (CPU), 400 FPS (GPU), and 30 FPS (Nano). 
   
   \begin{table}
@@ -231,8 +231,8 @@
 	\end{table}
 
   \subsection{OTB-2015, TC128, DTB70, and ITB}
-  As shown in \ref{tab:itb_otb_tc_dtb_res}, we outperform other CPU-based trackers on the \textbf{OTB-2015}\cite{7001050} benchmark with 100 sequences, even surpassing the CPU non-real-time approaches. 
-  Another similar benchmark is \textbf{TC128}\cite{liang2015encoding} with 128 challenging color sequences, where we outperform other SOTA approaches as well. \textbf{DTB70}\cite{drone-tracking} is another small-scale UAV benchmark involving 70 long sequences. We consistently show improvement here as well. \textbf{ITB}\cite{li2021informative} is a benchmark with 180 various challenging sequences from many other benchmarks giving an informative evaluation of trackers. ITB is second to AVisT in terms of challenging sequences, and \ref{tab:itb_otb_tc_dtb_res} confirms a remarkable generalization ability of our approach. We note that DropMAE \cite{wu2023dropmae} was pre-tained on additional diverse training data.
+  As shown in Table \ref{tab:itb_otb_tc_dtb_res}, we outperform other CPU-based trackers on the \textbf{OTB-2015}\cite{7001050} benchmark with 100 sequences, even surpassing the CPU non-real-time approaches. 
+  Another similar benchmark is \textbf{TC128}\cite{liang2015encoding} with 128 challenging color sequences, where we outperform other SOTA approaches as well. \textbf{DTB70}\cite{drone-tracking} is another small-scale UAV benchmark involving 70 long sequences. We consistently show improvement here as well. \textbf{ITB}\cite{li2021informative} is a benchmark with 180 various challenging sequences from many other benchmarks giving an informative evaluation of trackers. ITB is second to AVisT in terms of challenging sequences, and Table \ref{tab:itb_otb_tc_dtb_res} confirms a remarkable generalization ability of our approach. We note that DropMAE \cite{wu2023dropmae} was pre-tained on additional diverse training data.
   
   
   
@@ -270,9 +270,9 @@
   \end{table}
 	
   \section{Comparision with Adaptation Approaches}\label{sec:tta_res}
-  There are no specific Test-Time Adaptation (TTA) approaches available for single-object tracking. Therefore, to compare our Dynamic TTA strategy mentioned in \ref{sec:methods_tta}, we implement relevant backward-free and backward-based baselines according to the codebase provided by \cite{alfarra2023revisiting}. We carefully follow the instructions provided by the respective approaches and use them under our online setting. 
+  There are no specific Test-Time Adaptation (TTA) approaches available for single-object tracking. Therefore, to compare our Dynamic TTA strategy mentioned in Section \ref{sec:methods_tta}, we implement relevant backward-free and backward-based baselines according to the codebase provided by \cite{alfarra2023revisiting}. We carefully follow the instructions provided by the respective approaches and use them under our online setting. 
   In our S-Tiny model we incorporate TENT\cite{wang2020tent} and ETA\cite{niu2022efficient} as our TTA baselines with backward-passes,
-  where we use our classification output as self-entropy. Additionally, we also evaluated Momentum\cite{schneider2020improving}, DUA\cite{mirza2022norm}, IN\cite{pan2018two}, and AdaBN\cite{li2016revisiting} as our backward-free TTA baselines. We set the batch size to 1. The comparison is shown in \ref{tab:tta_res} with two of the most challenging benchmarks, AVisT as it involves multiple adverse scenarios with natural corruptions and ITB as the next most challenging benchmark.
+  where we use our classification output as self-entropy. Additionally, we also evaluated Momentum\cite{schneider2020improving}, DUA\cite{mirza2022norm}, IN\cite{pan2018two}, and AdaBN\cite{li2016revisiting} as our backward-free TTA baselines. We set the batch size to 1. The comparison is shown in Table \ref{tab:tta_res} with two of the most challenging benchmarks, AVisT as it involves multiple adverse scenarios with natural corruptions and ITB as the next most challenging benchmark.
   TENT and ETA have almost 3x the latency because of the backward passes, and do improve with AVisT. However, we do not observe the same with ITB. Momentum shows negligible improvement, whereas IN, AdaBN, and DUA show performance degradation in both scenarios. When DTTA, our efficient adaptation strategy, is turned on, we notice significant improvement with both benchmarks while having minimal latency. Essentially, our approach continually adapts to the new domains without forgetting as the BN-statistics stay anchored to the source statistics and model parameters remain frozen. Additionally, our approach continually adapts to each new instance with negligible difference in latency.
 
   
@@ -280,11 +280,11 @@
   
   
   
-  We perform ablation studies on each of the components of S-Tiny used on AVisT as an OOD benchmark and on LaSOT as an ID benchmark. In \ref{fig:all_ablation}(top), the baseline is obtained by removing the FMF block and the TRL losses, $\mathcal{L}_{TR}$ and $\mathcal{L}_{Reg}$. Next, we add the intermediate dynamic frames to obtain the mix configuration, without FMF, and lastly, we add our FMF block. We clearly observe the impact of the FMF block, especially on the OOD benchmark, where the AUC increases from 41.8\% to 43.7\%. We also show qualitative results regarding the FMF layer compared to the baseline and the naive concatenation of features in \ref{fig:qual_compare_bbox_abl}, visually showing the significance of our FMF layer. 
-  Next, \ref{fig:all_ablation}(middle) shows the ablation on the TRL losses, $\mathcal{L}_{TR}$ and $\mathcal{L}_{Reg}$. The addition of either of them improves performance; however, the improvement is more significant when used together.
-  Further, in \ref{tab:att_comp} we test the impact of FMF on accuracy compared to PSA\cite{liu2021polarized}, observing no noticeable fluctuations in performance.
-  We further evaluate the squeeze rate of our FMF block in \ref{fig:all_ablation}(bottom). There we notice performance degradation on the OOD benchmark when we do not squeeze the FMF module, but not as much in the ID benchmark, suggesting that squeeze is more important for accurate filtration of OOD sequences.
-  In \ref{tab:component_ablation_updates}, we show a case-study on parameter-free dynamic update strategies, where ours consistently improves over the others.
+  We perform ablation studies on each of the components of S-Tiny used on AVisT as an OOD benchmark and on LaSOT as an ID benchmark. In Figure \ref{fig:all_ablation}(top), the baseline is obtained by removing the FMF block and the TRL losses, $\mathcal{L}_{TR}$ and $\mathcal{L}_{Reg}$. Next, we add the intermediate dynamic frames to obtain the mix configuration, without FMF, and lastly, we add our FMF block. We clearly observe the impact of the FMF block, especially on the OOD benchmark, where the AUC increases from 41.8\% to 43.7\%. We also show qualitative results regarding the FMF layer compared to the baseline and the naive concatenation of features in Figure \ref{fig:qual_compare_bbox_abl}, visually showing the significance of our FMF layer. 
+  Next, Figure \ref{fig:all_ablation}(middle) shows the ablation on the TRL losses, $\mathcal{L}_{TR}$ and $\mathcal{L}_{Reg}$. The addition of either of them improves performance; however, the improvement is more significant when used together.
+  Further, in Table \ref{tab:att_comp} we test the impact of FMF on accuracy compared to PSA\cite{liu2021polarized}, observing no noticeable fluctuations in performance.
+  We further evaluate the squeeze rate of our FMF block in Figure \ref{fig:all_ablation}(bottom). There we notice performance degradation on the OOD benchmark when we do not squeeze the FMF module, but not as much in the ID benchmark, suggesting that squeeze is more important for accurate filtration of OOD sequences.
+  In Table \ref{tab:component_ablation_updates}, we show a case-study on parameter-free dynamic update strategies, where ours consistently improves over the others.
   
   \begin{figure}
 	\centering

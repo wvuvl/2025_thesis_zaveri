@@ -84,7 +84,7 @@ chapterinoneline, % Uncomment to place the chapter title next to the number on o
 %	THESIS INFORMATION
 %----------------------------------------------------------------------------------------
 
-\thesistitle{Efficient, Accurate, and Test-Time Adaptive Single Object Tracking In-The-Wild} % Your thesis title, this is used in the title and abstract, print it elsewhere with \ttitle
+\thesistitle{Efficient and Test-Time Adaptive Visual Object Tracking in the Wild} % Your thesis title, this is used in the title and abstract, print it elsewhere with \ttitle
 \supervisor{Dr. Gianfranco Doretto} % Your supervisor's name, this is used in the title page, print it elsewhere with \supname
 %\examiner{} % Your examiner's name, this is not currently used anywhere in the template, print it elsewhere with \examname
 %\degree{Doctor of Philosophy} % Your degree name, this is used in the title page and abstract, print it elsewhere with \degreename
@@ -161,7 +161,10 @@ Keywords: Single Object Tracking, Backward-Free Test-Time Adaptation, Efficient 
 %
 \begin{abstract}
 \addchaptertocentry{\abstractname} % Add the abstract to the table of contents
-Efficient visual trackers overfit to their training distributions and lack generalization abilities, resulting in them performing well on their respective in-distribution (ID) test sets and not as well on out-of-distribution (OOD) sequences, imposing limitations to their deployment in-the-wild under constrained resources. We introduce SiamABC, a highly efficient Siamese tracker that significantly improves tracking performance, even on OOD sequences. SiamABC takes advantage of new architectural designs in the way it bridges the dynamic variability of the target, and of new losses for training. Also, it directly addresses OOD tracking generalization by including a fast backward-free dynamic test-time adaptation method that continuously adapts the model according to the dynamic visual changes of the target. Our extensive experiments suggest that SiamABC shows remarkable performance gains in OOD sets while maintaining accurate performance on the ID benchmarks. SiamABC outperforms MixFormerV2-S by 7.6\% on the OOD AVisT benchmark while being 3x faster (100 FPS) on a CPU. We also contribute by making the codebase publicly available at \url{https://wvuvl.github.io/SiamABC/}. 
+
+Tracking a single object, given the location at the first frame, has been an ongoing challenge in the vision community for decades. Most recent approaches provide reasonably good performance, especially when benchmarked on in-distribution (ID) datasets, i.e., on the testing portion of the same datasets used for training. However, they incur high computational costs and hardware constraints, making their deployment in the wild for mobile, autonomous, and IoT applications still challenging. Efficient visual trackers address the efficiency aspect of such bottlenecks; however, they tend to overfit to their training distributions and lack generalization abilities, resulting in them performing well on their respective in-distribution (ID) test sets but not as well on out-of-distribution (OOD) sequences, which again imposes limitations on their deployment in the wild under constrained resources. \\
+
+We introduce SiamABC, a highly efficient Siamese tracker that significantly improves tracking performance, even on OOD sequences. SiamABC takes advantage of new architectural designs in the way it bridges the dynamic variability of the target, and of new losses for training. Also, it directly addresses OOD tracking generalization by including a fast backward-free dynamic test-time adaptation method that continuously adapts the model according to the dynamic visual changes of the target. Our extensive experiments suggest that SiamABC shows remarkable performance gains in OOD sets while maintaining accurate performance on the ID benchmarks. SiamABC outperforms MixFormerV2-S by 7.6\% on the OOD AVisT benchmark while being 3x faster (100 FPS) on a CPU. We also contribute by making the codebase publicly available at \url{https://wvuvl.github.io/SiamABC/}. 
 \end{abstract}
 
 %----------------------------------------------------------------------------------------
@@ -261,7 +264,7 @@ Research reported in this thesis was supported by the National Institute Of Ment
 \include{Chapters/4_ProposedMethods}
 \include{Chapters/5_Results}
 \include{Chapters/6_ConclusionFutureWork}
-\include{Chapters/7_Impacts}
+% \include{Chapters/7_Impacts}
 
 %----------------------------------------------------------------------------------------
 %	THESIS CONTENT - APPENDICES
